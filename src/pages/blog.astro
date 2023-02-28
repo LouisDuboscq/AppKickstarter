@@ -3,7 +3,12 @@ import { getCollection } from "astro:content";
 import { Picture } from "@astrojs/image/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
+import Sectionhead from "@components/sectionhead.astro"; 
+import getUniqueTags from "@utils/getUniqueTags";
+import Tag from "@components/Tag.astro";
+
+const posts = await getCollection("blog");
+let tags = getUniqueTags(posts);
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
@@ -21,11 +26,16 @@ publishedBlogEntries.sort(function (a, b) {
     <Sectionhead>
       <Fragment slot="title">Our Blog</Fragment>
       <Fragment slot="desc">
-        We write about building apps and story around AppKickstarter.
-      </Fragment>
+        We write about building apps.
+
+        <ul class="max-w-4xl mx-auto">
+          {tags.map(tag => <Tag name={tag} size="lg" />)}
+        </ul>
+      </Fragment> 
     </Sectionhead>
     <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
+
+      <ul class="grid gap-16 max-w-4xl mx-auto md:gap-10 items-center">
         {
           publishedBlogEntries.map((blogPostEntry, index) => (
             <li>

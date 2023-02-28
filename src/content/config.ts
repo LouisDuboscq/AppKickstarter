@@ -1,4 +1,5 @@
 // 1. Import utilities from `astro:content`
+import { string } from 'astro/zod';
 import { z, defineCollection } from 'astro:content';
 
 // 2. Define your collection(s)
@@ -31,9 +32,18 @@ const teamCollection = defineCollection({
   }),
 });
 
+const snippetCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    logo: z.string(),
+  }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   'blog': blogCollection,
   'team': teamCollection,
+  'snippet': snippetCollection,
 };
