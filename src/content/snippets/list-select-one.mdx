@@ -1,0 +1,79 @@
+---
+title: 'List select one'
+description: ''
+logo: 'swift.png'
+---
+
+
+```swift
+// core components
+
+struct CheckListItem: Identifiable{
+    var id: Int
+    var isChecked: Bool = false
+    var title: String
+}
+
+struct CheckListView: View {
+    let checkListData: [CheckListItem]
+    let toggle: (CheckListItem) -> Void
+    
+    var body: some View {
+        List(checkListData, id: \.id) { item in
+            CheckView(isChecked: item.isChecked, title: item.title, toggle: { toggle(item) })
+        }
+    }
+}
+ 
+struct CheckView: View {
+    @State var isChecked: Bool = false
+    var title: String
+    let toggle: () -> Void
+    var iconName = "square"
+    
+    init(isChecked: Bool, title: String, toggle: @escaping () -> Void) {
+        self.isChecked = isChecked
+        self.title = title
+        self.toggle = toggle
+        if isChecked {
+            iconName = "checkmark.square"
+        }
+    }
+     
+    var body: some View {
+        HStack {
+            Button(action: toggle) {
+                Image(systemName: iconName)
+            }
+            Spacer()
+            Text(title)
+        }
+    }
+}
+ 
+// display List
+
+let checkListData = [
+    CheckListItem(id:0,title: "Neopolitan"),
+    CheckListItem(id:1,title: "New York"),
+    CheckListItem(id:2,title:"Hawaiian"),
+    CheckListItem(id:3,title:"Chicago Deep Dish"),
+    CheckListItem(id:4,title:"Californian")
+] 
+
+CheckListView(checkListData: checkListData, toggle: { item in
+    checkListData = checkListData.map {
+        if $0.id == item.id {
+            return CheckListItem(id: $0.id, isChecked: !item.isChecked, title: $0.title)
+        } else {
+            return CheckListItem(id: $0.id, isChecked: false, title: $0.title)
+        }
+    }
+})
+
+
+// get result 
+
+let selection: CheckListItem? = checkListData.filter { $0.isChecked }.first
+
+```

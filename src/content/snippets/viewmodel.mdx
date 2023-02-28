@@ -1,0 +1,69 @@
+---
+title: 'States and effects management boilerplate for views and view models'
+description: 'For use with KMM, Jetpack Compose and SwiftUI.'
+logo: 'kmm.png'
+---
+ 
+States and effects declarations
+
+```swift 
+sealed class ViewSideEffect {
+    data class NavigateToForm(val data: DataBundleForNavigation) : CameraViewSideEffect()
+    object SomeEffect: CameraViewSideEffect()
+}
+
+data class ViewState {
+    val prop: String, 
+    val prop2: Boolean, 
+    ...
+}
+```
+
+Boilerplate for view models 
+
+```swift
+private val pendingActions = MutableSharedFlow<ScreenAction>()
+private val _effect: Channel<ViewSideEffect> = Channel()
+val sideEffectsFlow = _effect.receiveAsFlow()
+
+init {
+    viewModelScope.launch {
+        pendingActions.collect { action ->
+            handleAction(action)
+        }
+    }
+}
+
+fun submitAction(action: ScreenAction) {
+    viewModelScope.launch {
+        pendingActions.emit(action)
+    }
+}
+
+private suspend fun handleAction(action: ScreenAction) {
+    when (action) {
+    }
+}
+```
+
+Update state and send effects in view model: 
+
+```swift   
+viewModelScope.launch {
+    setState { copy(viewProperty = "something") }
+    _effect.send(ViewSideEffect.NavigateToForm(dataToFormScreen))
+}
+```
+
+Composable function : 
+```swift
+LaunchedEffect(Unit) { 
+    viewModel.sideEffectsFlow.onEach { effect ->
+        when (effect) {
+            is ScreenEffects.NavigateToForm -> {
+                navigateToForm(effect)
+            }
+        }
+    }.collect()
+}
+```

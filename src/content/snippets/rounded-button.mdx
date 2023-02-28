@@ -1,0 +1,26 @@
+---
+title: 'rounded buttonk'
+description: 'For use with SwiftUI'
+logo: 'swift.png'
+---
+
+
+```swift
+form : build a https://www.appcoda.com/swiftui-form-ui
+struct RoundedButton : View {
+    var body: some View {
+        Button(action: {}) {
+            HStack {
+                Spacer()
+                Text("Save")
+                    .font(.headline)
+                    .color(Color.white)
+                Spacer()
+            }
+        }
+        .padding(.vertical, 10.0)
+        .background(Color.red, cornerRadius: 4.0)
+        .padding(.horizontal, 50)
+    }
+}
+```

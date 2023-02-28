@@ -1,0 +1,121 @@
+---
+draft: false
+title: "Test iOS code that relies on a shared instance"
+snippet: "my super snipet"
+publishDate: "2022-07-01 11:36"
+image: {
+  src: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?&fit=crop&w=430&h=240",
+  alt: "typography"
+}
+category: "Technology"
+author: "Louis Duboscq"
+tags: [ios, test]
+--- 
+
+How do you test this view model ? 
+
+As you can see, it's directly referencing userdefault shared instance. 
+
+If you are a senior iOS developer, this could be a typical interview question.
+
+```swift
+class ViewModel {
+    
+    func saveUserName(name: String) {
+        UserDefaults.standard.set(name, forKey: "username")
+    }
+}
+
+class TestCode: XCTAssertTest {
+    func test() { 
+        let viewModel = ViewModel()
+        viewModel.saveUserName(name: "the username")
+        XCTAssertEqual("the username", UserDefaults.standard.string(forKey: "username"))
+    }
+}
+```
+
+## Problem
+
+The view model is tightly coupled with the user default shared instance and it makes too difficult to test the view model in isolation. 
+
+Currently the test should know userdefaults and we need to clear values in userdefaults before every test else it could end in wrong results. 
+
+In addition, this test is not an unit test but rather an integration test. 
+
+## Solution : 
+
+We just want to know that the username is stored without the need to manipulate user defaults. 
+So, instead of calling the singleton inside the view model, I introduce a new component which manages only user default mecanisms for user datas. 
+
+```swift
+protocol UserStorage {
+    func save(name: String)
+}
+
+class UserStorageWithUserDefaults: UserStorage {
+    
+    private let usernameKey = "username"
+    
+    func save(name: String) {
+        UserDefaults.standard.set(name, forKey: usernameKey)
+    }
+}
+```
+ 
+One more problem that this solution solves is that the caller of view model, let's say a view controler for example, needed to know and manage keys for userDefaults key values. 
+
+Now, only the UserStorageWithUserDefaults component has this responsibility. 
+
+The view model can use this new introduced UserStorage : 
+
+```swift
+class ViewModel {
+    
+    private let userStorage: UserStorage
+    
+    init(userStorage: UserStorage) {
+        self.userStorage = userStorage
+    }
+    
+    func saveUserName(name: String) {
+        userStorage.save(name: name)
+    }
+}
+```
+
+As you can see, it's injected in the view model. We need to change the ViewModel caller code from this :
+
+```swift
+let ViewModel = ViewModel()
+viewModel.saveUserName(name: "the username")
+```
+
+to this : 
+
+```swift
+let viewModel = ViewModel(userStorage: UserStorageWithUserDefaults())
+viewModel.saveUserName(name: "the username")
+```
+
+And in tests code, we can use a specific implementation for the UserStorage protocol, which is only in memory and does not rely on any other framework :
+
+```swift
+class InMemoryUserStorage: UserStorage {
+    var name = ""
+    
+    func save(name: String) {
+        self.name = name
+    }
+}
+ 
+class TestCode: XCTAssertTest {
+    func test() {
+        let memory = InMemoryUserStorage()
+        let viewModel = ViewModel(userStorage: InMemoryUserStorage())
+        viewModel.saveUserName(name: "the username")
+        XCTAssertEqual("the username", memory.name)
+    }
+}
+```
+

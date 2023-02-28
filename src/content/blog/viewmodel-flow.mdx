@@ -1,0 +1,108 @@
+---
+draft: false
+title: "Support iOS with your Android app codebase"
+snippet: "Learn things you can share with iOS that you usually do in the Android platform"
+image: {
+    src: "https://blog.envolee.co/assets/uploads/1581d455bc98aa8f8839692d9c740a66.jpg",
+    alt: "Differentiating instruction at school"
+}
+publishDate: "2021-12-29"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [android, ios, viewmodel, kmm]
+--- 
+
+```swift
+class PersonDetailsViewModel(
+    personName: String,
+    peopleInSpaceRepository: PeopleInSpaceRepositoryInterface,
+) : ViewModel() {
+
+    val uiState = peopleInSpaceRepository.fetchPeopleAsFlow()
+        .map { list ->
+            val person = list.find { it.name == personName }
+            PersonDetailsUiState(person)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), PersonDetailsUiState(isLoading = true))
+
+}
+
+
+interface PeopleInSpaceRepositoryInterface {
+    fun fetchPeopleAsFlow(): Flow<List<Assignment>>
+    fun pollISSPosition(): Flow<IssPosition>
+    suspend fun fetchPeople(): List<Assignment>
+    suspend fun fetchAndStorePeople()
+}
+
+
+class PeopleInSpaceRepository : KoinComponent, PeopleInSpaceRepositoryInterface {
+    private val peopleInSpaceApi: PeopleInSpaceApi by inject()
+
+    @NativeCoroutineScope
+    private val coroutineScope: CoroutineScope = MainScope()
+    private val peopleInSpaceDatabase: PeopleInSpaceDatabaseWrapper by inject()
+    private val peopleInSpaceQueries = peopleInSpaceDatabase.instance?.peopleInSpaceQueries
+
+    val logger = Logger.withTag("PeopleInSpaceRepository")
+
+    init {
+        coroutineScope.launch {
+            fetchAndStorePeople()
+        }
+    }
+
+    override fun fetchPeopleAsFlow(): Flow<List<Assignment>> {
+        // the main reason we need to do this check is that sqldelight isn't currently
+        // setup for javascript client
+        return peopleInSpaceQueries?.selectAll(
+            mapper = { name, craft, personImageUrl, personBio ->
+                Assignment(name = name, craft = craft, personImageUrl = personImageUrl, personBio = personBio)
+            }
+        )?.asFlow()?.mapToList() ?: flowOf(emptyList())
+    }
+
+    override suspend fun fetchAndStorePeople() {
+        logger.d { "fetchAndStorePeople" }
+        try {
+            val result = peopleInSpaceApi.fetchPeople()
+
+            // this is very basic implementation for now that removes all existing rows
+            // in db and then inserts results from api request
+            // using "transaction" accelerate the batch of queries, especially inserting
+            peopleInSpaceQueries?.transaction {
+                peopleInSpaceQueries.deleteAll()
+                result.people.forEach {
+                    peopleInSpaceQueries.insertItem(
+                        it.name,
+                        it.craft,
+                        it.personImageUrl,
+                        it.personBio
+                    )
+                }
+            }
+        } catch (e: Exception) {
+            // TODO report error up to UI
+            logger.w(e) { "Exception during fetchAndStorePeople: $e" }
+        }
+    }
+
+    // Used by web and apple clients atm
+    override suspend fun fetchPeople(): List<Assignment> = peopleInSpaceApi.fetchPeople().people
+
+    override fun pollISSPosition(): Flow<IssPosition> {
+        return flow {
+            while (true) {
+                val position = peopleInSpaceApi.fetchISSPosition().iss_position
+                emit(position)
+                logger.d { position.toString() }
+                delay(POLL_INTERVAL)
+            }
+        }
+    }
+
+    companion object {
+        private const val POLL_INTERVAL = 10000L
+    }
+}
+```

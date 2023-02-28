@@ -1,0 +1,419 @@
+---
+draft: false
+title: "An Android ViewModel step by step with TDD"
+snippet: "An Android ViewModel step by step with TDD"
+image: {
+    src: "https://blog.envolee.co/assets/uploads/1581d455bc98aa8f8839692d9c740a66.jpg",
+    alt: "Differentiating instruction at school"
+}
+publishDate: "2022-09-24 22:31"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [android, tdd, test, viewmodel]
+--- 
+
+# Introduction 
+
+I'm going to show in this article how I build step-by-step an android view model using TDD approach. 
+ 
+The feature I'll cover is a simple screen with a canvas where user can sign and save his signature. 
+
+Design is something like this :
+ 
+ ----???-
+
+
+This is the functional requirements we'll develop : 
+
+- User may save a signature drawn in canvas.
+- If a file exists for the signature then a non-modifiable image should show the file content. 
+- If there is no file for signature then an empty canvas should be shown.
+- User wants to revert a saved signature by clicking the clear canvas button. It then hides the non-modifiable image and shows the canvas.
+- If the signature is not saved, then back should not be allowed and a dialog explaining there are modifications not saved should appear.
+- On another side, if signature is saved then back is allowed.
+
+And we'll try to follow the [TDD guidelines](https://tddmanifesto.com/getting-started) : 
+
+
+>     You are not allowed to write any production code unless it is to make a failing unit test pass.
+
+>     You are not allowed to write any more of a unit test than is sufficient to fail, and compilation failures are failures.
+
+>     You are not allowed to write any more production code than is sufficient to pass the one failing unit test.
+
+# Req1. Existing files should show non-modifiable image
+
+Let's start covering 'existing files should show non-modifiable image' requirement. 
+
+I do not want to not push production code first but test first. 
+
+I create a test with the future classes and calls I want.
+
+
+
+----???---
+
+
+Here I wrote a lot of things that do not exist for now. 
+
+- We see we implement a GetSignatures interface
+- Signatures class
+- We use a SignatureViewModel with a getSignature parameter
+- and a SignatureContract with its sealed class State
+
+GetSignatures interface is an abstraction. I do not care about file system here, I just want an abstraction for getting signature path files.
+
+```kotlin
+interface GetSignature {
+    fun invoke(): Signature
+}
+```
+
+I create a data class representing a Signature, it's just a String wrapper (the file path if it exists)
+
+```kotlin
+data class Signature(val path: String?)
+```
+
+I create the minimum view model code to make the tests compile.
+
+```kotlin
+class SignatureViewModel(private val getSignature: GetSignature) : BaseViewModel<
+    SignatureContract.Event, 
+    SignatureContract.State, 
+    SignatureContract.Effect>() {
+
+   override fun setInitialState(): SignatureContract.State {
+       return SignatureContract.State(Signature(null))
+   }
+
+   override fun handleEvents(event: SignatureContract.Event) {
+       TODO()
+    }
+}
+```
+
+I am using BaseViewModel that you can find [here](https://codingtroops.com/android/compose-architecture-part-1-mvvm-or-mvi-architecture-with-flow/), I quote Catalin who explains why I'm using this implementation :
+
+
+>     Handles the state and exposes it to the composable as a Compose runtime State object. It is also capable of receiving an initial state and to mutate it at any time. Any update of its value will trigger a recomposition of the widget tree that uses it.
+
+>     Intercepts events and subscribes to them in order to react and handle them appropriately.
+
+>     Is capable of creating side-effects and exposes them back to the composable.
+
+
+
+Next I create a Contract for my view model. It is composed of what is the view state, what are the events user can do and what are side effects UI should react.
+
+```kotlin
+class SignatureContract {
+    sealed class Event : ViewEvent 
+
+    data class State(
+        val signatures: Signatures = Signatures(null)
+    ) : ViewState
+
+    sealed class Effect : ViewSideEffect 
+}
+```
+
+
+It compiles now if all dependencies are imported in the test.
+Commit : 437599a07191f432a9f967c83247c2712dd1d7f3
+
+If I run the test without any modification I expect to have an error.
+
+
+
+
+---???-----
+
+
+
+For fixing this I'm doing minimal change in the production code to make the test pass. 
+
+```kotlin
+override fun setInitialState(): SignatureContract.State {
+    return SignatureContract.State(Signature("an irrelevant existing path"))
+}
+```
+
+Ensuite...
+
+
+
+???----
+ 
+
+Now that test passes we check if there's something to refactor. There's nothing to refactor in the production code but in test we can make some improvements. 
+Commit d2cbaaecf11efdeb9f049432f282ebf8a01fe390
+
+I make a function for creating a GetSignature instance
+
+```kotlin
+private fun createGetSignatureFromFileSystem(path: String): GetSignature {
+    return object : GetSignature {
+         override fun invoke(): Signature {
+              return Signature(path)
+         }
+    }
+}
+```
+
+
+And it makes the code cleaner
+
+```kotlin
+val path = "an irrelevant existing path"
+
+val viewModel = SignatureViewModel(createGetSignatureFromFileSystem(path))
+
+assertEquals(
+    SignatureContract.State(Signature(path)),
+    viewModel.viewState.value
+)
+```
+
+Commit : d2cbaaecf11efdeb9f049432f282ebf8a01fe390
+
+We move to the next requirement.  
+
+# Req2. No signature should show an empty canvas
+
+```kotlin
+@Test
+    fun given_Get_Signature_From_File_System_Returns_No_Signature_Then_Init_State_Should_Be_Empty_Signature() {
+        val viewModel = SignatureViewModel(createGetSignatureFromFileSystem(null))
+        assertEquals(
+            SignatureContract.State(Signature(null)),
+            viewModel.viewState.value
+        )
+    }
+``` 
+
+For passing all tests with minimal change in production code I do this in view model 
+
+```kotlin
+init {
+   setState {
+       copy(signature = getSignature())
+    }
+}
+```
+
+It allows me to have initial state based on what getSignature parameter returns. 
+---???--
+
+We have nothing to refactor then we move to the next requirement. 
+
+# Req3. User wants to revert a saved signature by clicking the clear canvas button. It then hides the non-modifiable image and shows a canvas.
+
+Here for doing that I'll put the string property to null. It will only stay on view model scope and will not be saved. So as the state will change, UI will reflect this and we'll be able to show the canvas. 
+
+I am creating a ClearCanvas event and I want the view model handles it and set path to null. 
+
+
+--??---
+
+
+Once again I did not create production code before, it's my test who forces me to create production code. As you see ClearCanvas does not exist for now.
+
+```kotlin
+sealed class Event : ViewEvent  {
+   object ClearCanvas: Event()
+}```
+
+I simply create it in contract class. Now all test compile and I expect to have an error in the last created test.
+
+I go in the handle events function and add all known cases with 'add remaining branches' feature. 
+--??---
+
+```kotlin
+override fun handleEvents(event: SignatureContract.Event) {
+    when (event) {
+         SignatureContract.Event.ClearCanvas -> setState { copy(signature = Signature(null)) }
+    }
+}
+```
+
+It passes and there is nothing to refactor, let's move on. 
+Commit : b41cf7ef9b4bf4c2de9fcd8b3d97c11914a9d333
+
+# Req4. If signature is not saved, then back should not be allowed and a dialog explaining modification is not saved should appear.
+
+What I mean by signature is not saved is simply that user clicked on the clear canvas button and signature string is null. 
+
+I create the test first. 
+
+--??--
+I need two things here : a RequestBack event and a ShowDialogQuitWithoutSave side effect. 
+
+<a aria-label="Website Mockup" href="https://cdn.hashnode.com/res/hashnode/image/upload/v1632474557604/iO3ZfAmW8.png">
+  <Image
+    alt={`Website Mockup`}
+    src={`https://cdn.hashnode.com/res/hashnode/image/upload/v1632474557604/iO3ZfAmW8.png`}
+    width={1854}
+    height={266} 
+  />
+</a>
+
+I have as expected an error 
+ 
+<a aria-label="Website Mockup" href="https://cdn.hashnode.com/res/hashnode/image/upload/v1632474529659/uHWEgJcfn.png">
+  <Image
+    alt={`Website Mockup`}
+    src={`https://cdn.hashnode.com/res/hashnode/image/upload/v1632474529659/uHWEgJcfn.png`}
+    width={927}
+    height={43}  
+  />
+</a>
+
+I simply add this line before else
+
+```kotlin
+SignatureContract.Event.RequestBack -> setEffect { SignatureContract.Effect.ShowDialogQuitWithoutSave }
+```
+
+All tests pass 
+ 
+<a aria-label="Website Mockup" href="https://cdn.hashnode.com/res/hashnode/image/upload/v1632474614179/JslzaB72T.png">
+  <Image
+    alt={`Website Mockup`}
+    src={`https://cdn.hashnode.com/res/hashnode/image/upload/v1632474614179/JslzaB72T.png`}
+    width={540} 
+    height={133}
+  />
+</a>
+
+Commit : b940cb85904342283413d2d92a1ea0591dd614b5
+
+# Req5. If signature is already saved then back is allowed
+
+What I mean by signature is already saved is simply that user did not click on the clear canvas button and there is already something displayed in image. Technically string is not null.
+
+Here I introduce a Back side effect 
+ 
+<a aria-label="Website Mockup" href="https://cdn.hashnode.com/res/hashnode/image/upload/v1632475455704/fuzinazUq.png">
+  <Image
+    alt={`Website Mockup`}
+    src={`https://cdn.hashnode.com/res/hashnode/image/upload/v1632475455704/fuzinazUq.png`}
+    width={928} 
+    height={227}
+  />
+</a>
+But I have an error in assert call because I launch a RequestBack and according to previous test it always launch ShowDialogQuitWithoutSave effect. 
+
+All I have to do is update RequestBack branch in handleEvents method. 
+
+```kotlin
+SignatureContract.Event.RequestBack ->
+   if (viewState.value.signature.path == null) {
+      setEffect { SignatureContract.Effect.ShowDialogQuitWithoutSave }
+   } else {
+      setEffect { SignatureContract.Effect.Back }
+}
+```
+
+ 
+<a aria-label="Website Mockup" href="https://cdn.hashnode.com/res/hashnode/image/upload/v1632475771141/jEbbHYaDu.png">
+  <Image
+    alt={`Website Mockup`}
+    src={`https://cdn.hashnode.com/res/hashnode/image/upload/v1632475771141/jEbbHYaDu.png`}
+    width={928} 
+    height={227}
+  />
+</a>
+
+This works well but I can refactor the code so I can't continue for now. 
+
+```kotlin
+SignatureContract.Event.RequestBack -> {
+   val effect = if (viewState.value.signature.path == null) {
+      SignatureContract.Effect.ShowDialogQuitWithoutSave
+   } else {
+      SignatureContract.Effect.Back
+   }
+   setEffect { effect } 
+}
+```
+
+I prefer to split the logic for retrieving an effect based on state and events on one side and on another side launching an effect.
+
+I re-launch all the tests and refactoring worked well. I can continue. And so on. 
+
+
+# User may save a signature drawn in canvas. It should do back on save
+
+---???--
+
+
+We introduce an addSignature collaborator and a Save event. Once again, I just want to want be sure that view model call add Signature collaborator. I don't want to test if it appears in file system. It is the addSignature implementation responsibility and it is out of scope of this article.
+
+```kotlin
+interface AddSignature{
+   operator fun invoke(byteArray: ByteArray)
+}
+```
+ 
+```kotlin
+class Save(bitmap: Bitmap) : Event()
+```
+ 
+In view model test, I added this helper function : 
+```kotlin
+private fun createAddSignature(addSignature: () -> Unit): AddSignature {
+    return object : AddSignature {
+        override fun invoke(byteArray: ByteArray) {
+           addSignature()
+        }
+    }
+}```
+ 
+I need to change all the view model instanciations since I introduced a new parameter.
+I relaunch all tests, all except the new one pass. 
+
+
+----???---
+
+This is what I expected since I have in handleEvents function : 
+
+```kotlin
+is SignatureContract.Event.Save -> TODO()
+```
+
+To make it pass I need to change the save branch in handleEvents method :  
+```kotlin
+is SignatureContract.Event.Save -> {
+    addSignature(event.bitmap.toByteArray())
+    setEffect { SignatureContract.Effect.Back }
+}
+```
+
+Then, as every tests pass I check if there is something to refactor and I find that I can wrap all view models parameter in one class for avoiding too much parameters. 
+
+```kotlin
+data class SignatureUseCases(
+     val getSignature: GetSignature,
+     val addSignature: AddSignature
+)
+```
+
+```kotlin
+class SignatureViewModel(
+    private val signatureUseCases: SignatureUseCases
+) 
+```
+
+Commit : 725ebe2f1255a15c3dcd91b8b3034602a981723a
+
+I relaunch all tests and check if refactoring didn't break anything. Alright, everything is ok. so I can continue. And so on. Here is the way how I build incrementally view models. 
+ 
+# Conclusion
+
+We've seen how to build an android view model using TDD approach. 
+
+With practice, you will know how to divide your code to have each part its responsibility, and have a tested and maintainable code. 
+
+I know that with this code, I just need to plug my composable functions, just observe states and effects and it will work with an important code coverage.
+ 

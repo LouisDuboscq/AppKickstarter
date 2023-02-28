@@ -1,0 +1,23 @@
+---
+title: 'Navigate back'
+description: 'For use with SwiftUI'
+logo: 'swift.png'
+---
+
+Use this to transition to your view:
+
+```swift
+NavigationLink(destination: SampleDetails()) {}
+```
+
+Add this to the view itself:
+
+```swift
+@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+```
+
+Dismiss the view:
+
+```swift
+presentationMode.wrappedValue.dismiss()
+```

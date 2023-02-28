@@ -1,0 +1,52 @@
+---
+draft: false
+title: "Support iOS with your Android app codebase"
+snippet: "See how these way to build UI are similar"
+image: {
+    src: "https://images.unsplash.com/photo-1627163439134-7a8c47e08208?&fit=crop&w=430&h=240",
+    alt: "data structures & algorithms"
+}
+publishDate: "2021-01-16 19:07"
+category: "Courses"
+author: "Louis Duboscq"
+tags: [android, ios, kmm]
+---
+  
+```swift
+
+class FirestoreUserEventsDataSource(
+    private val firestore: FirebaseFirestore
+) {
+    // Method to get user events from the Firestore database
+    fun getUserEvents(): Flow<UserEvents> = callbackFlow {
+
+        // Reference to use in Firestore
+        var eventsCollection: CollectionReference? = null
+        try {
+            eventsCollection = FirebaseFirestore.getInstance()
+                .collection("collection")
+                .document("app")
+        } catch (e: Throwable) {
+            // If Firebase cannot be initialized, close the stream of data
+            // flow consumers will stop collecting and the coroutine will resume
+            close(e)
+        }
+
+        // Registers callback to firestore, which will be called on new events
+        val subscription = eventsCollection?.addSnapshotListener { snapshot, _ ->
+            if (snapshot == null) { return@addSnapshotListener }
+            // Sends events to the flow! Consumers will get the new events
+            try {
+                offer(snapshot.getEvents())
+            } catch (e: Throwable) {
+                // Event couldn't be sent to the flow
+            }
+        }
+
+        // The callback inside awaitClose will be executed when the flow is
+        // either closed or cancelled.
+        // In this case, remove the callback from Firestore
+        awaitClose { subscription?.remove() }
+    }
+}
+```

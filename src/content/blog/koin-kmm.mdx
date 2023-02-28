@@ -1,0 +1,40 @@
+---
+draft: false
+title: "Koin in kmm app"
+snippet: "Setup koin in a kmm app"
+image: {
+    src: "https://images.unsplash.com/photo-1627163439134-7a8c47e08208?&fit=crop&w=430&h=240",
+    alt: "data structures & algorithms"
+}
+publishDate: "2022-02-28 16:39"
+category: "Courses"
+author: "Louis Duboscq"
+tags: [android, ios, kmm, koin]
+--- 
+ 
+
+```swift
+@Composable
+fun PersonDetailsScreen(personName: String, popBack: () -> Unit) {
+    val viewModel = getViewModel<PersonDetailsViewModel>(
+        parameters = { parametersOf(personName) }
+    )
+}
+
+val appModule = module { 
+    viewModel { (personName: String) ->
+        PersonDetailsViewModel(
+            personName,
+            peopleInSpaceRepository = get(),
+        )
+    }
+}
+
+
+class PersonDetailsViewModel(
+    personName: String,
+    peopleInSpaceRepository: PeopleInSpaceRepositoryInterface,
+) : ViewModel() {
+ ...
+}
+```

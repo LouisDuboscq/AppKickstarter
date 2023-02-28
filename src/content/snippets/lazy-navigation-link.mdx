@@ -1,0 +1,27 @@
+---
+title: 'Lazy navigation link'
+description: 'For use with SwiftUI'
+logo: 'swift.png'
+---
+
+SwiftUI NavigationLink loads destination view immediately, without clicking
+
+It can throw an error if a dependency is not yet initialized for example
+
+```swift
+struct NavigationLazyView<Content: View>: View {
+    let build: () -> Content
+    init(_ build: @autoclosure @escaping () -> Content) {
+        self.build = build
+    }
+    var body: Content {
+        build()
+    }
+}
+```
+ 
+Then the NavigationLink would look like this. You would place the View you want to be displayed inside ()
+
+```swift
+NavigationLink(destination: NavigationLazyView(DetailView(data: DataModel))) { Text("Item") }
+```
