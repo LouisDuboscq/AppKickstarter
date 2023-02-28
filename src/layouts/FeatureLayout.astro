@@ -1,0 +1,25 @@
+---
+import Layout from "./Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+  };
+}
+const { frontmatter } = Astro.props;
+---
+
+<Layout title="Stack"> 
+ <Container>
+    <Sectionhead>
+      <Fragment slot="title">{frontmatter.title}</Fragment>
+      <Fragment slot="desc">{frontmatter.description}</Fragment>
+    </Sectionhead>
+    <section class="prose prose-img:border-0 max-w-4xl mx-auto space-y-200"> 
+      <slot />
+    </section> 
+  </Container>
+</Layout>
