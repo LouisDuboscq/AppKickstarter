@@ -6,9 +6,9 @@ import Pricing from "@components/pricing.astro";
 
 const pricing = [
   {
-    name: "Personal",
+    name: "Developer",
     price: "Free",
-    popular: false,
+    popular: true,
     features: [
       "Lifetime free",
       "Up to 3 users",
@@ -23,14 +23,14 @@ const pricing = [
     },
   },
   {
-    name: "Startup",
+    name: "Team",
     price: {
       monthly: "$19",
       annual: "$16",
       discount: "10%",
       original: "$24",
     },
-    popular: true,
+    popular: false,
     features: [
       "All Free Features",
       "Up to 20 users",
@@ -44,23 +44,6 @@ const pricing = [
       link: "#",
     },
   },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    popular: false,
-    features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
-    ],
-    button: {
-      text: "Contact us",
-      link: "/contact",
-    },
-  },
 ];
 ---
 
@@ -68,9 +51,9 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc"
-        >Simple & Predictable pricing. No Surprises.</Fragment
-      >
+      <Fragment slot="desc">
+        Lifetime access to the private Github team for updates, access to Discord for help and support for building your app.
+      </Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">

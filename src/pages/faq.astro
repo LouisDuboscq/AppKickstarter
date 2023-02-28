@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "@astrojs/image/components";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Link from "../components/ui/link.astro";
+---
+
+<Layout title="About">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Frequently asked questions</Fragment>
+      <Fragment slot="desc">
+      
+      What is the stack used?
+Jetpack Compose for the UI, Firebase for the backend and a few usual AndroidX libraries to simplify the work. See the full Stack by <Link href="/stack" style="inverted">clicking here</Link>.
+
+      </Fragment>
+    </Sectionhead>
+  </Container>
+</Layout>
