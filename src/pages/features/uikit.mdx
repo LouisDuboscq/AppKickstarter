@@ -1,0 +1,69 @@
+---
+layout: ../../layouts/FeatureLayout.astro
+title: "UI Kit"
+description: ""
+---
+
+import onboardingGif from "../../assets/hero.png";
+
+AppKickstarter UI Kit is a collection of clean and simple interface components that you can use to create visually appealing and intuitive app interfaces.
+
+This UI Kit has been built on top of material 3 and following Atomic Design principles. 
+
+It is meant to be used as building blocks, and not as a complete solution.
+
+## Multiplatform
+
+The UI Kit is built with Jetbrain Compose which supports Android and desktop (macos, windows, linux)
+
+## Theming
+
+### Pre-built Theming
+
+There are alredy pre-built themes in AppKickstarter with ready to use colors, fonts, and in-app theming management. 
+
+Indeed, user can easily change theme (colors, fonts) , and can change brightness(dark , light or system colors). 
+
+
+<div class="py-6 md:order-1 hidden md:block">
+    <img src={onboardingGif} alt="AppKickstarter onboarding"/>
+</div>
+
+
+### Customization 
+
+There are alredy pre-built themes in AppKickstarter but if you want to provide your own palette colors you can easily customize it.
+
+```
+CustomColors(
+    background = color1,
+    textOnBackground = color2, 
+    buttonBackground = color3,
+    textOnButton = color4,
+    ...
+)
+```
+
+Then you need to wrap all your layouts in the KickstarterTheme.
+
+```
+KickstarterTheme(
+    selectedTheme = selectedTheme, // name of theme you coded
+    selectedThemeBrightness = selectedThemeBrightness, // dark, light or system
+) {
+  // content
+}
+```
+
+## Atoms
+ 
+Here are the Atoms
+
+## Molecules
+
+
+## Organisms
+
+
+## Templates
+

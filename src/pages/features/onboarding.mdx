@@ -1,0 +1,40 @@
+---
+layout: ../../layouts/FeatureLayout.astro
+title: "Onboarding"
+description: "How to onboard your users with AppKickstarter"
+---
+
+import onboardingGif from "assets/hero.png";
+
+Define the resources once and get the results on Android and iOS platforms
+Change this in shared module : 
+
+``` 
+val allSwipeDatas = listOf(
+    OnboardingSwipeUniquePageData( 
+        titleText = "Choose a sketch",
+        subtitleText = "use your camera or gallery",
+        buttonText = "Next",
+        lottieRaw = R.raw.sketch
+    ),
+    OnboardingSwipeUniquePageData( 
+        titleText = "Describe it",
+        subtitleText = "be as specific as possible",
+        buttonText = "Next",
+        lottieRaw = R.raw.paper
+    ),
+    OnboardingSwipeUniquePageData( 
+         titleText = "Let the magic happen",
+         subtitleText = "and just look at the masterpiece",
+         buttonText = "Next",
+         lottieRaw = R.raw.magic
+     ),
+     ...
+)
+```
+
+Run the app
+
+<div class="py-6 md:order-1 hidden md:block">
+    <img src={onboardingGif} alt="AppKickstarter onboarding"/>
+</div>

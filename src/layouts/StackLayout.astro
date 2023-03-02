@@ -18,7 +18,7 @@ const { frontmatter } = Astro.props;
       <Fragment slot="title">{frontmatter.title}</Fragment>
       <Fragment slot="desc">{frontmatter.titdescription}</Fragment>
     </Sectionhead>
-    <section id="about" class="prose mb-28 max-w-3xl prose-img:border-0">
+    <section class="prose mb-28 max-w-3xl prose-img:border-0">
       <slot />
     </section> 
   </Container>

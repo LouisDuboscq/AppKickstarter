@@ -4,41 +4,65 @@ import { Icon } from "astro-icon";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Onboard your users",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-briefcase",
+      "Help your users understand how your app works and encourage them to continue using it.",
+    icon: "bx:bxs-album",
+    destination: "/features/onboarding",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Authentication",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
+      "Flexible authentication options, including email/password, SMS/OTP, and third-party services, make it easy to secure your app *planned : SMS/OTP, and third-party services",
+    icon: "bx:bxs-log-in-circle",
+    destination: "/features/authentication",
   },
   {
-    title: "On-Demand Components",
+    title: "Paywall",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
+      "Start making revenue with flexible subscription plans, including ongoing monthly and yearly options and one-time lifetime deals *planned : done before end Q1 2023",
+    icon: "bx:bxs-dollar-circle",
+    destination: "/features/paywall",
   },
   {
-    title: "Broad Integration",
+    title: "Home screen",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
+      "Modern and minimist home screen designed to be intuitive and easy to navigate, with clear and concise labels and navigation elements.",
+    icon: "bx:bxs-home",
+    destination: "/features/home",
   },
   {
-    title: "SEO Enabled",
+    title: "Settings",
     description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
+      "Allows your users to customize and manage various aspects of their experience within your app including account datas, notifications, language and theme",
+    icon: "bx:bxs-like",
+    destination: "/features/settings",
   },
   {
-    title: "Community",
+    title: "Offline management",
     description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
+      "Offer a smooth user experience within your app with effective data management techniques such as caching, fetching, and synchronization.",
+    icon: "bx:bxs-like",
+    destination: "/features/offline",
   },
+  {
+    title: "Multiplatform UI Kit",
+    description:
+      "Collection of clean and simple interface components that you can use to create visually appealing and intuitive app interfaces.",
+    icon: "bx:bxs-like",
+    destination: "/features/uikit",
+  },
+  {
+    title: "Multiplatform UI Kit",
+    description:
+      "Collection of clean and simple interface components that you can use to create visually appealing and intuitive app interfaces.",
+    icon: "bx:bxs-like",
+    destination: "/features/uikit",
+  },
+
+
+
+  
 ];
 ---
 
@@ -61,6 +85,7 @@ const features = [
         <div>
           <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+          <a href={item.destination}>See more</a>
         </div>
       </div>
     ))
