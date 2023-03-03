@@ -1,0 +1,47 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon";
+
+const features = [
+  {
+    title: "What's included in the price?",
+    description:
+      "A GitHub repository built on Kotlin Multiplatform mobile (KMM), a powerful tool that enables code sharing across multiple platforms while still using native technology. This repository is designed to help you quickly and easily bring your ideas to fruition.",
+      destination: "",
+  }, 
+  {
+    title: "Who built this?",
+    description: "My name is Louis and with over 7 years building apps for clients, I found that when it came to building my own apps, I was often wasting time recreating basic features like onboarding, authentication, paywalls, settings and theming. That's why I made AppKickstarter.",
+    destination: "",
+  },  
+  {
+    title: "Why choose KMM?",
+    description: "Unlike other technologies that abstract or replace platform-specific app development, Kotlin Multiplatform is compatible with existing platform-specific technologies and is meant to replace platform-agnostic business logic. It's a new tool to add to your toolbox rather than a replacement for it.",
+    destination: "",
+  }, 
+{
+    title: "Who is this boilerplate for?",
+    description: "Whether you're new to Kotlin Multiplatform mobile (KMM) technology and want to learn about it and modern architecture, or you're an experienced developer looking to quickly bring your ideas to life, this repository is for you.",
+    destination: "",
+  }, 
+  {
+    title: "What is the stack used?",
+    description: "Jetpack Compose for the UI, Firebase for the backend and a few usual AndroidX libraries to simplify the work.",
+    destination: "/stack",
+  },  
+];
+--- 
+
+<div class="grid gap-16 max-w-4xl mx-auto md:gap-10 items-center">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p> 
+          {item.destination ?  <a href={item.destination}>See more</a> : <div />}
+        </div>
+      </div>
+    ))
+  }
+</div>
