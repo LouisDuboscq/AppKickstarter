@@ -3,7 +3,35 @@ layout: ../../layouts/FeatureLayout.astro
 title: "Multiplatform resources"
 description: "Share translations and images between platforms"
 ---
+ 
+import { Image } from "@astrojs/image/components";
 
 
 Share translations and resources such as images across multiple platforms. Do it once and then use them on multiple platforms, saving time and effort
 
+```
+object Localizable {
+    fun email(): StringDesc = StringDesc.resource(email)
+    fun password(): StringDesc = StringDesc.resource(password)
+}
+```
+
+<main
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+    <div class="py-6 md:order-1 md:block"> 
+        <Image 
+            src="/images/loginen.jpg"
+            width="400"
+            height="400" />
+        <span>English translations</span>
+    </div>
+    <div>
+        <Image 
+            src="/images/loginfr.jpg"
+            width="400"
+            height="400"
+        />
+        <span>French translations</span>
+    </div>
+</main>
+   

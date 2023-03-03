@@ -1,0 +1,40 @@
+---
+layout: ../../layouts/FeatureLayout.astro
+title: "Authentication"
+description: "We provide pre-built UI and multiple ways to login your users"
+---
+
+## Firebase login and sign up
+
+We provide a ready to use login and sign up screen with Firebase provider. All you need to do is display this composable and it just works.
+
+```
+EmailPasswordFormFirebase(
+    onSuccess = { currentUser ->
+
+    }
+)
+```
+
+## Custom provider 
+
+If you want to have a custom implementation for the login and sign up logic but still enjoy the interface, you can do this :
+
+```
+var isSignUp by remember { mutableStateOf(false) }
+
+LoginAndSignupScreen(
+    isSignUp = isSignUp,
+    createAccount = { email, password ->
+        scope.launch { createAccount(email, password) }
+    },
+    signInWith = { email, password ->
+        scope.launch { signInWith(email, password) }
+    },
+    toggleMode = { isSignUp = !isSignUp }
+)
+```
+
+This way, you do what you want with the email and password.
+
+

@@ -12,13 +12,13 @@ export interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title="Stack"> 
+<Layout title={frontmatter.title}> 
  <Container>
     <Sectionhead>
       <Fragment slot="title">{frontmatter.title}</Fragment>
       <Fragment slot="desc">{frontmatter.description}</Fragment>
     </Sectionhead>
-    <section class="prose prose-img:border-0 max-w-4xl mx-auto space-y-200"> 
+    <section class="prose mt-10 prose-img:border-0 max-w-4xl mx-auto space-y-200"> 
       <slot />
     </section> 
   </Container>
