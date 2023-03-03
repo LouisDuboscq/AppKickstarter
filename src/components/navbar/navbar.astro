@@ -9,9 +9,14 @@ const menuitems = [
     title: "Features",
     path: "#",
     children: [
-      { title: "Action", path: "#" },
       { title: "Onboarding", path: "/features/onboarding" },
-      { title: "Dropdown Submenu", path: "#" },
+      { title: "Authentication", path: "/features/authentication" },
+      { title: "Paywall", path: "/features/paywall" },
+      { title: "Home screen", path: "/features/home" },
+      { title: "Settings", path: "/features/settings" },
+      { title: "Offline management", path: "/features/offline" },
+      { title: "Multiplatform UI Kit", path: "/features/uikit" },
+      { title: "Multiplatform resources", path: "/features/resources" },
     ],
   },
   {
@@ -45,7 +50,7 @@ const menuitems = [
           <MenuIcon class="w-4 h-4 text-gray-800" />
         </div>
       </div>
-      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0 ">
         <ul class="flex flex-col lg:flex-row lg:gap-3">
           {
             menuitems.map((item, index) => (
@@ -55,6 +60,7 @@ const menuitems = [
                     title={item.title}
                     children={item.children}
                     lastItem={index === menuitems.length - 1}
+                  
                   />
                 )}
 
@@ -62,7 +68,7 @@ const menuitems = [
                   <li>
                     <a
                       href={item.path}
-                      class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">
+                      class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900 z-index: 99999">
                       {item.title}
                     </a>
                   </li>
