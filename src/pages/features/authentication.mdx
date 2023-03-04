@@ -8,7 +8,7 @@ description: "We provide pre-built UI and multiple ways to login your users"
 
 We provide a ready to use login and sign up screen with Firebase provider. All you need to do is display this composable and it just works.
 
-```
+```kotlin
 EmailPasswordFormFirebase(
     onSuccess = { currentUser ->
 
@@ -20,7 +20,7 @@ EmailPasswordFormFirebase(
 
 If you want to have a custom implementation for the login and sign up logic but still enjoy the interface, you can do this :
 
-```
+```kotlin
 var isSignUp by remember { mutableStateOf(false) }
 
 LoginAndSignupScreen(

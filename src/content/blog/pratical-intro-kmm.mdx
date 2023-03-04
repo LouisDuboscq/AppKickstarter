@@ -1,0 +1,258 @@
+---
+draft: false
+title: "Practical introduction to KMM"
+snippet: "What is KMM, what are the basics and how to start"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2023-03-04 21:05"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [android, ios, kmm]
+--- 
+
+## The practical intro to KMM
+
+The "Practical intro to KMM" is a short guide that covers the essential information you need to know to create a Kotlin Multiplatform mobile app. It includes information on the unique features and functions of KMM, the methodology for cross-platform development, and helpful libraries. This resource provides a practical introduction to KMM, helping you get started with creating your own app.
+
+## A word on me
+
+I'm Louis, a mobile developer who started using Kotlin Multiplatform mobile (KMM) in 2019. Back then, it was difficult to set up and troubleshoot, and the community was small. But now, things have improved and I'm excited to share my experience with KMM and help others get started. 
+
+If you’re interested in KMM, SwiftUI or Jetpack Compose, I talk about these topics on [Twitter](https://twitter.com/louisduboscq) and [LinkedIn](https://www.linkedin.com/in/louis-duboscq/).
+
+## What is KMM?
+
+Kotlin allows you to create cross-platform and native apps without having to learn a new programming language. This means you can use your existing Android app code to create an app for iOS devices. Kotlin's syntax is similar to that used for iOS development, making it easy for iOS developers to learn and use.
+
+##Why should it be used instead of other cross-platform technologies?
+
+KMM is a good choice because it is compatible with existing platform-specific technologies, rather than replacing them. This means it can be used in addition to your current tools, rather than as a replacement. 
+
+## **Is it production ready?**
+
+KMM has been successfully used in production by companies such as Philips, Cash App, and Netflix. You can find more information about these and other case studies at [https://kotlinlang.org/lp/mobile/case-studies/](https://kotlinlang.org/lp/mobile/case-studies/). In addition, I have personally launched KMM code in production multiple times.
+
+## **Is it necessary to follow the app building method presented in this guide?**
+
+The guide presents one way to build Kotlin Multiplatform apps, but it is not the only way. As a software developer, you likely know that there are multiple approaches to achieving the same result. This guide offers an opinionated perspective on creating KMM apps, and while it introduces certain libraries, there may be other options that you may want to consider for your own projects. Ultimately, the guide presents the way the author builds their KMM apps and hopes that readers will find it helpful.
+
+## **Let’s build something** 🚀
+
+In this tutorial, we will walk through the process of creating a Kotlin Multiplatform app that fetches data from an API, stores it in a shared database, and displays it to the user. To showcase a performance improvement, the app will retrieve the data from cache if the last fetch occurred within the past three minutes. The app will use Multiplatform classes to accomplish these tasks. The code for this tutorial will be available in this [GitHub repository](https://github.com/LouisDuboscq/IntroKMM).
+
+Let’s begin.
+
+## **Setup environment**
+
+To start, ensure that you have Android Studio and the KMM plugin installed and that Xcode is up to date.
+
+Spend a bit of time configuring your environment following : [https://kotlinlang.org/docs/multiplatform-mobile-setup.html](https://kotlinlang.org/docs/multiplatform-mobile-setup.html)
+
+You have the option to launch your Android app using Android Studio and the KMM plugin, or to launch your iOS app using Xcode on a device or simulator. However, I usually prefer using Xcode to launch iOS apps.
+
+## **Architecture of a KMM module**
+
+If you want to build a KMM app, first thing you want to do is create a KMM module. The basic architecture in your project is an android app, an iOS app and a shared kmm module.
+
+![Architecture of a kmm app](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2bc3dbc7-de5c-4040-a8e3-8194713285bd/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230304T200953Z&X-Amz-Expires=86400&X-Amz-Signature=488a36d54ca7bc2d4c520a617b1b99b6e4b8acd044064fe4b250ab1a9cde33bf&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+
+The shared KMM module has a basic architecture that consists of six main packages:
+
+![Packages in kmm app](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5af233ea-1471-4dcb-b6de-8480c38fb566/Xnapper-2023-01-13-00.14.54.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230304T201033Z&X-Amz-Expires=86400&X-Amz-Signature=63f04186e5a86db5ca655a7239d5ba8c882796e39a3ee61c043f7905f702783e&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Xnapper-2023-01-13-00.14.54.png%22&x-id=GetObject)
+
+- The **commonMain** package contains platform-agnostic production code that can be shared across all platforms.
+- The **androidMain** package contains code that is specific to the Android platform and cannot be included in the commonMain package
+- The **iosMain** package contains code that is specific to the iOS platform and cannot be included in the commonMain package.
+- The **commonTest** package contains code for testing the app that is not specific to any particular platform and can be shared across all platforms.
+- The **iosTest** and **androidTest** packages contain code for testing the app on the respective platforms.
+
+## **What to make cross platform ?**
+
+A general guideline is to prioritize sharing code that will be frequently reused. The underlying business logic for both Android and iOS often overlaps, making it a prime candidate for reuse.
+
+Here are some examples of what you can include in a cross platform module :
+
+- Database
+- http requests
+- Business logic aka use cases or interactors
+- Common data structures
+
+![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5ba5d647-d423-4cb4-ae60-92f6ceaa3967/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230304%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230304T201125Z&X-Amz-Expires=86400&X-Amz-Signature=32c8ce34d7dd9c61d9349829ca6345cebf77d62abb5a37ba88d865a552d390f5&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+
+[*Image from here*](https://www.north-47.com/knowledge-base/the-practical-guide-part-3-clean-architecture/)
+
+## **What should be in native android and iOS modules ?**
+
+The native modules should contain code that is specific to a particular platform, such as Android or iOS. Here are a few examples of what you can include in a native module:
+
+- UI code (Compose, SwiftUI for example)
+- Platform specific code
+- Access to native resources
+
+## And the view model ?
+
+In declarative UI frameworks like Jetpack Compose and SwiftUI, ViewModels serve as containers for observable UI state. Changes to this state cause updates in the appropriate parts of the UI. For a long time, I only placed business logic and data management in my shared code and duplicated the ViewModels for each platform because it did not integrate very well in iOS. But now, I use a [library called KMM-ViewModel](https://github.com/rickclephas/KMM-ViewModel) that enables me to put the ViewModel in shared code and integrate it with Jetpack Compose and SwiftUI.
+
+## Dependency injection
+
+At some point you are going to put the bricks together and you want to avoid this:
+
+```kotlin
+val databaseDriverFactory = DatabaseDriverFactory(this)
+val database = AppDatabase(databaseDriverFactory)
+val rocketsService = RocketsService(
+    cache = Cache(database.rocketLaunchQueries),
+    api = Api()
+)
+val viewModel = RocketLaunchesViewModel(rocketsService)
+```
+
+This is where dependency injection comes into play. I used [Koin](https://github.com/InsertKoinIO/koin), a pragmatic lightweight dependency injection framework for Kotlin developers. But I know some KMM devs who use [Kodein](https://github.com/kosi-libs/Kodein) which is also a great option.
+
+## **Transition Android Kotlin code to KMM code**
+
+- Extract the code you want to be multiplatform and put it in shared module in commonMain package.
+- Remove Android-specific code by replacing it with cross-platform Kotlin code or connecting to Android-specific APIs using **expect and actual** declarations. See the following sections for details.
+
+When you need a random UUID, the implementation on Android and iOS is different. To handle this, you can define an 'expect' function in commonMain, so that the appropriate implementation can be used on each platform.
+
+```kotlin
+expect fun randomUUID(): String*
+```
+
+And then implement the iOS logic in iOSMain package :
+
+```kotlin
+actual fun randomUUID(): String = NSUUID().UUIDString()*
+```
+
+Finally implement the logic for android in the androidMain package
+
+```kotlin
+actual fun randomUUID() = UUID.randomUUID().toString()*
+```
+
+## **Dependencies**
+
+In the build.gradle located in shared module you want to add libraries to commonMain or other packages. Here is how to do for commonMain and this is the same logic for others packages:
+
+```kotlin
+kotlin{ 
+	sourceSets{
+		val commonMain by getting{
+			dependencies {
+				implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+			}
+    }  
+}
+```
+
+## Kotlin Multiplatform Data Retrieval
+
+To retrieve data over the internet in your Kotlin Multiplatform project, you will need to add the Ktor framework to your commonMain package. Additionally, you should install the serialization plugin to enable serialization and deserialization of data. These steps will allow you to make HTTP requests and process the responses in your shared code.
+
+- [Setup Ktor](https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/build.gradle.kts)
+- Android devs, don’t forget to add internet permission in your app manifest !
+- [Define data transfer objects (DTOs) for your API models](https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/commonMain/kotlin/com/lduboscq/introkmm/dtos.kt)
+- [Call the Api with Ktor](https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/commonMain/kotlin/com/lduboscq/introkmm/Api.kt)
+
+## Kotlin Multiplatform Database Management
+
+To have a multiplatform database I use [SqlDelight](https://github.com/cashapp/sqldelight).
+
+SQLDelight generates typesafe kotlin APIs from your SQL statements. It verifies your schema, statements, and migrations at compile-time and provides IDE features like autocomplete and refactoring which make writing and maintaining SQL simple.
+
+- Setup SQLDelight
+    - [https://github.com/LouisDuboscq/IntroKMM/blob/main/build.gradle.kts](https://github.com/LouisDuboscq/IntroKMM/blob/main/build.gradle.kts)
+    - [https://github.com/LouisDuboscq/IntroKMM/blob/main/app/build.gradle](https://github.com/LouisDuboscq/IntroKMM/blob/main/app/build.gradle)
+- Setup Database driver to be used in android and iOS
+    - [https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/androidMain/kotlin/com/lduboscq/introkmm/DatabaseDriverFactory.kt](https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/androidMain/kotlin/com/lduboscq/introkmm/DatabaseDriverFactory.kt)
+    - [https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/iosMain/kotlin/com/lduboscq/introkmm/DatabaseDriverFactory.kt](https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/iosMain/kotlin/com/lduboscq/introkmm/DatabaseDriverFactory.kt)
+- [Setup tables](https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/commonMain/sqldelight/com/lduboscq/introkmm/RocketLaunch.sq)
+- [Setup repository](https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/commonMain/kotlin/com/lduboscq/introkmm/Cache.kt)
+- [Call the generated api](https://github.com/LouisDuboscq/IntroKMM/blob/main/shared/src/commonMain/kotlin/com/lduboscq/introkmm/Cache.kt)
+
+### Store datas in database
+
+```kotlin
+private fun store(rocketLaunch: RocketLaunch) {
+    rocketQuery.insertOrReplace(
+        Rocket_launch_Entity(
+            id = rocketLaunch.id,
+            flight_number = rocketLaunch.flightNumber,
+            mission_name = rocketLaunch.missionName,
+            launch_date_utc = rocketLaunch.launchDateUTC,
+            launch_success = rocketLaunch.launchSuccess
+        )
+    )
+}
+```
+
+### Get datas in database
+
+```kotlin
+fun get(): List<RocketLaunch> =
+  rocketQuery.selectAll().executeAsList().map {
+      RocketLaunch(
+          id = it.id,
+          flightNumber = it.flight_number,
+          missionName = it.mission_name,
+          launchDateUTC = it.launch_date_utc,
+          launchSuccess = it.launch_success
+      )
+  }
+```
+
+After completing the steps in this tutorial, you will have a functional multiplatform database that allows you to use the methods defined in the .sq file.
+
+## **Key-value storage management**
+
+To store key-value pairs in a Kotlin Multiplatform project, you can use the [multiplatform settings library](https://github.com/russhwolf/multiplatform-settings). This is similar to using shared preferences on Android or user defaults on iOS.
+
+## **Testing**
+
+One of the benefits of using Kotlin Multiplatform Mobile (KMM) is the ability to share business logic code across platforms, which makes testing simpler. You will use [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) dependency.
+
+## **Kickstart your next KMM app**
+
+If you want to expedite the process of building a Kotlin Multiplatform app, you may be interested in using a boilerplate project that includes multiple ready-to-use features. One such boilerplate project can be found at [https://mobileappkickstarter.com/](https://mobileappkickstarter.com/). This may be a helpful starting point for your next KMM app.
+
+## **Libraries you want to know**
+
+- [kotlinx.coroutines, for using coroutines to write asynchronous code, which allows simultaneous operations.](https://github.com/Kotlin/kotlinx.coroutines)
+- [kotlinx.serialization, for deserializing JSON responses into objects of entity classes used to process network operations.](https://github.com/Kotlin/kotlinx.serialization)
+- [Ktor, a framework as an HTTP client for retrieving data over the internet.](https://github.com/ktorio/ktor)
+- [Koin for DI](https://github.com/InsertKoinIO/koin) or [Kodein](https://github.com/kosi-libs/Kodein)
+- [SQLDelight for database](https://github.com/cashapp/sqldelight/)
+- [Multiplatform settings for key value caching](https://github.com/russhwolf/multiplatform-settings)
+- At some point you’ll need a logger library , I use [Nappier](https://github.com/AAkira/Napier)
+- A date management lib such as [kotlinx-datetime](https://github.com/Kotlin/kotlinx-datetime)
+- [Share resources including translations with moko resources](https://github.com/icerockdev/moko-resources)
+
+## **Useful resources you want to know**
+
+[https://kotlinlang.org/lp/mobile/](https://kotlinlang.org/lp/mobile/)
+
+[https://slack-chats.kotlinlang.org/](https://slack-chats.kotlinlang.org/)
+
+[https://github.com/terrakok/kmm-awesome](https://github.com/terrakok/kmm-awesome)
+
+## FAQ
+
+- **I am stuck how can I get helped ?**
+    
+    Get [an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) for Kotlin Slack and join the [#multiplatform channel](https://kotlinlang.slack.com/archives/C3PQML5NU)
+    
+- **Is a macOS required to build KMM apps?**
+    
+    To develop iOS applications using Kotlin Multiplatform (KMM), a Mac with macOS is required. This is because writing iOS-specific code and running an iOS app on a simulated or real device can only be done on a Mac. It is not possible to perform these tasks on other operating systems, such as Microsoft Windows. This requirement is set by Apple.
+    
+- **I thought KMM was also web and desktop but you didn't cover those topics**
+    
+    KMM is Kotlin multiplatform mobile (Android and iOS). KM = Kotlin multiplatform also targets web and desktop. I can’t talk about everything in a short guide, we all have to make choices.
+    
+- **Is KMM stable?**
+
+    Kotlin Multiplatform is in Beta. It is almost stable, but migration steps may be required in the future. The team does its best to minimize any changes you have to make.

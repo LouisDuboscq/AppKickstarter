@@ -34,7 +34,7 @@ Indeed, user can easily change theme (colors, fonts) , and can change brightness
 
 There are alredy pre-built themes in AppKickstarter but if you want to provide your own palette colors you can easily customize it.
 
-```
+```kotlin
 CustomColors(
     background = color1,
     textOnBackground = color2, 
@@ -46,7 +46,7 @@ CustomColors(
 
 Then you need to wrap all your layouts in the KickstarterTheme.
 
-```
+```kotlin
 KickstarterTheme(
     selectedTheme = selectedTheme, // name of theme you coded
     selectedThemeBrightness = selectedThemeBrightness, // dark, light or system
