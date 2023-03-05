@@ -1,0 +1,40 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { dog: 'clifford' },
+      props: { 
+        gg: 'clifford' , 
+        pageTitle: 'Clifford dog',
+        titleTag: 'clifford title tag',
+      }
+    },
+    {
+      params: { dog: 'rover' },
+      props: { 
+        gg: 'rover' , 
+        pageTitle: 'Rover dog',
+        titleTag: 'rover title tag',
+      },
+    },
+    {
+      params: { dog: 'spot'},
+      props: {
+        gg: 'spot', 
+        pageTitle: 'Spot dog',
+        titleTag: 'spot title tag',
+      },
+    },
+  ];
+}
+
+const { dog } = Astro.params;
+const { gg, titleTag, pageTitle } = Astro.props;
+---
+    
+<Layout title={pageTitle}>
+  <div>Bon chien, {dog}, {gg}!</div>
+  <p>{titleTag}</p>
+</Layout>

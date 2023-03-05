@@ -1,0 +1,36 @@
+---
+draft: false
+title: "Generate a UUID in Kotlin multiplatform"
+snippet: "Learn how to generate a UUID in KMM"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2023-03-05"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [android, ios, kmm]
+--- 
+
+According to the Kotlin multiplatform documentation, it's possible to create expect/actual functions that can utilize specific Android (Java) and iOS (NSUUID) implementations. 
+
+By defining a common function using the 'expect' keyword, platform-specific implementations can be created using the 'actual' keyword. 
+
+```
+// commonMain package
+expect fun randomUUID(): String
+```
+
+```
+// androidMain package
+import java.util.*
+
+actual fun randomUUID() = UUID.randomUUID().toString()
+```
+
+```
+// iosMain package
+import platform.Foundation.NSUUID
+
+actual fun randomUUID(): String = NSUUID().UUIDString()
+```
