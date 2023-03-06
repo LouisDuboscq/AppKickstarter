@@ -7,41 +7,43 @@ import Pricing from "@components/pricing.astro";
 const pricing = [
   {
     name: "Developer",
-    price: "Free",
+    idealFor: "Ideal for solopreneurs and freelancers",
+    price: "$149",
     popular: true,
     features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
+      "Access to the repository for a single user",
+      "Kotlin multiplatform template (swiftui compose)",
+      "All the features mentionned",
+      "Lifetime access",
+      "Unlimited apps", 
+      "A Discord servxer for assistance is provided",
     ],
     button: {
       text: "Get Started",
-      link: "/",
+      link: "https://mobileappkickstarter.lemonsqueezy.com/checkout?cart=b87bdef1-cad7-4ffe-b89b-8bd20ab5ff0c",
     },
   },
   {
     name: "Team",
-    price: {
-      monthly: "$19",
+    idealFor: "Ideal for companies and agencies",
+    price: "$349",/*{
+      monthly: "$349",
       annual: "$16",
       discount: "10%",
       original: "$24",
-    },
+    },*/
     popular: false,
     features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
+      "Access to the repository up to 5 users",
+      "Kotlin multiplatform template (swiftui compose)",
+      "All the features mentionned",
+      "Lifetime access",
+      "Unlimited apps", 
+      "A Discord server for assistance is provided",
     ],
     button: {
       text: "Get Started",
-      link: "#",
+      link: "https://mobileappkickstarter.lemonsqueezy.com/checkout?cart=b87bdef1-cad7-4ffe-b89b-8bd20ab5ff0c",
     },
   },
 ];
@@ -51,12 +53,10 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc">
-        Lifetime access to the private Github team for updates, access to Discord for help and support for building your app.
-      </Fragment>
-    </Sectionhead>
-
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
+      <Fragment slot="desc">Lifetime access to the private Github team for updates, access to Discord for help and support for building your app.
+      <br>Companies with only 1 developer should purchase Team plan.</Fragment>
+    </Sectionhead> 
+    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
       {pricing.map((item) => <Pricing plan={item} />)}
     </div>
   </Container>
