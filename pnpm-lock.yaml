@@ -84,7 +84,7 @@ packages:
       '@vscode/emmet-helper': 2.8.6
       events: 3.3.0
       prettier: 2.8.4
-      prettier-plugin-astro: 0.7.2
+      prettier-plugin-astro: 0.8.0
       source-map: 0.7.4
       vscode-css-languageservice: 6.2.4
       vscode-html-languageservice: 5.0.4
@@ -3152,7 +3152,7 @@ packages:
       which-pm: 2.0.0
     dev: false
 
-  /prettier-plugin-astro/0.7.2:
+  /prettier-plugin-astro/0.8.0:
     resolution: {integrity: sha512-mmifnkG160BtC727gqoimoxnZT/dwr8ASxpoGGl6EHevhfblSOeu+pwH1LAm5Qu1MynizktztFujHHaijLCkww==}
     engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
     requiresBuild: true
