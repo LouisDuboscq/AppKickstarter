@@ -19,15 +19,15 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
+  "/images/screenshot-landingpage.jpg",
   Astro.site
 ).toString();
 
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  ? title + " | " + "AppKickstarter"
+  : "AppKickstarter - Starter Template for Android, iOS and desktop built with Kotlin multiplatform, Compose multiplatform and SwiftUI";
 ---
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="AppKickstarter is a starter template for Android, iOS and desktop built with Kotlin multiplatform, Compose multiplatform and SwiftUI"
       canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
@@ -52,11 +52,11 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `AppKickstarter - Starter Template for Android iOS and desktop`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "AppKickstarter landing page screenshot",
         },
       }}
     />
