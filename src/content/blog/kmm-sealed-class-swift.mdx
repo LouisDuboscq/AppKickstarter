@@ -1,0 +1,100 @@
+---
+draft: false
+title: "How to use Kotlin multiplatform sealed class in Swift"
+snippet: "Learn how to transform your sealed class into Swift enum"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2023-03-06"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [android]
+--- 
+
+## The problem
+
+When you want to share a sealed class in a kotlin multiplatform module for a swift client, some infos are lost.
+
+Indeed when you define a sealed class as it : 
+
+```kotlin
+sealed class Destination(val path: String, val icon: ImageVector) {
+    object Home : Destination("home", Icons.Rounded.Home)
+    object Storybook : Destination("storybook", Icons.Rounded.Refresh)
+    object Settings : Destination("settings", Icons.Rounded.Settings)
+}
+```
+
+The generated Swift code is : 
+
+```swift
+open class SharedDestination : KotlinBase {
+    open class var companion: SharedDestination.Companion { get }
+    open var path: String { get } 
+    open var icon: UiImageVector { get }
+}
+```
+
+But when you have for example a screen in compose multiplatform defined in kotlin : 
+
+```kotlin
+fun ScreenController( 
+    currentDestination: Destination
+): UIViewController = Application("ScreenControllerCM") {
+    ...
+}
+```
+
+And you want to display this screen in swift, we would like to do something like : 
+
+```swift
+ScreenController(currentDestination: SharedDestination.Home)
+```
+
+or, as type is inferred :
+
+```swift
+ScreenController(currentDestination: .Home)
+```
+
+But Home, Storybook and Settings are not available. How to make these sealed class work on Swift ?
+
+## Solution
+
+We are going to use [KSwift library](https://github.com/icerockdev/moko-kswift) , a Swift-friendly api generator for Kotlin/Native frameworks. 
+
+add in root build.gradle
+
+```
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("dev.icerock.moko:kswift-gradle-plugin:0.6.1")
+    }
+}
+````
+
+add in project build.gradle
+
+```
+plugins {
+    id("dev.icerock.moko.kswift")
+}
+
+kswift {
+    install(dev.icerock.moko.kswift.plugin.feature.SealedToSwiftEnumFeature)
+}
+```
+
+Rebuild the project and check the generated Swift code : 
+
+```
+
+```
+
+Now we have the enum well generated according to the sealed class.

@@ -1,0 +1,97 @@
+---
+draft: false
+title: "Basic Jetbrains Compose multiplatform setup to render ui on iOS with SwiftUI"
+snippet: "Learn to display your first compose multiplatform ui on iOS with SwiftUI"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2023-03-07"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [kmm, composemultiplatform, ios]
+--- 
+
+## 1. UI on shared module
+
+Define your screen in shared module as you would build it in a simple Android Compose application.
+
+```kotlin
+@Composable
+internal fun MyScreen() {
+    Column {
+        Text("Hello from compose")
+        Button(onClick= {}) { Text("Click me")}
+    }
+}
+```
+
+Note the internal keyword, this is a current limitation in the compose multiplatform development. 
+
+## 2. Expose the internal screen to use it later
+
+On the androidMain module : 
+
+```kotlin
+@Composable
+fun MyScreenAndroid() {
+    MyScreen()
+}
+```
+
+On the iosMain module : 
+
+```kotlin
+fun MyScreenIos(): UIViewController = ComposeUIViewController {
+    MyScreen()
+}
+```
+
+## 3 Client apps
+
+### Android
+
+Simply call in the android app the exposed screen built in kotlin multiplatform module.
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MyScreenAndroid()
+        }
+    }
+}
+```
+
+### iOS
+
+Doing this, you made a UI Kit controller and you have to use UIViewControllerRepresentable to expose it as a standard SwiftUI component.
+
+```swift
+struct MyScreenToSwiftUI: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        return MyScreenIos()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    }
+}
+````
+
+Then you simply can call it in your Swift UI component :
+
+````swift
+@main
+struct iOSApp: App { 
+    var body: some Scene {
+        WindowGroup {
+            MyScreenToSwiftUI()
+        }
+    }
+}
+````
+
+![alt](/images/basic-compose-mpp-both.png)
+
+That's all! You learned to render your first Compose multiplatform component in SwiftUI.
