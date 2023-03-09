@@ -1,0 +1,75 @@
+---
+  // @ts-ignore
+  import { Icon } from "astro-icon";
+
+  const features = [
+    {
+      title: "Onboarding",
+      description:
+        "Helped users in understanding the functionalities of the app and motivated them to continue its usage.",
+      icon: "bx:bxs-album",
+      destination: "/",
+    },
+    {
+      title: "Permissions",
+      description:
+        "Accelerated the development process by leveraging the pre-existing permission management system.",
+      icon: "bx:bxs-album",
+      destination: "/",
+    },
+    {
+      title: "Camera, gallery and cropping",
+      description:
+        "Improved the pace of development by making use of the already-existing camera, gallery, and image cropping systems.",
+      icon: "bx:bxs-album",
+      destination: "/",
+    },
+    {
+      title: "Offline and background management",
+      description:
+        "Improved the development pace by using multiplatform offline management for image and data saving, as well as employing background tasks to call the AI logic and ensure a non-blocking UI.",
+      icon: "bx:bxs-album",
+      destination: "/",
+    },
+    {
+      title: "Settings",
+      description:
+        "Provided ready-to-use settings, screens, and functionalities, such as rating, sharing, and notification management.",
+      icon: "bx:bxs-album",
+      destination: "/",
+    },
+    {
+      title: "Paywall",
+      description:
+        "Reduced the app development time by utilizing the pre-existing paywall screen and payment management system.",
+      icon: "bx:bxs-album",
+      destination: "/",
+    },
+  ];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    AppKickstarter helped bring this idea to life
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    Check out all the features that were made possible in a short amount of time thanks to the template.
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+  features.map((item) => (
+  <div class="flex gap-4 items-start">
+    <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+      <Icon class="text-white" name={item.icon} />
+    </div>
+    <div>
+      <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+      <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+      <a href={item.destination}>See more</a>
+    </div>
+  </div>
+  ))
+  }
+</div>

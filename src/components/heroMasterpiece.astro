@@ -1,0 +1,42 @@
+---
+import { Picture } from "@astrojs/image/components";
+import heroImage from "assets/masterpiece.png";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+---
+
+<main
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="py-6 md:order-1 hidden md:block">
+    <img src="/images/masterpiece.png" alt="coding dev illustration" />
+  </div>
+  <div>
+    <h1
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      Transform sketches into beautiful digital art with Masterpiece's AI technology
+    </h1>
+    <p class="text-lg mt-4 text-slate-600 max-w-xl">
+      The Masterpieces app allows users to take a photo of a pencil sketch with their phone's camera or select one from their gallery, and transform it into a beautiful, AI-generated image. 
+    </p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <Link
+        href="#"
+        target="_blank"
+        href="https://appkickstarter.lemonsqueezy.com/checkout?cart=b87bdef1-cad7-4ffe-b89b-8bd20ab5ff0c" 
+        class="flex gap-1 items-center justify-center"
+        rel="noopener">
+        <Icon class="text-white w-5 h-5" name="ion:logo-apple" />
+        Download
+      </Link>
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href="https://play.google.com/store/apps/details?id=com.lduboscq.masterpiece.android"
+        class="flex gap-1 items-center justify-center" >
+        <Icon class="text-black w-4 h-4" name="ion:logo-google-playstore" />
+        Download
+      </Link>
+    </div>
+  </div>
+</main>
