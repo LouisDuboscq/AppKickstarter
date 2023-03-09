@@ -1,7 +1,7 @@
 ---
 draft: false
 title: "An Android ViewModel step by step with TDD"
-snippet: "An Android ViewModel step by step with TDD"
+snippet: "Learn how to divide your code to have each part its responsibility, and have a tested and maintainable code."
 image: {
     src: "https://blog.envolee.co/assets/uploads/1581d455bc98aa8f8839692d9c740a66.jpg",
     alt: "Differentiating instruction at school"
@@ -23,8 +23,7 @@ The feature I'll cover is a simple screen with a canvas where user can sign and 
 
 Design is something like this :
  
- ?? 
-
+![Design of the screen we'll build in this blog post](https://cdn.hashnode.com/res/hashnode/image/upload/v1632476440100/Z-S78e51P.png?auto=compress,format&format=webp)
 
 This is the functional requirements we'll develop : 
 
@@ -52,10 +51,7 @@ I do not want to not push production code first but test first.
 
 I create a test with the future classes and calls I want.
 
-
-
- ??? 
-
+![test with the future classes](https://cdn.hashnode.com/res/hashnode/image/upload/v1632469959221/20QBciTs1.png?auto=compress,format&format=webp)
 
 Here I wrote a lot of things that do not exist for now. 
 
@@ -121,18 +117,11 @@ class SignatureContract {
 }
 ```
 
-
 It compiles now if all dependencies are imported in the test.
-Commit : 437599a07191f432a9f967c83247c2712dd1d7f3
-
+ 
 If I run the test without any modification I expect to have an error.
 
-
-
-
- ?? 
-
-
+![TDD error without modification](https://cdn.hashnode.com/res/hashnode/image/upload/v1632469604959/0iHc1i8lJ.png?auto=compress,format&format=webp)
 
 For fixing this I'm doing minimal change in the production code to make the test pass. 
 
@@ -142,12 +131,7 @@ override fun setInitialState(): SignatureContract.State {
 }
 ```
 
-Ensuite...
-
-
-
-??? 
- 
+![Test pass](https://cdn.hashnode.com/res/hashnode/image/upload/v1632469759609/d_rQsnfun.png?auto=compress,format&format=webp)
 
 Now that test passes we check if there's something to refactor. There's nothing to refactor in the production code but in test we can make some improvements. 
 Commit d2cbaaecf11efdeb9f049432f282ebf8a01fe390
@@ -177,9 +161,7 @@ assertEquals(
     viewModel.viewState.value
 )
 ```
-
-Commit : d2cbaaecf11efdeb9f049432f282ebf8a01fe390
-
+ 
 We move to the next requirement.  
 
 ## Req2. No signature should show an empty canvas
@@ -206,7 +188,8 @@ init {
 ```
 
 It allows me to have initial state based on what getSignature parameter returns. 
- ??? 
+
+![Tests pass](https://cdn.hashnode.com/res/hashnode/image/upload/v1632471141244/XX4hmfbYz.png?auto=compress,format&format=webp)
 
 We have nothing to refactor then we move to the next requirement. 
 
@@ -216,21 +199,21 @@ Here for doing that I'll put the string property to null. It will only stay on v
 
 I am creating a ClearCanvas event and I want the view model handles it and set path to null. 
 
-
- ?? 
-
+![TDD create a clear canvas case in test before production code](https://cdn.hashnode.com/res/hashnode/image/upload/v1632473561917/Np9nEhMOL.png?auto=compress,format&format=webp)
 
 Once again I did not create production code before, it's my test who forces me to create production code. As you see ClearCanvas does not exist for now.
 
 ```kotlin
 sealed class Event : ViewEvent  {
    object ClearCanvas: Event()
-}```
+}
+```
 
 I simply create it in contract class. Now all test compile and I expect to have an error in the last created test.
 
 I go in the handle events function and add all known cases with 'add remaining branches' feature. 
- ?? 
+
+![when kotlin, add remaining branches](https://cdn.hashnode.com/res/hashnode/image/upload/v1632473810845/E_rzuc_ql.png?auto=compress,format&format=webp)
 
 ```kotlin
 override fun handleEvents(event: SignatureContract.Event) {
@@ -241,15 +224,14 @@ override fun handleEvents(event: SignatureContract.Event) {
 ```
 
 It passes and there is nothing to refactor, let's move on. 
-Commit : b41cf7ef9b4bf4c2de9fcd8b3d97c11914a9d333
-
+ 
 ## Req4. If signature is not saved, then back should not be allowed and a dialog explaining modification is not saved should appear.
 
 What I mean by signature is not saved is simply that user clicked on the clear canvas button and signature string is null. 
 
 I create the test first. 
 
-  ?? 
+![TDD new feature : Request back case](https://cdn.hashnode.com/res/hashnode/image/upload/v1632475241310/qm9uUCx9b.png?auto=compress,format&format=webp)
 
 I need two things here : a RequestBack event and a ShowDialogQuitWithoutSave side effect. 
 
@@ -281,10 +263,7 @@ All tests pass
 <p align="center">
     <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1632474614179/JslzaB72T.png" alt="ViewModel tests"/> 
 </p>
- 
-
-Commit : b940cb85904342283413d2d92a1ea0591dd614b5
-
+  
 ## Req5. If signature is already saved then back is allowed
 
 What I mean by signature is already saved is simply that user did not click on the clear canvas button and there is already something displayed in image. Technically string is not null.
@@ -341,7 +320,7 @@ I re-launch all the tests and refactoring worked well. I can continue. And so on
 
 ## User may save a signature drawn in canvas. It should do back on save
 
- ??? 
+![TDD : create add signatures case test and save signatures event](https://cdn.hashnode.com/res/hashnode/image/upload/v1632477366715/p1ra0dm6M.png?auto=compress,format&format=webp)
  
 We introduce an addSignature collaborator and a Save event. Once again, I just want to want be sure that view model call add Signature collaborator. I don't want to test if it appears in file system. It is the addSignature implementation responsibility and it is out of scope of this article.
 
@@ -363,13 +342,14 @@ private fun createAddSignature(addSignature: () -> Unit): AddSignature {
            addSignature()
         }
     }
-}```
+}
+```
  
 I need to change all the view model instanciations since I introduced a new parameter.
 I relaunch all tests, all except the new one pass. 
 
 
- ??? 
+![NotImplementedError](https://cdn.hashnode.com/res/hashnode/image/upload/v1632477910382/Eni0pY4LB.png?auto=compress,format&format=webp)
 
 This is what I expected since I have in handleEvents function : 
 
@@ -399,9 +379,7 @@ class SignatureViewModel(
     private val signatureUseCases: SignatureUseCases
 ) 
 ```
-
-Commit : 725ebe2f1255a15c3dcd91b8b3034602a981723a
-
+ 
 I relaunch all tests and check if refactoring didn't break anything. Alright, everything is ok. so I can continue. And so on. Here is the way how I build incrementally view models. 
  
 ## Conclusion

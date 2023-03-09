@@ -1,7 +1,7 @@
 ---
 draft: false
 title: "How to use Kotlin multiplatform sealed class in Swift"
-snippet: "Learn how to transform your sealed class into Swift enum"
+snippet: "Learn how to transform your sealed class into Swift enums"
 image: {
     src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
     alt: "full stack web development"
@@ -14,9 +14,11 @@ tags: [android]
 
 ## The problem
 
-When you want to share a sealed class in a kotlin multiplatform module for a swift client, some infos are lost.
+If you intend to use a sealed class from a Kotlin multiplatform module in a Swift client, 
+you can access the information, but you won't be able to use it as an enum in Swift. 
+This is because the generated Swift code for a sealed class does not translate to an enum in Swift.
 
-Indeed when you define a sealed class as it : 
+Indeed if you define a sealed class, such as the one shown below:
 
 ```kotlin
 sealed class Destination(val path: String, val icon: ImageVector) {
@@ -26,47 +28,27 @@ sealed class Destination(val path: String, val icon: ImageVector) {
 }
 ```
 
-The generated Swift code is : 
+The only possible way to instantiate a `Destination` in Swift is as follows:
 
 ```swift
-open class SharedDestination : KotlinBase {
-    open class var companion: SharedDestination.Companion { get }
-    open var path: String { get } 
-    open var icon: UiImageVector { get }
-}
-```
+let destination: Destination = Destination.Home()
+``` 
 
-But when you have for example a screen in compose multiplatform defined in kotlin : 
-
-```kotlin
-fun ScreenController( 
-    currentDestination: Destination
-): UIViewController = Application("ScreenControllerCM") {
-    ...
-}
-```
-
-And you want to display this screen in swift, we would like to do something like : 
+when we want to do this :
 
 ```swift
-ScreenController(currentDestination: SharedDestination.Home)
+let destination: Destination = .home
 ```
 
-or, as type is inferred :
-
-```swift
-ScreenController(currentDestination: .Home)
-```
-
-But Home, Storybook and Settings are not available. How to make these sealed class work on Swift ?
+So, how to make these sealed classes more Swift-friendly?
 
 ## Solution
 
-We are going to use [KSwift library](https://github.com/icerockdev/moko-kswift) , a Swift-friendly api generator for Kotlin/Native frameworks. 
+We are going to use [KSwift library](https://github.com/icerockdev/moko-kswift), a Swift-friendly api generator for Kotlin/Native frameworks. 
 
-add in root build.gradle
+Add in root build.gradle
 
-```
+```kotlin
 buildscript {
     repositories {
         mavenCentral()
@@ -79,7 +61,7 @@ buildscript {
 }
 ````
 
-add in project build.gradle
+Add in project build.gradle
 
 ```
 plugins {
@@ -91,10 +73,42 @@ kswift {
 }
 ```
 
-Rebuild the project and check the generated Swift code : 
+Rebuild the project and the kswift library generated for us the Swift api : 
 
+```swift
+public enum DestinationKs {
+
+  case home
+  case settings
+  case storybook
+
+  public var sealed: Destination {
+    switch self {
+    case .home:
+      return shared.Destination.Home() as shared.Destination
+    case .settings:
+      return shared.Destination.Settings() as shared.Destination
+    case .storybook:
+      return shared.Destination.Storybook() as shared.Destination
+    }
+  }
+
+  public init(_ obj: Destination) {
+    if obj is shared.Destination.Home {
+      self = .home
+    } else if obj is shared.Destination.Settings {
+      self = .settings
+    } else if obj is shared.Destination.Storybook {
+      self = .storybook
+    } else {
+      fatalError("DestinationKs not synchronized with Destination class")
+    }
+  }
+}
 ```
 
-```
+Now we can access to the sealed class in a more Swift way :
 
-Now we have the enum well generated according to the sealed class.
+```swift
+let destination: Destination = .home
+```

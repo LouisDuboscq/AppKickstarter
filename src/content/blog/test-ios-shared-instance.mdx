@@ -1,31 +1,33 @@
 ---
 draft: false
 title: "Test iOS code that relies on a shared instance"
-snippet: "my super snipet"
+snippet: "Learn how to test iOS that relies on shared instance"
 publishDate: "2022-07-01 11:36"
 image: {
   src: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?&fit=crop&w=430&h=240",
   alt: "typography"
 }
-category: "Technology"
+category: "Tutorials"
 author: "Louis Duboscq"
 tags: [ios, test]
 --- 
 
-How do you test this view model ? 
+As an experienced iOS developer, a question you may encounter during an interview could be: 
 
-As you can see, it's directly referencing userdefault shared instance. 
-
-If you are a senior iOS developer, this could be a typical interview question.
+    
+    "What is your approach to testing this view model that directly references the user default shared instance?"
 
 ```swift
-class ViewModel {
-    
+class ViewModel { 
     func saveUserName(name: String) {
         UserDefaults.standard.set(name, forKey: "username")
     }
 }
+```
 
+While you may answer something like below, you will see that this solution has its problems.
+
+```swift
 class TestCode: XCTAssertTest {
     func test() { 
         let viewModel = ViewModel()
@@ -37,16 +39,14 @@ class TestCode: XCTAssertTest {
 
 ## Problem
 
-The view model is tightly coupled with the user default shared instance and it makes too difficult to test the view model in isolation. 
-
-Currently the test should know userdefaults and we need to clear values in userdefaults before every test else it could end in wrong results. 
-
-In addition, this test is not an unit test but rather an integration test. 
+The issue at hand is that the view model has a strong dependency on the user default shared instance, which makes it challenging to conduct isolated testing. 
+Presently, tests must be aware of user defaults and must reset its values before each test to prevent inaccurate results. 
+Furthermore, this test is considered an integration test rather than a unit test.
 
 ## Solution : 
 
-We just want to know that the username is stored without the need to manipulate user defaults. 
-So, instead of calling the singleton inside the view model, I introduce a new component which manages only user default mecanisms for user datas. 
+The objective is to store the username without the requirement of manipulating user defaults. 
+To accomplish this, a new component is introduced that specifically manages user default mechanisms for user data, instead of calling the singleton within the view model.
 
 ```swift
 protocol UserStorage {
@@ -63,11 +63,10 @@ class UserStorageWithUserDefaults: UserStorage {
 }
 ```
  
-One more problem that this solution solves is that the caller of view model, let's say a view controler for example, needed to know and manage keys for userDefaults key values. 
+Another issue resolved by this solution is the need for the caller of the view model (such as a view controller) to be aware of and manage keys for user default key values which is not its responsibility.
+With the introduction of the UserStorageWithUserDefaults component, this responsibility is shifted entirely to the component. 
 
-Now, only the UserStorageWithUserDefaults component has this responsibility. 
-
-The view model can use this new introduced UserStorage : 
+The view model can now use this new UserStorage component :
 
 ```swift
 class ViewModel {
@@ -84,21 +83,22 @@ class ViewModel {
 }
 ```
 
-As you can see, it's injected in the view model. We need to change the ViewModel caller code from this :
+As demonstrated, the UserStorage component is now injected into the view model. Therefore, we must modify the code that calls the ViewModel, as follows.
+From :
 
 ```swift
 let ViewModel = ViewModel()
 viewModel.saveUserName(name: "the username")
 ```
 
-to this : 
+To this version : 
 
 ```swift
 let viewModel = ViewModel(userStorage: UserStorageWithUserDefaults())
 viewModel.saveUserName(name: "the username")
 ```
 
-And in tests code, we can use a specific implementation for the UserStorage protocol, which is only in memory and does not rely on any other framework :
+Finally, for test code, we can leverage a dedicated implementation of the UserStorage protocol that exists solely in memory and does not depend on any external framework:
 
 ```swift
 class InMemoryUserStorage: UserStorage {
@@ -118,4 +118,3 @@ class TestCode: XCTAssertTest {
     }
 }
 ```
-

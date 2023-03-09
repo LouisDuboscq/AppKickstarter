@@ -1,0 +1,41 @@
+---
+draft: true
+title: "Basics but yet useful Kotlin tips"
+snippet: "Learn some basics but yet useful Kotlin tips"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2023-03-09"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [kotlin]
+--- 
+
+## Elvis operator
+
+Simplify your Kotlin code by using the Elvis operator to handle null values.  
+Replace conditionals with ?: to provide default values. 
+For example, 
+
+```
+val name = nullableName ?: "John Doe"
+```
+ 
+assigns nullableName to "name" if it's not null, otherwise assigns "John Doe".
+
+## Delay
+
+To improve code clarity and consistency in Kotlin, when using the coroutines delay() function, rather than using
+
+```
+delay(3000)
+````
+
+we recommended to use 
+
+```
+delay(3.seconds)
+```
+
+## Other

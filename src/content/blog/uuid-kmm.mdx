@@ -16,19 +16,19 @@ According to the Kotlin multiplatform documentation, it's possible to create exp
 
 By defining a common function using the 'expect' keyword, platform-specific implementations can be created using the 'actual' keyword. 
 
-```
+```kotlin
 // commonMain package
 expect fun randomUUID(): String
 ```
 
-```
+```kotlin
 // androidMain package
 import java.util.*
 
 actual fun randomUUID() = UUID.randomUUID().toString()
 ```
 
-```
+```kotlin
 // iosMain package
 import platform.Foundation.NSUUID
 
