@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Basic Jetbrains Compose multiplatform setup to render ui on iOS with SwiftUI"
+title: "Basic Compose multiplatform setup to render ui on iOS with SwiftUI"
 snippet: "Learn to display your first compose multiplatform ui on iOS with SwiftUI"
 image: {
     src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
@@ -11,6 +11,17 @@ category: "Tutorials"
 author: "Louis Duboscq"
 tags: [kmm, composemultiplatform, ios]
 --- 
+
+In this post, you'll learn how to render compose multiplatform composables into SwiftUI for iOS. 
+If you're an Android developer, you'll see it's just a matter of putting the composables in the right place and removing the Android dependencies (Context, permissions, navigation, ...).
+
+Before all, create a kotlin multiplatform module and add the compose multiplatform plugin (org.jetbrains.compose) and dependencies :
+
+```
+implementation(compose.runtime)
+implementation(compose.foundation) 
+implementation(compose.material3)
+```
 
 ## 1. UI on shared module
 
