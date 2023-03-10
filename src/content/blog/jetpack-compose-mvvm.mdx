@@ -1,0 +1,91 @@
+---
+draft: false
+title: "Using Jetpack Compose with MVVM"
+snippet: "Learn the benefits to use MVVM with Jetpack Compose and how to do it"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2022-11-25"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [android, mvvm]
+--- 
+
+# Using Jetpack Compose with MVVM
+
+Jetpack Compose is a modern toolkit for building Android UIs. It allows developers to create beautiful, responsive, and performant UIs using a declarative programming model. On the other hand, MVVM (Model-View-ViewModel) is a design pattern that separates the presentation logic from the business logic of an application.
+
+In this blog post, we will explore how to use Jetpack Compose with MVVM to build a modern Android application.
+
+## What is MVVM?
+
+MVVM is a design pattern that separates the presentation logic from the business logic of an application. It consists of three main components:
+
+-   **Model**: Represents the data and business logic of the application.
+-   **View**: Represents the user interface of the application.
+-   **ViewModel**: Acts as a mediator between the Model and the View. It exposes the data from the Model to the View and handles user actions from the View.
+
+The main advantage of using MVVM is that it makes the code more modular, testable, and maintainable.
+
+## What is Jetpack Compose?
+
+Jetpack Compose is a modern toolkit for building Android UIs. It uses a declarative programming model, which means that developers describe the UI components and their properties in a concise and readable way. Compose also provides a powerful layout system that allows developers to create responsive and flexible UIs.
+
+The main advantage of using Jetpack Compose is that it simplifies the UI development process and makes it easier to create beautiful and performant UIs.
+
+## How to use Jetpack Compose with MVVM
+
+To use Jetpack Compose with MVVM, we need to follow these steps:
+
+1.  Create the Model: We create a data class that represents the data of our application. For example, if we are building a weather app, we can create a data class that represents the weather data.
+2.  Create the ViewModel: We create a ViewModel class that exposes the data from the Model to the View. For example, we can create a ViewModel class that fetches the weather data from an API and exposes it to the View.
+3.  Create the View: We create a Composable function that represents the UI of our application. For example, we can create a Composable function that displays the weather data in a card view.
+4.  Connect the ViewModel to the View: We use the `getViewModel` function provided by Koin to create an instance of the ViewModel and pass it to the Composable function. For example, we can use the `remember` function to create an instance of the WeatherViewModel and pass it to the Composable function that displays the weather data.
+
+Here is an example code snippet that demonstrates how to use Jetpack Compose with MVVM:
+
+```kotlin
+data class Weather(val city: String, val temperature: Int)
+
+class WeatherViewModel : ViewModel() {
+    private val _uiState: MutableStateFlow<Weather> = MutableStateFlow(Weather("", 0))
+    val uiState = _uiState.asStateFlow()
+
+    fun fetchWeather() {
+        // Fetch weather data from API and update _uiState
+    }
+}
+
+@Composable
+fun WeatherView(weatherViewModel: WeatherViewModel) {
+    val weather by weatherViewModel.weather.collectAsStateWithLifecycle()
+
+    Card {
+        Column {
+            Text(text = weather.city)
+            Text(text = weather.temperature.toString())
+        }
+    }
+}
+
+@Composable
+fun MyApp() {
+    val weatherViewModel = getViewModel<WeatherViewModel>()                           
+    WeatherView(weatherViewModel)
+}
+```
+
+In this example, we create a `Weather` data class that represents the weather data. We also create a `WeatherViewModel` class that fetches the weather data from an API and exposes it to the View. We then create a `WeatherView` Composable function that displays the weather data in a card view. We use the `getViewModel` function to get the instance of the `WeatherViewModel` and pass it to the `WeatherView` Composable function. Finally, to collect state in Compose, use collectAsStateWithLifecycle to make it lifecycle-aware. It starts and stops collecting automatically when the Composable is visible or hidden on the screen, avoiding unnecessary resource usage, even when the app is in the background.
+
+## Benefits of using MVVM with Jetpack Compose
+
+One of the benefits of using MVVM with Jetpack Compose is that it allows for reactive programming, which fits well with declarative UI and separation of concerns. Reactive programming is a programming paradigm that emphasizes the propagation of data changes and how those changes affect other parts of an application. In an MVVM architecture, the ViewModel acts as a mediator between the Model and the View, which makes it easier to propagate data changes from the Model to the View in a reactive way.
+
+By using reactive programming with Jetpack Compose, developers can create UIs that automatically update themselves when their underlying data changes. This eliminates the need for manual updates and reduces boilerplate code. Additionally, by separating the presentation logic from the business logic, developers can focus on each concern separately and make changes without affecting other parts of the application.
+
+Overall, it also makes code more modular, testable, and maintainable by separating concerns and enabling reactive programming.
+
+## Conclusion
+
+In this blog post, we explored how to use Jetpack Compose with MVVM to build a modern Android application. We learned that MVVM is a design pattern that separates the presentation logic from the business logic of an application, while Jetpack Compose is a modern toolkit for building Android UIs. Compose's declarative nature is an excellent fit for this architectural pattern that use observable UI state as the source of truth for the UI. 
