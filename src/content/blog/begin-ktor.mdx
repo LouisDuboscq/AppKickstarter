@@ -1,0 +1,81 @@
+---
+draft: false
+title: "Start Ktor backend as an Android developer"
+snippet: "Learn basics of Ktor backend"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2022-04-20"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [ktor]
+--- 
+
+Are you an Android Kotlin developer looking to build your own server? 
+Look no further than Ktor. 
+This powerful tool makes it easy to build asynchronous client and server apps using Kotlin and coroutines. 
+Developed and backed by JetBrains, Ktor is both fun and straightforward. 
+In this article, we'll give you the rundown on Ktor and share some tips for building your first Ktor app.
+ 
+## Setup
+If you're eager to start building your very first Ktor project, check out the convenient platform provided by http://start.ktor.io.
+This platform allows you to define your app name, package name, Ktor version, engine, and necessary plugins. 
+For a simple backend that stores data and provides APIs, you'll need content negotiation and serialization plugins for transforming data transfer objects (data classes) into JSON, 
+as well as routing for communication between the outside world and your Ktor application.
+
+![Ktor starter](https://pbs.twimg.com/media/FQypo99VUAA5Fjo?format=jpg&name=large)
+
+Once you've created your app, you'll find the main entry point (function main), the engine used (in this case, Netty), the address and port,
+and the serialization and routing configurations. 
+With this basic setup, you'll be well on your way to building a powerful and effective Ktor app. 
+ 
+![main Ktor function](https://pbs.twimg.com/media/FQyppyWVcAMDm3L?format=jpg&name=large)
+
+## DTO
+To ensure smooth functionality of your Kotlin-based Ktor application, 
+it is imperative to declare all of your Data Transfer Objects (DTOs) accompanied by their serialized annotation. 
+This helps to optimize the performance of your app and ensure that it is running at its best.
+
+![Data transfer objects or DTO](https://pbs.twimg.com/media/FQypqK3UYAQSTd0?format=jpg&name=large)
+
+## Get routes
+
+When working with Ktor, it is crucial to register the routes within the configureRouting method. 
+There are various types of routes you can work with, including responding to requests, handling URL parameters, and retrieving POST request bodies. 
+By mastering these different route types, you can create a highly functional Ktor application that meets your specific needs.
+
+![Ktor routing](https://pbs.twimg.com/media/FQypqkGVcAMw1-F?format=jpg&name=medium)
+
+Discover a basic example of a route that returns an object list below :
+
+![Simple ktor route](https://pbs.twimg.com/media/FQypq73VgAAkugu?format=jpg&name=medium)
+
+Learn now how to create a simple GET route in Ktor that takes parameters in the URL, verifies the parameter, and returns the object or an error if not found. 
+In this example, you'll see how to handle bad requests and not found errors in Ktor.
+
+![Multiple response in Ktor route](https://pbs.twimg.com/media/FQyprUPVgAEv2p0?format=jpg&name=large)
+
+`call.parameters["param"]` gets the param passed in the call
+
+## Post route with a body
+ 
+To ensure that all customer properties such as id, firstName, lastName, and email are present, use call.receive to wait for the exact JSON body.
+
+![Post route with Ktor](https://pbs.twimg.com/media/FQyprwdUYAsmYIy?format=jpg&name=medium)
+
+## Authentication
+
+Adding authentication to your Ktor app is crucial. 
+You can start by separating public calls from private ones and wrapping routes with the authenticate lambda. 
+By doing so, if the token bearer is not provided in headers, the authenticate routes will return a 401 error, which indicates that the request is unauthorized.
+
+![Ktor route with authentication](https://pbs.twimg.com/media/FQypsJAVUAcMkUU?format=jpg&name=medium)
+
+## Conclusion and tips
+
+As a final recommendation, we suggest utilizing Insomnia to build your APIs. 
+This powerful tool makes it easy to create, test, maintain, and document your APIs. 
+We truly hope that this guide has inspired you to start building your very own Ktor application today!
+Whether you're an experienced developer or just starting out, Ktor is a powerful tool that can help you take your projects to the next level. 
+

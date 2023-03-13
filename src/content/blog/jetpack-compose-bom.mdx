@@ -1,0 +1,66 @@
+---
+draft: false
+title: "Jetpack Compose BOM 2023: What you need to know"
+snippet: ""
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2023-03-13"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [jetpackcompose]
+--- 
+
+## What is BOM?
+ 
+Initially, Jetpack Compose had a single version for all its dependencies, making it easier for developers to manage. 
+However, this also restricted Google's ability to fix bugs and add new features to specific dependencies more quickly than others.
+To address this, Jetpack Compose libraries launched with independent versioning in July. 
+This allowed for frequent releases of new UI elements and features without being dependent on new OS versions.
+BOM, which stands for Bill of Materials, is a tool that automatically updates related dependencies to the latest version. 
+It maps library IDs to version numbers and is stored on Maven, making it easier to manage version updates when dealing with multiple libraries. 
+It also ensures the compatibility of libraries and provides the flexibility to prioritize a specific version over the one in BOM.
+
+## What are the benefits of using BOM?
+
+BOM provides several advantages, including automatically using the latest versions of Compose libraries, 
+making it easier to use all the latest stable versions simultaneously since various Jetpack Compose libraries have been moved to independent versioning. 
+Using BOM ensures that any Compose library versions in your app are compatible, and it works with version catalogs too.
+
+## What are the limitations of BOM?
+BOM does not add the Compose libraries to your app. 
+You must declare each library as a dependency in the Gradle file. 
+Additionally, the Compose Compiler library is not included in the BOM. 
+Although BOM makes library upgrades easy, you can still add each dependency version manually. 
+BOM is not mandatory, but it provides a convenient way to upgrade libraries.
+
+## How can you use BOM?
+To use BOM, you need to add the Compose BOM dependency in the app/build.gradle file. 
+Make sure you have target SDK version 33. 
+After successfully importing the dependency, declare all your compose libraries in the Gradle dependencies block without versions, as shown below.
+
+```kotlin
+dependencies {
+    implementation("androidx.compose:compose-bom:2023.01.00")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.material3:material3")
+    // ... or use whichever Compose artifacts you need without a version number
+}
+```
+
+## What if you do not want the BOM version for an artifact?
+
+If you want to use a different version of a library than the one declared in the BOM, you can specify the desired version in the dependencies section of the library dependency import. 
+For instance, to use an alpha version of Material 3, you can add the following dependency: 
+```kotlin
+implementation("androidx.compose.material3:material3:1.1.0-alpha08")
+```
+This will override the version designated in the BOM and use the declared alpha version of Material 3.
+
+## Conclusion 
+
+BOM, or Bill of Materials, is a tool that enables you to manage the versions of all your Compose libraries. 
+By specifying only the BOM's version, you can access links to the stable versions of various Compose libraries, 
+ensuring that all the libraries used in your app are automatically updated to their new versions.

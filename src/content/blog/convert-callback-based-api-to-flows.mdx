@@ -1,52 +1,136 @@
 ---
-draft: true
-title: "Await Kotlin"
-snippet: "Await Kotlin"
+draft: false
+title: "How to Convert Callback-Based APIs to Flows or suspend functions in Kotlin"
+snippet: "Learn how to convert callback-based apis to a more Kotlin friendly api"
 image: {
     src: "https://images.unsplash.com/photo-1627163439134-7a8c47e08208?&fit=crop&w=430&h=240",
     alt: "data structures & algorithms"
 }
-publishDate: "2021-01-16 19:07"
-category: "Courses"
+publishDate: "2022-12-18 19:07"
+category: "Tutorials"
 author: "Louis Duboscq"
-tags: [android, ios, kmm]
+tags: [kotlin]
 ---
-  
+
+When working with multiple libraries, you may find yourself dealing with APIs that use callbacks. 
+Converting these to use Kotlin Flows can help simplify your code.
+
+## Converting to [Suspend Functions](https://kotlinlang.org/docs/composing-suspending-functions.html)
+
+To illustrate this, let's look at the following function that uses callbacks :
+
 ```kotlin
-
-class FirestoreUserEventsDataSource(
-    private val firestore: FirebaseFirestore
+fun getCustomerInfo(
+    onError: (PurchasesError) -> Unit,
+    onCustomerInfo: (CustomerInfo) -> Unit
 ) {
-    // Method to get user events from the Firestore database
-    fun getUserEvents(): Flow<UserEvents> = callbackFlow {
+    Purchases.sharedInstance.getCustomerInfoWith(
+        onError = { onError(it) },
+        onSuccess = { onCustomerInfo(it) }
+    )
+}
+```
 
-        // Reference to use in Firestore
-        var eventsCollection: CollectionReference? = null
-        try {
-            eventsCollection = FirebaseFirestore.getInstance()
-                .collection("collection")
-                .document("app")
-        } catch (e: Throwable) {
-            // If Firebase cannot be initialized, close the stream of data
-            // flow consumers will stop collecting and the coroutine will resume
-            close(e)
+We can simplify this by introducing suspend coroutines, but we still have callbacks:
+
+```kotlin
+fun getCustomerInfo(onError: (PurchasesError) -> Unit, onCustomerInfo: (CustomerInfo) -> Unit) {
+    Purchases.sharedInstance.getCustomerInfoWith(onError, onCustomerInfo)
+}
+```
+
+However, we can now remove the callbacks entirely and use suspendCoroutine instead:
+
+```kotlin
+suspend fun getCustomerInfo(onError: (PurchasesError) -> Unit): CustomerInfo {
+    return suspendCoroutine { continuation ->
+        Purchases.sharedInstance.getCustomerInfoWith(onError) { customerInfo ->
+            continuation.resume(customerInfo)
         }
-
-        // Registers callback to firestore, which will be called on new events
-        val subscription = eventsCollection?.addSnapshotListener { snapshot, _ ->
-            if (snapshot == null) { return@addSnapshotListener }
-            // Sends events to the flow! Consumers will get the new events
-            try {
-                offer(snapshot.getEvents())
-            } catch (e: Throwable) {
-                // Event couldn't be sent to the flow
-            }
-        }
-
-        // The callback inside awaitClose will be executed when the flow is
-        // either closed or cancelled.
-        // In this case, remove the callback from Firestore
-        awaitClose { subscription?.remove() }
     }
 }
 ```
+
+This allows us to make our function suspend, so that the caller waits until continuation.resume is called.
+
+### Best Practice
+
+To further improve your code, it's best to use the following version of the function:
+
+```kotlin
+@Throw(PurchaseError:class)
+suspend fun getCustomerInfo(): CustomerInfo {
+    return suspendCoroutine { continuation ->
+        Purchases.sharedInstance.getCustomerInfoWith({ throw PurchaseError()}) { customerInfo ->
+            continuation.resume(customerInfo)
+        }
+    }
+}
+```
+
+With the updated suspend function, the caller can now use the simplified code below to get the customer information:
+
+```kotlin
+val customerInfo = try {
+    getCustomerInfo()
+} catch (e: PurchasesError) {
+    // handle error
+}
+```
+
+## Converting to [Flows](https://kotlinlang.org/docs/flow.html)
+
+Learn how to convert callback-based APIs to Kotlin Flows when working with multiple libraries. 
+Callback-based APIs can be challenging to work with, and it's essential to know how to optimize them for Kotlin. 
+Here's an example of a callback-based API that is not Kotlin-friendly:
+
+```kotlin
+fun getUserEvents(onSuccess: (UserEvents) -> Unit, onError: (Error) -> Unit) {
+    FirebaseFirestore.getInstance()
+        .collection("collection")
+        .document("app")
+        .addSnapshotListener {  snapshot, e ->
+            if (e != null) onError(e)
+            if (snapshot == null) { return@addSnapshotListener } 
+            onSuccess(snapshot.getEvents())
+        } 
+}
+```
+
+Here's how to change it to support flow response:
+
+```kotlin  
+fun getUserEvents(): Flow<UserEvents> = callbackFlow {
+
+    // Reference to use in Firestore
+    var eventsCollection: CollectionReference? = null
+    try {
+        eventsCollection = FirebaseFirestore.getInstance()
+            .collection("collection")
+            .document("app")
+    } catch (e: Throwable) {
+        // If Firebase cannot be initialized, close the stream of data
+        // flow consumers will stop collecting and the coroutine will resume
+        close(e)
+    }
+
+    // Registers callback to firestore, which will be called on new events
+    val subscription = eventsCollection?.addSnapshotListener { snapshot, _ ->
+        if (snapshot == null) { return@addSnapshotListener }
+        // Sends events to the flow! Consumers will get the new events
+        try {
+            offer(snapshot.getEvents())
+        } catch (e: Throwable) {
+            // Event couldn't be sent to the flow
+        }
+    }
+
+    // The callback inside awaitClose will be executed when the flow is
+    // either closed or cancelled.
+    // In this case, remove the callback from Firestore
+    awaitClose { subscription?.remove() }
+} 
+```
+
+Converting callback-based APIs to Kotlin Flows can make them easier to work with and optimize for Kotlin. 
+Follow the above code snippets to learn how to convert them efficiently.

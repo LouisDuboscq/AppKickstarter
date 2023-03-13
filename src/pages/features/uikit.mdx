@@ -51,11 +51,35 @@ KickstarterTheme(
 }
 ```
 
+## How to change fonts
+
+In composable multiplatform module there is a fontFamily file
+
+```
+expect val primaryFontFamily: FontFamily 
+```
+
+Change in desktop
+
+```
+actual val primaryFontFamily: FontFamily = FontFamily(
+    Font(ttfFileName)
+)
+```
+
+Change in android
+
+```
+actual val primaryFontFamily: FontFamily = FontFamily(
+    Font(fontFileId)
+)
+```
+
 ## Atoms & Molecules
   
 <p align="center">   
     <img src="/images/uikit-ios.gif" alt="Atoms & Molecules in AppKickstarter UIKit" />
- </p>
+</p>
 
 ## Organisms
 

@@ -15,11 +15,42 @@ We choose RevenueCat for paywall because it has muliple advantages :
 - Good documentation
 - One interface to manage Android and iOS datas 
 - Analytics and a nice dashboard with charts and useful datas
-- A/B testing, offer/product managment and ability to change pricing in backend
+- A/B testing, offerings managment gives the ability to change pricing in backend
+
+## Definitions
+
+This section is based on [RevenueCat documentation](https://www.revenuecat.com/docs/entitlements) :
+What are entitlements, offerings and products ?
+
+### Products
+
+Products are the individual SKUs that users actually purchase. The stores (Apple, Google, Stripe, and Amazon) process these SKUs and charge the user.
+
+### Entitlements
+
+An entitlement represents a level of access, features, or content that a user is "entitled" to.
+Entitlements are used to ensure a user has appropriate access to content based on their purchases, without having to manage all of the product identifiers in your app code.
+Most apps only have one entitlement, unlocking all premium features. However, if you had two tiers of content such as Gold and Platinum, you would have 2 entitlements.
+Once entitlements are created, you should attach products to entitlements.
+When a product that is attached to an entitlement is purchased, that entitlement becomes active for the duration of the product.
+
+### Offerings
+
+Offerings are the selection of products that are "offered" to a user on your paywall. They're an optional, but recommended feature of RevenueCat that can make it easier to change and experiment with your paywalls.
+If you've configured Offerings in RevenueCat, you can control which products are shown to users without requiring an app update. Building paywalls that are dynamic and can react to different product configurations gives you maximum flexibility to make remote updates.
 
 ## Subscriptions
 
-
-
 ## One time purchasess
+
+- Lifetime deals are supported. 
+- Consumables IAP are not supported. 
+
+## Setup
+
+In RevenueCat, when you add a new product :
+Subscription : name of sub (which can have free tier for example) 
+Base plan : name of the general plan (folder in google play console)
+
+Check now Store Status, it should be OK. if you have Not found there's an error.
 
