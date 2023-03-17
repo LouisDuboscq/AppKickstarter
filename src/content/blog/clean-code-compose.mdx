@@ -1,0 +1,82 @@
+---
+draft: false
+title: "Clean code and Compose Multiplatform"
+snippet: "Learn the advantages of doing a compose multiplatform module in your project"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2023-03-17"
+category: "Tutorials"
+author: "Louis Duboscq"
+tags: [android, composemultiplatform]
+--- 
+
+If you are an Android developer who works with Jetpack Compose, 
+we have a pro tip for you: 
+create a Compose Multiplatform module in your project for low-level basic components. 
+Jetpack Compose is a powerful UI toolkit for Android app development that streamlines UI development and boosts app performance. 
+With a Compose Multiplatform module, you can enjoy several benefits that will enhance your development process and promote cleaner code. 
+Keep reading to learn more about this approach and how it can help you build better apps with less effort.
+
+## Stable
+
+Firstly, Compose Multiplatform is a stable technology for Android development. 
+It means that you are working with a technology that has been tested and is reliable for use. 
+It is a proven technology that will work for your development needs.
+
+## Separation of concerns
+
+It forces you to have a proper separation of concerns. 
+By creating separate components, you can make sure that each component is doing one thing, and one thing well. 
+This approach will make it easier for you to maintain your code and fix bugs when they occur.
+
+## Pure components
+
+Using pure components with clearly defined inputs and outputs in your Composable functions means that you can easily reuse your code in other contexts. 
+This is a significant advantage when it comes to scaling your project and reducing development time.
+By creating reusable components, you can avoid writing redundant code and save time when building new features. 
+You can also reduce the likelihood of introducing bugs when adding new functionality since each component is self-contained and has a clearly defined purpose.
+
+## No dependencies on platform
+
+Creating components in a Compose Multiplatform module eliminates dependencies on the Android framework, 
+giving you more flexibility and reducing the likelihood of bugs. 
+Additionally, pure components with well-defined inputs and outputs make it easier to reuse code across different platforms, 
+resulting in improved code modularity, portability, and reduced development time. 
+Overall, reusing components across different platforms (e.g., Android, desktop, and iOS) is much easier when they are pure and free from platform-specific dependencies. 
+This makes your code more modular and portable, allowing you to take advantage of new platforms or devices without rewriting large portions of your codebase.
+
+## Testable
+
+Since each component is doing only one thing and has no external dependencies, testing becomes a much simpler task.
+Unit tests can be written to verify that the component functions correctly under various scenarios, and it becomes much easier to isolate and fix any bugs that might arise.
+By using pure components with inputs and outputs, it becomes much easier to verify the input/output values of each component. 
+This makes it easier to write automated tests that verify the correctness of each component in isolation.
+Since the components have no dependencies on the framework, tests are less likely to be affected by unexpected interactions with the Android operating system.
+Overall, creating low-level basic components in a Compose Multiplatform module makes testing a much simpler and more reliable process. 
+This can help you to identify and fix issues quickly, improving the quality and reliability of your codebase.
+
+## The best scenario
+
+The best-case scenario when using Compose Multiplatform is that you can support desktop devices right now out of the box. 
+If you want to deep dive into it, iOS can be supported with adjustments (due to internal limitation mainly). 
+In the future, this limitation will be removed, so making your code future-proof now is an excellent way to save time and effort down the road.
+
+## The worst-case scenario
+
+The worst-case scenario is that something went wrong and you just need to move your code into the androidApp module. 
+This is not a serious issue since it only requires a minor code adjustment. 
+Therefore, there is very little risk involved in creating a Compose Multiplatform module for low-level basic components, and the potential benefits are significant.
+
+## The extra cost
+ 
+On top of that, creating a Compose Multiplatform module has near-zero extra cost, 
+which means that adopting this approach will have minimal impact on your development process. 
+By taking this simple step, you can future-proof your code and reap the benefits of improved code quality, scalability, and easier testing.
+
+## Conclusion
+
+In summary, creating Compose Multiplatform module with well-defined composable functions provides numerous benefits, 
+including easier code reuse, reduced development time, and improved scalability across different platforms.
+So, if you're a mobile developer (iOS or Android) who wants to improve your development process, we encourage you to give this approach a try. 
