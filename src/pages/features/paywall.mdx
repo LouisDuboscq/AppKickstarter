@@ -4,9 +4,21 @@ title: "Paywall"
 description: "We provide a ready to use paywall screen and a first class RevenueCat integration"
 ---
 
+AppKickstarter billing management is based on RevenueCat.
 RevenueCat offers a convenient solution for implementing and managing in-app purchases and subscriptions by providing a backend and wrapper 
 that works with Apple's StoreKit and Google Play Billing. 
 With RevenueCat, there's no need to worry about server maintenance or writing backend code, as the process is simplified and streamlined.
+
+## Setup
+
+In RevenueCat, create your offerings and AppKickstarter will display in the paywall the current offering. 
+We support and recommend to set in an offering one package for annual, monthly, weekly and a one time payment for a lifetime access.
+
+AppKickstarter will compute the discount for the yearly plan and will highlight it. 
+For example if you create an offering with a monthly for 7euro/month and yearly for 45euro/month, AppKickstarter will display this screen :
+<p align="center"> 
+ <img src="/images/paywall.jpeg" alt="Paywall in AppKickstarter" width="300" /> 
+</p>
 
 ## Why RevenueCat
 
@@ -38,19 +50,4 @@ When a product that is attached to an entitlement is purchased, that entitlement
 
 Offerings are the selection of products that are "offered" to a user on your paywall. They're an optional, but recommended feature of RevenueCat that can make it easier to change and experiment with your paywalls.
 If you've configured Offerings in RevenueCat, you can control which products are shown to users without requiring an app update. Building paywalls that are dynamic and can react to different product configurations gives you maximum flexibility to make remote updates.
-
-## Subscriptions
-
-## One time purchasess
-
-- Lifetime deals are supported. 
-- Consumables IAP are not supported. 
-
-## Setup
-
-In RevenueCat, when you add a new product :
-Subscription : name of sub (which can have free tier for example) 
-Base plan : name of the general plan (folder in google play console)
-
-Check now Store Status, it should be OK. if you have Not found there's an error.
-
+ 

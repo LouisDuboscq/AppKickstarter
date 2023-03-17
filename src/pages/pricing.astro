@@ -7,16 +7,17 @@ import Pricing from "@components/pricing.astro";
 const pricing = [
   {
     name: "Developer",
-    idealFor: "Ideal for solopreneurs and freelancers",
+    idealFor: "Get the code and start building on your own",
     price: "$149",
     popular: true,
     features: [
-      "Access to the repository for a single user",
-      "Kotlin multiplatform template (swiftui compose)",
-      "All the features mentionned",
+      "Access to the repository",
+      "Jetpack Compose UI Kit",
+      "Onboarding",
+      "Auth screens",
+      "Data storage", 
       "Lifetime access",
       "Unlimited apps", 
-      "A Discord server for assistance is provided",
     ],
     button: {
       text: "Get Started",
@@ -24,8 +25,8 @@ const pricing = [
     },
   },
   {
-    name: "Team",
-    idealFor: "Ideal for companies and agencies",
+    name: "Developer Pro",
+    idealFor: "Get the code and access to the Pro discord",
     price: "$349",/*{
       monthly: "$349",
       annual: "$16",
@@ -34,12 +35,26 @@ const pricing = [
     },*/
     popular: false,
     features: [
-      "Access to the repository up to 5 users",
-      "Kotlin multiplatform template (swiftui compose)",
-      "All the features mentionned",
-      "Lifetime access",
-      "Unlimited apps", 
-      "A Discord server for assistance is provided",
+      "Developer plan +",
+      "Access to Pro discord", 
+    ],
+    button: {
+      text: "Get Started",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout?cart=b87bdef1-cad7-4ffe-b89b-8bd20ab5ff0c",
+    },
+  },
+  {
+    name: "Developer Pro with On-Demand Support",
+    idealFor: "Ask us about specific features on top of AppKickstarter",
+    price: "contact",/*{
+      monthly: "$349",
+      annual: "$16",
+      discount: "10%",
+      original: "$24",
+    },*/
+    popular: false,
+    features: [
+      "On-Demand Support", 
     ],
     button: {
       text: "Get Started",
@@ -53,10 +68,9 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc">Lifetime access to the private Github team for updates, access to Discord for help and support for building your app.
-      <br>Companies with only 1 developer should purchase Team plan.</Fragment>
+      <Fragment slot="desc">Lifetime access to the private Github team for updates, access to Discord for help and support for building your app.</Fragment>
     </Sectionhead> 
-    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
+    <div class="grid md:grid-cols-3 gap-5 mx-auto max-w-4xl mt-12">
       {pricing.map((item) => <Pricing plan={item} />)}
     </div>
   </Container>
