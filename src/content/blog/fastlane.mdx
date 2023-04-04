@@ -1,0 +1,45 @@
+---
+draft: true
+title: "Automate everything with fastlane"
+snippet: "Automate build, tests, upload, screenshots, changelogs, etc"
+image: {
+    src: "https://images.unsplash.com/photo-1627163439134-7a8c47e08208?&fit=crop&w=430&h=240",
+    alt: "data structures & algorithms"
+}
+publishDate: "2023-04-04 20:26"
+category: "Courses"
+author: "Louis Duboscq"
+tags: [fastlane]
+---
+
+
+Open the Google Play Console
+Click Account Details, and note the Developer Account ID listed there
+Click Setup → API access
+Click the Create new service account button
+Follow the Google Cloud Platform link in the dialog, which opens a new tab/window:
+Click the CREATE SERVICE ACCOUNT button at the top of the Google Cloud Platform Console
+Verify that you are on the correct Google Cloud Platform Project by looking for the Developer Account ID from earlier within the light gray text in the second input, preceding .iam.gserviceaccount.com. If not, open the picker in the top navigation bar, and find the one with the ID that contains it.
+Provide a Service account name and click Create
+Click Select a role, then find and select Service Account User, and proceed
+Click the Done button
+Click on the Actions vertical three-dot icon of the service account you just created
+Select Manage keys on the menu
+Click ADD KEY -> Create New Key
+Make sure JSON is selected as the Key type, and click CREATE
+Save the file on your computer when prompted and remember where it was saved to
+Return to the Google Play Console tab, and click DONE to close the dialog
+Click on Grant Access for the newly added service account at the bottom of the screen (you may need to click Refresh service accounts before it shows up)
+Choose the permissions you'd like this account to have. We recommend Admin (all permissions), but you may want to manually select all checkboxes and leave out some of the Releases permissions such as Release to production
+Click Invite user to finish
+
+
+fastlane init
+fastlane supply init
+
+
+Appfile : 
+json_key_file("path.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("com.example.app") # e.g. com.krausefx.app
+
+fastlane update_metadata
