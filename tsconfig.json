@@ -23,5 +23,7 @@
         "pages/*"
       ],
     }
-  }
+  },
+  "jsx": "react-jsx",
+  "jsxImportSource": "preact"
 }
