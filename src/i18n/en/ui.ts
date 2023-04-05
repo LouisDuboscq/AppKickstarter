@@ -26,7 +26,7 @@ export default {
 	'rightSidebar.contributorGuides': 'Contributor Guides',
 	'rightSidebar.editPage': 'Edit this page',
 	'rightSidebar.translatePage': 'Translate this page',
-	'rightSidebar.github': 'Astro Docs on GitHub',
+	'rightSidebar.github': 'AppKickstarter on GitHub',
 	// Footer
 	'footer.privacyPolicy': 'Privacy Policy',
 	// `<ThemeToggleButton>` acessibility labels

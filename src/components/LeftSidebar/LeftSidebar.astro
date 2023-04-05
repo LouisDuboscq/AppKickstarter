@@ -51,37 +51,13 @@ if (isReference) {
 ---
 
 <nav aria-label={t('leftSidebar.a11yTitle')}>
-	<SidebarToggleTabGroup
-		client:load
-		defaultActiveTab={activeTab}
-		labels={{ learn: t('leftSidebar.learnTab'), api: t('leftSidebar.referenceTab') }}
-	/>
-	<ul class={`nav-groups`}>
+ 
 		<SidebarContent
 			type={'learn'}
 			defaultActiveTab={activeTab}
 			sidebarSections={learnSections}
 			currentPageMatch={currentPageMatch}
-		/>
-		<SidebarContent
-			type={'api'}
-			defaultActiveTab={activeTab}
-			sidebarSections={apiSections}
-			currentPageMatch={currentPageMatch}
-		/>
-		<li>
-			<CommunityMenu hideOnLargerScreens={true} />
-		</li>
-		<li style="text-align: center;">
-			<ThemeToggleButton
-				client:visible
-				labels={{ useLight: t('themeToggle.useLight'), useDark: t('themeToggle.useDark') }}
-			/>
-		</li>
-		<li>
-			<Sponsors />
-		</li>
-	</ul>
+		/>   
 </nav>
 
 <!-- Preserve sidebar scroll across page loads -->
