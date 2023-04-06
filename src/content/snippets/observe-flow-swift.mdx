@@ -4,6 +4,7 @@ description: 'For use with SwiftUI'
 logo: 'swift.png'
 ---
 
+'''kotlin
 /// kotlin
 @NativeCoroutines
     override fun pollISSPosition(): Flow<IssPosition> {
@@ -16,8 +17,9 @@ logo: 'swift.png'
             }
         }
     }
+'''
 
-/// swift
+'''swift
 func startObservingISSPosition() async {
     do {
         let stream = asyncSequence(for: repository.pollISSPosition())
@@ -28,3 +30,4 @@ func startObservingISSPosition() async {
         print("Failed with error: \(error)")
     }
 }
+'''
