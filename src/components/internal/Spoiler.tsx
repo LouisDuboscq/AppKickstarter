@@ -1,5 +1,7 @@
 import type { ComponentChildren } from 'preact';
 import { useState } from 'preact/hooks';
+import { h } from 'preact';
+
 
 /** FOR INTERNAL USE ONLY. USE `Spoiler.astro` INSTEAD OF THIS. */
 export default function Spoiler({ children }: { children: ComponentChildren }) {

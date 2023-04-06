@@ -22,9 +22,11 @@
       "@pages/*": [
         "pages/*"
       ],
-    }
+    }, 
+    "jsxImportSource": "preact", 
+    "moduleResolution": "node", 
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react-jsx"
   },
-  "jsx": "react-jsx",
-  "jsxImportSource": "preact", 
-  "moduleResolution": "node", 
 }
