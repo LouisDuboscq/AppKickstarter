@@ -48,8 +48,7 @@ module.exports = {
         files: ['*.tsx'],
         parser: '@typescript-eslint/parser',
         plugins: ['react', '@typescript-eslint'],
-        parserOptions: {
-          tsconfigRootDir: __dirname,
+        parserOptions: { 
           project: ['./tsconfig.json'],
         },
         extends: [
