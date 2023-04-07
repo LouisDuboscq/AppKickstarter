@@ -21,22 +21,8 @@ const t = useTranslations(Astro);
 <html dir={dir} lang={bcpLang} class="initial">
 	<head>
 		<HeadCommon />
-		<title>{`${title} 🚀 ${t('site.title')}`}</title>
-		<style>
-			html,
-			body,
-			main {
-				height: 100%;
-			}
-			main {
-				display: grid;
-				place-items: center;
-				padding-inline: var(--min-spacing-inline);
-			}
-			:global(#menu-toggle) {
-				display: none;
-			}
-		</style>
+		<title>{ {title} 🚀 ${t('site.title')}`}</title>
+		
 	</head>
 
 	<body>

@@ -249,12 +249,14 @@ small,
 	font-size: 0.833rem;
 }
 
+/*
 a {
 	color: var(--theme-accent-secondary);
 	text-underline-offset: 0.08em;
 	align-items: center;
 	gap: 0.5rem;
 }
+*/
 
 article > section :is(ul, ol) > * + * {
 	margin-top: 0.25rem;
@@ -294,15 +296,16 @@ a > code {
 	text-underline-offset: var(--padding-block);
 }
 
+/*
 a:hover,
 a:focus {
 	text-decoration: underline;
-}
+} 
 
 a:focus {
 	outline: 2px solid currentColor;
 	outline-offset: 0.25em;
-}
+}*/
 
 strong {
 	font-weight: 600;
@@ -310,6 +313,7 @@ strong {
 }
 
 /* Supporting Content */
+
 code {
 	--border-radius: 3px;
 	--padding-block: 0.2rem;
@@ -479,8 +483,7 @@ h2.heading {
 	font-weight: 600;
 	margin-bottom: 0.5rem;
 	margin-top: 1.5rem;
-}
-
+} 
 .header-link {
 	font-size: 1em;
 	transition: border-inline-start-color 100ms ease-out, background-color 200ms ease-out;
@@ -522,9 +525,7 @@ a.header-link:focus {
 }
 .header-link:hover svg {
 	opacity: 0.8;
-}
-
-/* Add line and padding on the left side */
+}  
 .header-link {
 	padding-inline-start: 1rem;
 }
@@ -534,7 +535,7 @@ a.header-link:focus {
 .header-link.depth-4 {
 	padding-inline-start: 3rem;
 }
-
+ 
 /* Apply different TOC styling for wide viewports showing the right sidebar */
 @media (min-width: 72em) {
 	h2.heading {

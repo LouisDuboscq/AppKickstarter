@@ -40,6 +40,14 @@ const snippetCollection = defineCollection({
   }),
 });
 
+const mydocCollection  = defineCollection({
+	schema: z.object({
+	  title: z.string(),
+	  description: z.string(),
+	  selected: z.string(),
+	}),
+  });
+
 export const baseSchema = z
 	.object({
 		type: z.literal('base').optional().default('base'),
@@ -163,6 +171,7 @@ export const collections = {
   'blog': blogCollection,
   'team': teamCollection,
   'snippet': snippetCollection,
+  'mydoc': mydocCollection,
   docs
 };
 

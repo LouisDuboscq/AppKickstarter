@@ -13,8 +13,10 @@ import '@fontsource/ibm-plex-mono/400-italic.css';
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- Global CSS -->
-<link rel="stylesheet" href="/theme.css" />
+
+	<link rel="stylesheet" href="/theme.css" />
 <link rel="stylesheet" href="/index.css" />
+
 
 <!-- Scrollable a11y code helper -->
 <script type="module" src="/make-scrollable-code-focusable.js"></script>
@@ -23,12 +25,6 @@ import '@fontsource/ibm-plex-mono/400-italic.css';
 <script is:inline>
 	const root = document.documentElement;
 	const theme = (() => {
-		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-			return localStorage.getItem('theme');
-		}
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			return 'dark';
-		}
 		return 'light';
 	})();
 	if (theme === 'light') {
@@ -56,5 +52,3 @@ import '@fontsource/ibm-plex-mono/400-italic.css';
 		}
 	});
 </script>
-<!-- Fathom - beautiful, simple website analytics -->
-<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>

@@ -7,9 +7,15 @@ export interface Props {
 }
 
 const { item, rel } = Astro.props as Props;
+
+const rule="bg-gray-100 text-center px-5 py-3 rounded-md hover:bg-gray-200 transition items-center "
+
+const rule2="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-white border-2 border-black hover:bg-gray-100 text-black flex gap-1 items-center justify-center"
+
 ---
 
-<a class={rel === 'next' ? 'rtl' : 'ltr'} rel={rel} href={new URL(item.link, Astro.site).pathname}>
+
+<a class={ rel == 'next' ? rule : rule } rel={rel} href={new URL(item.link, Astro.site).pathname}>
 	{
 		rel === 'prev' && (
 			<svg

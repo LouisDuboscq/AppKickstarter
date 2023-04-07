@@ -26,10 +26,6 @@ const { data, headings } = Astro.props;
 		<IntegrationLayout content={data} headings={headings}>
 			<slot />
 		</IntegrationLayout>
-	) : data.type === 'tutorial' ? (
-		<TutorialLayout content={data}>
-			<slot />
-		</TutorialLayout>
 	) : data.type === 'migration' ? (
 		<MigrationLayout content={data} headings={headings}>
 			<slot />

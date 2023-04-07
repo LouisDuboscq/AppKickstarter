@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import BlogLayout from "@layouts/BlogLayout.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import MySidebar from "@components/MySidebar.astro";
+
+// Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const docEntries = await getCollection("docs");
+  return docEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get the entry directly from the prop on render
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <Container>
+
+    <Sectionhead>
+        <Fragment slot="title">Our Doc</Fragment>
+        <Fragment slot="desc">All the documentation.</Fragment> 
+    </Sectionhead>
+
+
+    <div class="flex gap-4">
+        <MySidebar selected={entry.slug} /> 
+        <main class="mt-16 prose prose-lg mt-6"> 
+            <Content />
+        </main>
+    </div>
+
+    
+    <div class="text-center mt-8">
+      <a
+        href="/blog"
+        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+        >← Back to Blog</a
+      >
+    </div>
+  </Container>
+</Layout>
