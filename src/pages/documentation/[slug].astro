@@ -18,31 +18,96 @@ export async function getStaticPaths() {
 // Get the entry directly from the prop on render
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+export function getPreviousUrl() {
+    if (entry.slug == "installation") {
+        "installation"
+    } else if (entry.slug == "authentication") {
+        "installation"
+    } else if (entry.slug == "subscriptions") {
+        "authentication"
+    } else if (entry.slug == "theming") {
+        "subscription"
+    }  else {
+        "/"
+    }
+}
+ var prev = ""
+
+if (entry.slug == "installation") {
+    prev = "installation"
+    } else if (entry.slug == "authentication") {
+        prev = "installation"
+    } else if (entry.slug == "subscriptions") {
+        prev =  "authentication"
+    } else if (entry.slug == "theming") {
+        prev = "subscriptions"
+    } else if (entry.slug == "customization") {
+        prev = "theming"
+    } else if (entry.slug == "components") {
+        prev = "customization"
+    } 
+    
+    
+    
+    else {
+        prev =  "/"
+    }
+
+
+    
+ var next = ""
+
+if (entry.slug == "installation") {
+    next = "authentication"
+    } else if (entry.slug == "authentication") {
+        next = "subscriptions"
+    } else if (entry.slug == "subscriptions") {
+        next =  "theming"
+    } else if (entry.slug == "theming") {
+        next = "customization"
+    }  else if (entry.slug == "customization") {
+        next = "components"
+    } else {
+        next =  "/"
+    }
+
 ---
 
 <Layout title={entry.data.title}>
   <Container>
 
     <Sectionhead>
-        <Fragment slot="title">Our Doc</Fragment>
-        <Fragment slot="desc">All the documentation.</Fragment> 
+        <Fragment slot="title">{entry.data.title}</Fragment>
+        <Fragment slot="desc">{entry.data.description}</Fragment> 
     </Sectionhead>
 
 
-    <div class="flex gap-4">
+    <div class="flex gap-4 mt-16">
         <MySidebar selected={entry.slug} /> 
         <main class="mt-16 prose prose-lg mt-6"> 
             <Content />
         </main>
     </div>
 
-    
-    <div class="text-center mt-8">
-      <a
-        href="/blog"
-        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Back to Blog</a
-      >
+
+    <div class="flex gap-4">
+        <div class="text-center mt-8">
+            <a
+              href={prev}
+              class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+              >← Previous</a
+            >
+        </div> 
+
+        <div class="text-center mt-8">
+            <a
+            href={next}
+            class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+            >Next →</a
+            >
+        </div> 
     </div>
+    
   </Container>
 </Layout>
