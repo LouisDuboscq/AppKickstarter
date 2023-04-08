@@ -3,6 +3,54 @@ title: "Authentication"
 description: "Learn things you can share with iOS that you usually do in the Android platform"  
 --- 
 
-## hello h2 components
+AppKickstarter manages authentication and user management thanks to Firebase authentication. 
+We facilitates various user account management functions, including logging in, 
+signing up, resetting forgotten passwords (which are sent via email), and logging out (which navigates back to the login page).
 
-bloabla here are the componenents
+## Firebase authentication
+
+We provide a ready to use login and sign up screen with Firebase provider. 
+All you need to do is display this composable and it just works.
+
+```kotlin
+EmailPasswordFormFirebase(
+    onSuccess = { currentUser ->
+
+    }
+)
+```
+
+## Log in, sign up and reset password screens
+
+<p class="grid md:grid-cols-3 gap-10">  
+ <img src="/images/login-ios.png" alt="Login screen in AppKickstarter" width="300" /> 
+ <img src="/images/signup-ios.png" alt="Signup screen in AppKickstarter" width="300" /> 
+ <img src="/images/forgot-password-ios.png" alt="Forgot password screen in AppKickstarter" width="300" /> 
+</p>
+
+## Custom provider 
+
+If you want to have a custom implementation for the login and sign up logic but still enjoy the pre-built UI, you can do this :
+
+```kotlin
+var isSignUp by remember { mutableStateOf(false) }
+
+LoginAndSignupScreen(
+    isSignUp = isSignUp,
+    createAccount = { email, password ->
+        authScope.launch { createAccount(email, password) }
+    },
+    signInWith = { email, password ->
+        authScope.launch { signInWith(email, password) }
+    },
+    resetPassword = { emailToReset -> 
+        scope.launch {
+            auth.resetPassword(emailToReset)
+        }
+    }
+)
+```
+
+This way, you do what you want with the email and password.
+
+

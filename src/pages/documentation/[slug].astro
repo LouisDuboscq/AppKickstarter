@@ -5,6 +5,9 @@ import Container from "@components/container.astro";
 import BlogLayout from "@layouts/BlogLayout.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import MySidebar from "@components/MySidebar.astro";
+import TableOfContents from "@components/RightSidebar/TableOfContents";
+import generateToc from "@utils/generateToc";
+import RightSidebar from "@components/RightSidebar/RightSidebar.astro";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -72,10 +75,13 @@ if (entry.slug == "installation") {
         next =  "/"
     }
 
+
+const { content, githubEditUrl, headings } = Astro.props;
+const overview = "overview ok?";
 ---
 
-<Layout title={entry.data.title}>
-  <Container>
+<Layout title={entry.data.title} >
+  <Container class="overflow-visible">
 
     <Sectionhead>
         <Fragment slot="title">{entry.data.title}</Fragment>
@@ -83,31 +89,54 @@ if (entry.slug == "installation") {
     </Sectionhead>
 
 
-    <div class="flex gap-4 mt-16">
+    <div class="flex gap-4 mt-16 relative md:flex h-screen overflow-hidden">
+        <MySidebar selected={entry.slug} class="sticky top-0"/> 
+
+        <div class="w-screen flex-1 p-10  h-screen overflow-y-auto">
+
+            <main class="mt-16 prose prose-lg mt-6 "> 
+                <Content />
+            </main>
+
+
+            <div class="flex gap-4 mt-16 mx-auto max-w-md">
+                <div class="text-center mt-8">
+                    <a
+                      href={prev}
+                      class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+                      >← Previous</a
+                    >
+                </div> 
+        
+                <div class="text-center mt-8">
+                    <a
+                    href={next}
+                    class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+                    >Next →</a
+                    >
+                </div> 
+            </div>
+        </div>
+    
+        <!--
+
         <MySidebar selected={entry.slug} /> 
-        <main class="mt-16 prose prose-lg mt-6"> 
-            <Content />
-        </main>
+    
+ -->
     </div>
 
-
-    <div class="flex gap-4">
-        <div class="text-center mt-8">
-            <a
-              href={prev}
-              class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-              >← Previous</a
-            >
-        </div> 
-
-        <div class="text-center mt-8">
-            <a
-            href={next}
-            class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-            >Next →</a
-            >
-        </div> 
-    </div>
+    
     
   </Container>
 </Layout>
+
+<!--
+
+<style>
+.max-w-screen-xl {
+  max-width: 1700px;
+}
+
+</style>
+
+ -->

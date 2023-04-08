@@ -10,13 +10,24 @@ const rulenotselected = "text-center text-slate-500 mt-2 leading-relaxed"
 <aside class="w-full p-6 sm:w-60 dark:bg-gray-900 dark:text-gray-100 text-center">
     <nav class="space-y-8 text-sm">
         <div class="space-y-2">
-            <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Getting Started</h2>
+            <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Start here</h2>
             <div class="flex flex-col space-y-1">
-                <a rel="noopener noreferrer" href="/documentation/installation" class={selected == 'installation' ? ruleselected: rulenotselected} >Installation</a> 
+                <a rel="noopener noreferrer" href="/documentation/getting-started" class={selected == 'getting-started' ? ruleselected: rulenotselected} >Getting started</a> 
+                <a rel="noopener noreferrer" href="/documentation/installation" class={selected == 'installation' ? ruleselected: rulenotselected} >Installation</a>  
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Core features</h2>
+            <div class="flex flex-col space-y-1">
+                <a rel="noopener noreferrer" href="/documentation/onboarding" class={selected == 'onboarding' ? ruleselected: rulenotselected} >Onboarding</a> 
+                <a rel="noopener noreferrer" href="/documentation/firebase-support" class={selected == 'firebase-support' ? ruleselected: rulenotselected} >Firebase support</a> 
                 <a rel="noopener noreferrer" href="/documentation/authentication" class={selected == 'authentication' ? ruleselected: rulenotselected} >Authentication</a> 
+                <a rel="noopener noreferrer" href="/documentation/offline-support" class={selected == 'offline-support' ? ruleselected: rulenotselected} >Offline support</a> 
                 <a rel="noopener noreferrer" href="/documentation/subscriptions" class={selected == 'subscriptions' ? ruleselected: rulenotselected} >Subscriptions</a> 
             </div>
         </div>
+
         <div class="space-y-2">
             <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400 text-center">UI Kit</h2>
             <div class="flex flex-col space-y-1">
@@ -25,6 +36,7 @@ const rulenotselected = "text-center text-slate-500 mt-2 leading-relaxed"
                 <a rel="noopener noreferrer" href="/documentation/components" class={selected == 'components' ? ruleselected: rulenotselected}>Components</a> 
             </div>
         </div> 
+
         <div class="space-y-2">
             <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400 text-center">Misc</h2>
             <div class="flex flex-col space-y-1">
