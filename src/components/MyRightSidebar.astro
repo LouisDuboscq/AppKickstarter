@@ -1,19 +1,27 @@
 ---
 import generateToc from "@utils/generateToc";
+import { type MarkdownHeading } from 'astro'; 
 
-const { selected, headings, page } = Astro.props;
+const { selected, page } = Astro.props;
  
 const a = "rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-black text-white hover:bg-gray-800 border-2 border-transparent flex gap-1 items-center justify-center"
 const ruleselected = "rounded   justify-items bg-black text-white hover:bg-gray-800 border-2 border-transparent "
 const rulenotselected = " text-slate-500 mt-2 leading-relaxed"
  
 const overview = "overview ok ?";
-const h = headings
+const { data, render } = Astro.props;
+//const { Content, headings } = await render(); 
 //const toc = generateToc(headings, overview);
+
+interface Props { 
+  currentPage?: string;
+  headings: MarkdownHeading[];
+}
+const { headings, currentPage } = Astro.props as Props;
 
 ---
 {page === "firebase-support" &&
-    <aside class="w-full p-6 sm:w-60 dark:bg-gray-900 dark:text-gray-100 hidden md:block">
+    <aside class="w-full p-6 sm:w-60 dark:bg-gray-900 dark:text-gray-100 hidden md:block sticky ">
         <nav class="space-y-8 text-sm">
             <div class="space-y-2">
                 <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">On this page</h2>
@@ -24,8 +32,7 @@ const h = headings
                     <a rel="noopener noreferrer" href="/documentation/firebase-support/#data-transfer-objects" class={selected == 'data-transfer-object' ? ruleselected: rulenotselected} >Data transfer objects</a>  
                 </div>
             </div> 
-
-            {headings}
+ 
         </nav>
     </aside>
 }
@@ -37,12 +44,20 @@ const h = headings
                 <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">On this page</h2>
                 <div class="flex flex-col space-y-1">
                     <a rel="noopener noreferrer" href="/documentation/authentication/#firebase-authentication" class={selected == 'firebase-authentication' ? ruleselected: rulenotselected} >Firebase authentication</a> 
-                    <a rel="noopener noreferrer" href="/documentation/authentication/#log-in,-sign-up-and-reset-password-screens" class={selected == 'log-in,-sign-up-and-reset-password-screens' ? ruleselected: rulenotselected} >Log in, sign up and reset password screens</a>  
+                    <a rel="noopener noreferrer" href="/documentation/authentication/#screens" class={selected == 'screens' ? ruleselected: rulenotselected} >Screens</a>  
                     <a rel="noopener noreferrer" href="/documentation/authentication/#custom-provider" class={selected == 'custom-provider' ? ruleselected: rulenotselected} >Custom provider</a>  
                 </div>
-            </div> 
-
-            {headings}
+            </div>  
         </nav>
     </aside>
+}
+
+{
+headings?.map((heading) => (
+<li>
+    <a class="unstyled" href={`#${heading.slug}`}>
+        {heading.text}
+    </a>
+</li>
+))
 }

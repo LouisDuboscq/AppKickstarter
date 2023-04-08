@@ -81,69 +81,44 @@ const { content, githubEditUrl, headings } = Astro.props;
 const overview = "overview ok?";
 ---
 
-<Layout title={entry.data.title} >
- 
-        <Container class="overflow-visible">
-
+<Layout title={entry.data.title} > 
+    <Container class="overflow-visible">  
+        <Sectionhead align="left">
+            <Fragment slot="title">{entry.data.title}</Fragment>
+            <Fragment slot="desc">{entry.data.description}</Fragment> 
+        </Sectionhead> 
+        <div class="flex gap-4 mt-16 relative md:flex h-screen overflow-hidden">
+            <MySidebar selected={entry.slug} />  
+            <div class="w-screen flex-1  h-screen overflow-y-auto"> 
+                <main class="prose prose-lg">  
+                    <Content />
+                </main> 
+                <div class="flex gap-4 mt-16 mx-auto max-w-md">
+                    <div class="text-center mt-8">
+                        <a
+                        href={prev}
+                        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+                        >← Previous</a
+                        >
+                    </div> 
             
-    <Sectionhead align="left">
-        <Fragment slot="title">{entry.data.title}</Fragment>
-        <Fragment slot="desc">{entry.data.description}</Fragment> 
-    </Sectionhead>
-  
-    <div class="flex gap-4 mt-16 relative md:flex h-screen overflow-hidden">
-        <MySidebar selected={entry.slug} /> 
-
-
-        <div class="w-screen flex-1  h-screen overflow-y-auto">
-
-            
-            <main class="prose prose-lg"> 
-                <!--
-                <h1
-                    class="text-4xl lg:text-5xl font-bold lg:tracking-tight lg:leading-tight">
-                    {entry.data.title}
-                </h1>
-
-                <p class="text-lg mt-4 text-slate-600">{entry.data.description}</p>
-                 -->
-                <Content />
-            </main>
-
-
-            <div class="flex gap-4 mt-16 mx-auto max-w-md">
-                <div class="text-center mt-8">
-                    <a
-                      href={prev}
-                      class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-                      >← Previous</a
-                    >
-                </div> 
-        
-                <div class="text-center mt-8">
-                    <a
-                    href={next}
-                    class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-                    >Next →</a
-                    >
-                </div> 
+                    <div class="text-center mt-8">
+                        <a
+                        href={next}
+                        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+                        >Next →</a
+                        >
+                    </div> 
+                </div>
             </div>
-        </div>
-     
-        <MyRightSidebar selected={entry.slug} page={entry.slug}/> 
-     
-</div>
-    
-    
-  </Container> 
+            <MyRightSidebar selected={entry.slug} page={entry.slug}/>  
+        </div> 
+    </Container> 
 </Layout>
  
-
-
-
+ 
 <style>
-    .max-w-screen-xl {
-      max-width: 1600px;
-    }
-    
-    </style> 
+.max-w-screen-xl {
+    max-width: 1600px;
+} 
+</style> 
