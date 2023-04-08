@@ -8,7 +8,7 @@ import { theme } from './syntax-highlighting-theme';
 import remarkSmartypants from 'remark-smartypants';
 import { remarkFallbackLang } from './plugins/remark-fallback-lang';
 //import rehypeSlug from 'rehype-slug';
-
+		 
 export default defineConfig({
   site: "https://appkickstarter.com",
   integrations: [
@@ -28,7 +28,7 @@ export default defineConfig({
 		remarkPlugins: [
 			[remarkSmartypants, { dashes: false }],
 			// Add our custom plugin that marks links to fallback language pages
-			remarkFallbackLang(),
+			remarkFallbackLang(), 
 		],
 	/*	rehypePlugins: [
 			rehypeSlug,

@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 // Get the entry directly from the prop on render
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await entry.render(); 
 
 export function getPreviousUrl() {
     if (entry.slug == "installation") {
@@ -90,10 +90,9 @@ const overview = "overview ok?";
         <Fragment slot="title">{entry.data.title}</Fragment>
         <Fragment slot="desc">{entry.data.description}</Fragment> 
     </Sectionhead>
- 
-
+  
     <div class="flex gap-4 mt-16 relative md:flex h-screen overflow-hidden">
-        <MySidebar selected={entry.slug}/> 
+        <MySidebar selected={entry.slug} /> 
 
 
         <div class="w-screen flex-1  h-screen overflow-y-auto">
@@ -131,7 +130,7 @@ const overview = "overview ok?";
             </div>
         </div>
      
-        <MyRightSidebar selected={entry.slug} /> 
+        <MyRightSidebar selected={entry.slug} page={entry.slug}/> 
      
 </div>
     

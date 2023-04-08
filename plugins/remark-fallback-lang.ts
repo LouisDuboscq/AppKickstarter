@@ -3,6 +3,8 @@ import type { Root } from 'mdast';
 import path from 'path';
 import type { Plugin, Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
+import getReadingTime from 'reading-time';
+import { toString } from 'mdast-util-to-string';
 
 export function remarkFallbackLang(): Plugin<[], Root> {
 	const pageSourceDir = path.resolve('./src/content/docs');
