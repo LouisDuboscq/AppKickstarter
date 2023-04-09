@@ -1,0 +1,73 @@
+--- 
+title: "Customization"
+description: "Learn things you can share with iOS that you usually do in the Android platform"  
+--- 
+
+## Initialization
+
+Firebase is set up as the default initialization in AppKickstarter, but the project is designed to treat Firebase as an implementation detail, 
+allowing for the possibility of plugging in other backends like Supabase, Ktor, and others.
+
+Firebase module is defined with Koin as this :
+
+```kotlin
+val firebaseModule = module {
+    single { Firebase.firestore }
+    single { Firebase.auth }
+    singleOf(::KickstarterFirebaseAuth).bind(KickstarterAuth::class)
+    singleOf(::KickstarterFirebaseFirestore).bind(KickstarterRemoteDB::class)
+}
+```
+
+And in the Application class of the Android project it is initialized with Koin and by calling firebase init function:
+
+```kotlin
+initFirebase(this)
+
+initKoin {
+    modules(
+        listOf(
+            module { androidContext(this@KickstarterApplication) },
+            androidAppModule,
+            firebaseModule
+        )
+    )
+}
+```
+
+## Authentication
+
+The interface KickstarterAuth defines all the actions possible of the backend responsible of the authentication :
+
+```kotlin
+suspend fun signout()
+suspend fun getCurrentUser(): CurrentUser?
+suspend fun observeAuthStateChanged(): Flow<CurrentUser?>
+suspend fun observeSessionStatus(): Flow<SessionStatus>
+suspend fun signInAnonymously(): CurrentUser?
+suspend fun resetPassword(email: String)
+suspend fun updateProfile(displayName: String?, photoUrl: String?)
+
+@Throws(
+    BadEmailFormatException::class,
+    PasswordInvalidException::class,
+    EmptyOrNullValueException::class,
+    EmailAlreadyUsedException::class,
+    CancellationException::class
+)
+suspend fun createUserWithEmailAndPassword(email: String, password: String): CurrentUser?
+
+@Throws(
+    BadEmailFormatException::class,
+    PasswordInvalidException::class,
+    EmptyOrNullValueException::class,
+    CancellationException::class
+)
+suspend fun signInWithEmailAndPassword(email: String, password: String): CurrentUser?
+```
+
+## Media files
+
+
+## Data transfer objects
+

@@ -1,0 +1,54 @@
+---
+ 
+const { selected } = Astro.props;
+ 
+const a = "rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-black text-white hover:bg-gray-800 border-2 border-transparent flex gap-1 items-center justify-center"
+const ruleselected = "rounded text-center   justify-items bg-black text-white hover:bg-gray-800 border-2 border-transparent "
+const rulenotselected = "  text-slate-500 mt-2 leading-relaxed"
+---
+
+<aside class="w-full sm:w-60 dark:bg-gray-900 dark:text-gray-100 hidden md:block">
+    <nav class="space-y-8 text-sm">
+        <div class="space-y-2">
+            <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Start here</h2>
+            <div class="flex flex-col space-y-1">
+                <a rel="noopener noreferrer" href="/documentation/getting-started" class={selected == 'getting-started' ? ruleselected: rulenotselected} >Getting started</a> 
+                <a rel="noopener noreferrer" href="/documentation/installation" class={selected == 'installation' ? ruleselected: rulenotselected} >Installation</a>  
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Core features</h2>
+            <div class="flex flex-col space-y-1">
+                <a rel="noopener noreferrer" href="/documentation/onboarding" class={selected == 'onboarding' ? ruleselected: rulenotselected} >Onboarding</a> 
+                <a rel="noopener noreferrer" href="/documentation/firebase-support" class={selected == 'firebase-support' ? ruleselected: rulenotselected} >Firebase support</a> 
+                <a rel="noopener noreferrer" href="/documentation/authentication" class={selected == 'authentication' ? ruleselected: rulenotselected} >Authentication</a> 
+                <a rel="noopener noreferrer" href="/documentation/offline-support" class={selected == 'offline-support' ? ruleselected: rulenotselected} >Offline support</a> 
+                <a rel="noopener noreferrer" href="/documentation/subscriptions" class={selected == 'subscriptions' ? ruleselected: rulenotselected} >Subscriptions</a> 
+                <a rel="noopener noreferrer" href="/documentation/uikit" class={selected == 'uikit' ? ruleselected: rulenotselected} >UI Kit</a> 
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400 ">Multiplatform UI Kit</h2>
+            <div class="flex flex-col space-y-1">
+               <!--<a rel="noopener noreferrer" href="/documentation/theming" class={selected == 'theming' ? ruleselected: rulenotselected}>Theming</a>
+                <a rel="noopener noreferrer" href="/documentation/customization" class={selected == 'customization' ? ruleselected: rulenotselected}  text-center>Customization</a>
+                <a rel="noopener noreferrer" href="/documentation/components" class={selected == 'components' ? ruleselected: rulenotselected}>Components</a> 
+               -->
+               <a rel="noopener noreferrer" href="/documentation/containers" class={selected == 'containers' ? ruleselected: rulenotselected} >Containers</a>
+               <a rel="noopener noreferrer" href="/documentation/atoms" class={selected == 'atoms' ? ruleselected: rulenotselected} >Atoms</a> 
+               <a rel="noopener noreferrer" href="/documentation/molecules" class={selected == 'molecules' ? ruleselected: rulenotselected} >Molecules</a> 
+               <a rel="noopener noreferrer" href="/documentation/organisms" class={selected == 'organisms' ? ruleselected: rulenotselected} >Organisms</a> 
+               <a rel="noopener noreferrer" href="/documentation/screens" class={selected == 'screens' ? ruleselected: rulenotselected} >Screens</a> 
+            </div>
+        </div> 
+
+        <div class="space-y-2">
+            <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400 ">Misc</h2>
+            <div class="flex flex-col space-y-1">
+                <a rel="noopener noreferrer" href="/documentation/changelog" class={selected == 'changelog' ? ruleselected: rulenotselected}  text-center>Changelog</a>
+            </div>
+        </div>
+    </nav>
+</aside>

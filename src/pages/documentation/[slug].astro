@@ -1,0 +1,125 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import BlogLayout from "@layouts/BlogLayout.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import MySidebar from "@components/MySidebar.astro";
+import TableOfContents from "@components/RightSidebar/TableOfContents";
+import generateToc from "@utils/generateToc";
+import RightSidebar from "@components/RightSidebar/RightSidebar.astro";
+import MyRightSidebar from "@components/MyRightSidebar.astro";
+
+// Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const docEntries = await getCollection("docs");
+  return docEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get the entry directly from the prop on render
+const { entry } = Astro.props;
+const { Content } = await entry.render(); 
+
+export function getPreviousUrl() {
+    if (entry.slug == "installation") {
+        "installation"
+    } else if (entry.slug == "authentication") {
+        "installation"
+    } else if (entry.slug == "subscriptions") {
+        "authentication"
+    } else if (entry.slug == "theming") {
+        "subscription"
+    }  else {
+        "/"
+    }
+}
+ var prev = ""
+
+if (entry.slug == "installation") {
+    prev = "installation"
+    } else if (entry.slug == "authentication") {
+        prev = "installation"
+    } else if (entry.slug == "subscriptions") {
+        prev =  "authentication"
+    } else if (entry.slug == "theming") {
+        prev = "subscriptions"
+    } else if (entry.slug == "customization") {
+        prev = "theming"
+    } else if (entry.slug == "components") {
+        prev = "customization"
+    } 
+    
+    
+    
+    else {
+        prev =  "/"
+    }
+
+
+    
+ var next = ""
+
+if (entry.slug == "installation") {
+    next = "authentication"
+    } else if (entry.slug == "authentication") {
+        next = "subscriptions"
+    } else if (entry.slug == "subscriptions") {
+        next =  "theming"
+    } else if (entry.slug == "theming") {
+        next = "customization"
+    }  else if (entry.slug == "customization") {
+        next = "components"
+    } else {
+        next =  "/"
+    }
+
+
+const { content, githubEditUrl, headings } = Astro.props;
+const overview = "overview ok?";
+---
+
+<Layout title={entry.data.title} > 
+    <Container class="overflow-visible">  
+        
+        <div class="flex gap-4 mt-16 relative md:flex h-screen overflow-hidden">
+            <MySidebar selected={entry.slug} />  
+            <div class="w-screen flex-1  h-screen overflow-y-auto"> 
+                <main class="prose prose-lg">  
+                    <Sectionhead align="left">
+                        <Fragment slot="title">{entry.data.title}</Fragment>
+                        <Fragment slot="desc">{entry.data.description}</Fragment> 
+                    </Sectionhead> 
+                    <Content />
+                </main> 
+                <div class="flex gap-4 mt-16 mx-auto max-w-md">
+                    <div class="text-center mt-8">
+                        <a
+                        href={prev}
+                        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+                        >← Previous</a
+                        >
+                    </div> 
+            
+                    <div class="text-center mt-8">
+                        <a
+                        href={next}
+                        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+                        >Next →</a
+                        >
+                    </div> 
+                </div>
+            </div>
+            <MyRightSidebar selected={entry.slug} page={entry.slug}/>  
+        </div> 
+    </Container> 
+</Layout>
+ 
+ 
+<style>
+.max-w-screen-xl {
+    max-width: 1600px;
+} 
+</style> 
