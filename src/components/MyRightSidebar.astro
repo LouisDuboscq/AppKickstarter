@@ -20,6 +20,29 @@ interface Props {
 const { headings, currentPage } = Astro.props as Props;
 
 ---
+
+
+{page === "getting-started" &&
+    <aside class="w-full p-6 sm:w-60 dark:bg-gray-900 dark:text-gray-100 hidden md:block">
+        <nav class="space-y-8 text-sm">
+            <div class="space-y-2">
+                <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">On this page</h2>
+                <div class="flex flex-col space-y-1">
+                    <a rel="noopener noreferrer" href="/documentation/getting-started/#getting-started" class={selected == 'firebase-authentication' ? ruleselected: rulenotselected} >Getting started</a> 
+                    <a rel="noopener noreferrer" href="/documentation/getting-started/#start-a-new-project-on-github" class={selected == 'screens' ? ruleselected: rulenotselected} >Start a new project on Github</a>  
+                    <a rel="noopener noreferrer" href="/documentation/getting-started/#clone-it-into-your-ide" class={selected == 'custom-provider' ? ruleselected: rulenotselected} >Clone it into your ide</a>
+                    <a rel="noopener noreferrer" href="/documentation/getting-started/#run-the-setup-script" class={selected == 'custom-provider' ? ruleselected: rulenotselected} >Run the setup script</a>  
+                    <a rel="noopener noreferrer" href="/documentation/getting-started/#synchronize-and-run-the-app" class={selected == 'custom-provider' ? ruleselected: rulenotselected} >Synchronize and run the app</a>
+                    <a rel="noopener noreferrer" href="/documentation/getting-started/#need-help" class={selected == 'custom-provider' ? ruleselected: rulenotselected} >Need help?</a>
+                </div>
+            </div>  
+        </nav>
+    </aside>
+}
+
+
+
+
 {page === "firebase-support" &&
     <aside class="w-full p-6 sm:w-60 dark:bg-gray-900 dark:text-gray-100 hidden md:block sticky ">
         <nav class="space-y-8 text-sm">
