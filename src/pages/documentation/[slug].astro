@@ -62,19 +62,35 @@ if (entry.slug == "installation") {
     
  var next = ""
 
-if (entry.slug == "installation") {
+if (entry.slug == "getting-started") {
+    next = "installation"
+} else if (entry.slug == "installation") {
+    next = "onboarding"
+}  else if (entry.slug == "onboarding") {
+    next = "firebase-support"
+}  else if (entry.slug == "firebase-support") {
     next = "authentication"
-    } else if (entry.slug == "authentication") {
-        next = "subscriptions"
-    } else if (entry.slug == "subscriptions") {
-        next =  "theming"
-    } else if (entry.slug == "theming") {
-        next = "customization"
-    }  else if (entry.slug == "customization") {
-        next = "components"
-    } else {
-        next =  "/"
-    }
+} else if (entry.slug == "authentication") {
+    next = "offline-support"
+} else if (entry.slug == "offline-support") {
+    next = "subscriptions"
+} else if (entry.slug == "subscriptions") {
+    next =  "uikit"
+} else if (entry.slug == "uikit") {
+    next =  "containers"
+} else if (entry.slug == "containers") {
+    next =  "atoms"
+}  else if (entry.slug == "atoms") {
+    next =  "molecules"
+} else if (entry.slug == "molecules") {
+    next =  "organisms"
+} else if (entry.slug == "organisms") {
+    next =  "screens"
+} else if (entry.slug == "screens") {
+    next =  "changelog"
+} else {
+    next =  "/"
+}
 
 
 const { content, githubEditUrl, headings } = Astro.props;
