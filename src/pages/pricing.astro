@@ -10,16 +10,12 @@ const pricing = [
     idealFor: "Get the code and start building apps independently. Perfect if you're comfortable working on your own without additional resources or support.",
     price: "$149",
     popular: true,
-    features: [
-      "Access to the repository",
-      "Jetpack Compose UI Kit",
+    features: [ 
+      "UI Kit",
       "Onboarding",
       "Auth screens",
       "Paywall",
-      "Data storage", 
-      "Lifetime access",
-      "Unlimited apps", 
-      "Unlimited updates",
+      "Data storage",  
     ],
     button: {
       text: "Get Started",
@@ -72,7 +68,7 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc">Get lifetime access to our private Github team for updates, and join our Discord community for support and help as you build your app. Additionally, gain access to our library of courses, as well as the source code of multiple apps built with AppKickstarter.</Fragment>
+      <Fragment slot="desc">Get lifetime access to our private Github team. Join our Discord community for support, help and get additional resources to sharpen your skills.</Fragment>
     </Sectionhead> 
     <div class="grid md:grid-cols-3 gap-5 mx-auto max-w-4xl mt-12">
       {pricing.map((item) => <Pricing plan={item} />)}
