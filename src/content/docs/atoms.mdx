@@ -3,6 +3,108 @@ title: "Changelog"
 description: "Learn things you can share with iOS that you usually do in the Android platform"  
 --- 
 
-## hello h2 components
+## BackIcon
 
-bloabla here are the componenents
+A simple back icon to use in top of your screens 
+
+```kotlin
+fun BackIcon(navigateBack: () -> Unit)
+```
+
+Example : 
+```kotlin
+BackIcon {
+    navController.navigateUp()
+}
+```
+
+## BasicToggle
+
+A basic toggle with a good scale and KickstarterTheme applied.
+
+```kotlin
+fun BasicToggle(
+    checked: Boolean,
+    modifier: Modifier = Modifier,
+    onCheckedChange: (Boolean) -> Unit,
+)
+```
+
+Example : 
+```kotlin
+var checked by remember { mutableStateOf(false) }
+BasicToggle(checked) { checked = !checked }
+```
+
+## CircleImage
+
+A simple circle image with pre-built multiplatform image rendering, fetching, caching, etc built on top of [compose-imageloader](https://github.com/qdsfdhvh/compose-imageloader).
+
+```kotlin
+fun CircleImage(url: String, modifier: Modifier = Modifier)
+```
+
+Example : 
+```kotlin
+CircleImage(url)
+```
+
+
+## DefaultBadge
+
+A text with a nice rounded backgroud color. KickstarterTheme applied.
+
+```kotlin
+fun DefaultBadge(
+    text: String,
+    modifier: Modifier = Modifier,
+    backgroundColor: Color = KickstarterTheme.colors.sheetBackground,
+    textColor: Color =  KickstarterTheme.colors.textOnBackground,
+)
+```
+
+Example : 
+```kotlin
+DefaultBadge("Hello")
+```
+
+
+## Heading
+
+A text with a large font useful to display important informations such as screen titles or sections.
+
+```kotlin
+fun Heading(
+    text: String,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign? = null,
+    color: Color = KickstarterTheme.colors.textOnBackground
+)
+```
+
+Example : 
+```kotlin
+Heading("My title")
+```
+
+
+## IconWithBackgroundColor
+
+An icon with a background color.
+
+```kotlin
+fun IconWithBackgroundColor(
+    imageVector: ImageVector,
+    colorIcon: Color,
+    modifier: Modifier = Modifier,
+    innerPadding: Dp = 8.dp,
+    shape: Shape = CircleShape,
+    tintIcon: Color = Color.White,
+)
+```
+
+Example : 
+```kotlin
+IconWithBackgroundColor(Icons.Rounded.Home, Color.Blue)
+```
+
