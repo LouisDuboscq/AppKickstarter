@@ -1,8 +1,84 @@
 --- 
-title: "Support iOS with your Android app codebase"
-description: "Learn things you can share with iOS that you usually do in the Android platform"  
+title: "Installation of your project"
+description: "Learn how to set up environment variables, signing config, and APIs for the AppKickstarter mobile app template, including RevenueCat, OpenAI, Replicate, Logsnag, and Amplitude."  
 --- 
 
-## hello h2
+import Button from "@components/ui/button.astro";
 
-bloabla
+## Environment Variables
+
+AppKickstarter provides a secure file to store all the API keys and secrets for your project. 
+This file is declared on the gitignore by default, so it is not included in the template or your project's GitHub remote repository. 
+The file, called local.properties, is stored locally, which means that all the secrets are not accessible if someone tries to reverse engineer the app on the Play Store. 
+Your secrets are safe.
+
+To get started with AppKickstarter, you need to set up your own data.
+
+
+## Signing Configuration
+
+Your signing configurations are stored securely in the local.properties file by default. To customize your project and make it compile, you need to fill in your own parameters:
+
+
+````
+RELEASE_STORE_FILE=path/to/your/jks
+RELEASE_STORE_PASSWORD=your_store_password
+RELEASE_KEY_ALIAS=your_alias
+RELEASE_KEY_PASSWORD=your_key_password
+````
+
+## Apis
+
+AppKickstarter comes with handy support for multiple useful tools linked to an API. We believe that these tools are useful in most cases, but note that all of the below APIs are optional. You can take what you need and leave the others empty.
+
+### Subscriptions
+
+If your app supports in-app subscriptions, you need to write down your [RevenueCat](https://www.revenuecat.com/) API key: 
+
+```
+revenue_cat_api_key=your_api_key
+```
+[Learn more about Subscriptions in AppKickstarter](/documentation/subscriptions)
+ 
+### AI 
+
+AI is a trending topic right now, and we want to help you kickstart your next ideas. 
+There are a lot of things to discover, which is why we have pre-built the basic usage of an AI app for you. 
+
+#### OpenAI
+
+If your app supports AI features, such as ChatGPT, GPT3.5-turbo, GPT-4, etc., you need to write down your [OpenAI](https://openai.com/) API key:
+
+```
+openai_api_key=your_api_key
+```
+[Learn more about OpenAI in AppKickstarter](/documentation/ai#openai)
+
+#### ControlNet
+
+If you want to build features with [ControlNet](https://github.com/lllyasviel/ControlNet) and [Replicate](https://replicate.com/), you need to write down your API key:
+
+```
+replicate_api_key=your_api_key
+```
+
+[Learn more about Replicate and ControlNet in AppKickstarter](/documentation/ai#replicate)
+
+### Real-time Notifications and Analytics
+
+If you want to receive real-time notifications about the usage of your app by users, we support [Logsnag](https://logsnag.com/) for this. All you need to do is to write down your API key:
+
+```
+logsnag_api_key=your_api_key
+```
+
+[Learn more about Logsnag in AppKickstarter](/documentation/analytics#logsnag)
+
+There is a pre-built multi-platform code to call [Amplitude](https://amplitude.com). 
+If you want to use it, you simply need to write down your API key:
+
+```
+amplitude_api_key=your_api_key
+```
+
+[Learn more about Amplitude in AppKickstarter](/documentation/analytics#amplitude)
