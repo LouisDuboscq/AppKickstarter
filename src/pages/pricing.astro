@@ -7,7 +7,7 @@ import Pricing from "@components/pricing.astro";
 const pricing = [
   {
     name: "Developer",
-    idealFor: "Get the code and start building on your own",
+    idealFor: "Get the code and start building apps independently. Perfect if you're comfortable working on your own without additional resources or support.",
     price: "$149",
     popular: true,
     features: [
@@ -23,12 +23,12 @@ const pricing = [
     ],
     button: {
       text: "Get Started",
-      link: "https://appkickstarter.lemonsqueezy.com/checkout?cart=b87bdef1-cad7-4ffe-b89b-8bd20ab5ff0c",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout",
     },
   },
   {
-    name: "Developer Pro",
-    idealFor: "Get the code and access to the Pro discord",
+    name: "Ultimate Pro",
+    idealFor: "Perfect if you're serious about taking your app development skills to the next level.",
     price: "$349",/*{
       monthly: "$349",
       annual: "$16",
@@ -38,11 +38,13 @@ const pricing = [
     popular: false,
     features: [
       "Developer plan +",
-      "Access to Pro discord", 
+      "Pro discord server", 
+      "Access to courses",
+      "Other apps source code" 
     ],
     button: {
       text: "Get Started",
-      link: "https://appkickstarter.lemonsqueezy.com/checkout?cart=b87bdef1-cad7-4ffe-b89b-8bd20ab5ff0c",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout",
     },
   },
   {
@@ -70,7 +72,7 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc">Lifetime access to the private Github team for updates, access to Discord for help and support for building your app.</Fragment>
+      <Fragment slot="desc">Get lifetime access to our private Github team for updates, and join our Discord community for support and help as you build your app. Additionally, gain access to our library of courses, as well as the source code of multiple apps built with AppKickstarter.</Fragment>
     </Sectionhead> 
     <div class="grid md:grid-cols-3 gap-5 mx-auto max-w-4xl mt-12">
       {pricing.map((item) => <Pricing plan={item} />)}
