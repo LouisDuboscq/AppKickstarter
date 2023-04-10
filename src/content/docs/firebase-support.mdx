@@ -1,26 +1,18 @@
 --- 
-title: "Customization"
-description: "Learn things you can share with iOS that you usually do in the Android platform"  
+title: "Firebase support"
+description: "Learn how to use the AppKickstarter Firebase wrapper in a multi-platform project for authentication and data transfer objects management."  
 --- 
+
+This documentation outlines the usage of Firebase wrapper in a multi-platform project that supports both Android and iOS platforms. 
+The Firebase module is defined using Koin and provides a set of authentication functions through the KickstarterAuth interface, which can be called by both platforms. 
+Additionally, the KickstarterFirebaseFirestore class provides methods to perform CRUD operations on data transfer objects.
 
 ## Initialization
 
-Firebase is set up as the default initialization in AppKickstarter, but the project is designed to treat Firebase as an implementation detail, 
-allowing for the possibility of plugging in other backends like Supabase, Ktor, and others.
+Firebase is set up as the default initialization in AppKickstarter. However, the project is designed to allow for the possibility of plugging in other backends like Supabase, Ktor, and others.
 
-Firebase module is defined with Koin as this :
-
-```kotlin
-val firebaseModule = module {
-    single { Firebase.firestore }
-    single { Firebase.auth }
-    singleOf(::KickstarterFirebaseAuth).bind(KickstarterAuth::class)
-    singleOf(::KickstarterFirebaseFirestore).bind(KickstarterRemoteDB::class)
-}
-```
-
-And in the Application class of the Android project it is initialized with Koin and by calling firebase init function:
-
+To initialize Firebase in the Android project, Koin is used along with the initFirebase function:
+ 
 ```kotlin
 initFirebase(this)
 
@@ -35,9 +27,20 @@ initKoin {
 }
 ```
 
+The firebaseModule is defined as:
+
+```kotlin
+val firebaseModule = module {
+    single { Firebase.firestore }
+    single { Firebase.auth }
+    singleOf(::KickstarterFirebaseAuth).bind(KickstarterAuth::class)
+    singleOf(::KickstarterFirebaseFirestore).bind(KickstarterRemoteDB::class)
+}
+```
+ 
 ## Authentication
 
-The interface KickstarterAuth defines all the actions possible of the backend responsible of the authentication :
+The KickstarterAuth interface defines all the possible actions of the backend responsible for authentication. These actions include :
 
 ```kotlin
 suspend fun signout()
@@ -66,8 +69,33 @@ suspend fun createUserWithEmailAndPassword(email: String, password: String): Cur
 suspend fun signInWithEmailAndPassword(email: String, password: String): CurrentUser?
 ```
 
-## Media files
-
-
 ## Data transfer objects
 
+The KickstarterFirebaseFirestore class provides methods to perform CRUD operations on data transfer objects. 
+For example, the uploadPost(post: Post) function allows creating or updating a post. 
+It uses the PostDto class to handle data transfer objects. 
+The getAllPosts() function fetches all the posts from the Firestore database.
+
+```kotlin
+class KickstarterFirebaseFirestore(
+    private val firestore: FirebaseFirestore,
+    private val auth: KickstarterAuth,
+) : KickstarterRemoteDB {
+
+    override suspend fun uploadPost(post: Post): String {
+        val postDto = post.toDto() 
+        return if (postDto.remoteId == null) {
+            create(postDto) 
+        } else {
+            update(postDto) 
+        }
+    }
+
+    override suspend fun getAllPosts(): List<PostDto> {
+        return getAll("posts")
+            .map {
+                it.data(strategy = PostDto.serializer()).toPost()
+            }
+    }
+}
+```

@@ -3,14 +3,15 @@ title: "Authentication"
 description: "Learn things you can share with iOS that you usually do in the Android platform"  
 --- 
 
-AppKickstarter manages authentication and user management thanks to Firebase authentication. 
-We facilitates various user account management functions, including logging in, 
-signing up, resetting forgotten passwords (which are sent via email), and logging out (which navigates back to the login page).
+AppKickstarter simplifies authentication and user management using Firebase authentication, 
+providing a ready-to-use login and sign-up screen with various account management functions like logging in, signing up, resetting forgotten passwords (sent via email), 
+and logging out (navigating back to the login page). 
+Additionally, users can implement a custom login and sign-up logic while still using the pre-built UI by utilizing the LoginAndSignupScreen composable with customizable parameters.
 
 ## Firebase authentication
 
-We provide a ready to use login and sign up screen with Firebase provider. 
-All you need to do is display this composable and it just works.
+Our app offers a pre-built login and sign up screen with Firebase provider that is readily available for use. 
+Simply display the composable and it will function seamlessly.
 
 ```kotlin
 EmailPasswordFormFirebase(
@@ -30,7 +31,7 @@ EmailPasswordFormFirebase(
 
 ## Custom provider 
 
-If you want to have a custom implementation for the login and sign up logic but still enjoy the pre-built UI, you can do this :
+You can customize the login and sign up logic while still utilizing the pre-built UI by implementing the following code in Kotlin:
 
 ```kotlin
 var isSignUp by remember { mutableStateOf(false) }
@@ -51,6 +52,4 @@ LoginAndSignupScreen(
 )
 ```
 
-This way, you do what you want with the email and password.
-
-
+This allows you to manipulate the email and password according to your specific needs.

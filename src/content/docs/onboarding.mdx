@@ -6,6 +6,7 @@ description: "Learn on how to customize the onboarding experience in AppKickstar
 A well-designed onboarding process is crucial to maintain user engagement and motivation. Our high-quality onboarding system effectively showcases your app's key features and is customizable to meet your specific needs.
 
 Our onboarding process in AppKickstarter is demonstrated in this onboarding GIF:
+
 <p align="center">
     <img src="/images/onboarding.gif" alt="Onboarding screen in AppKickstarter"/> 
 </p>
@@ -19,24 +20,24 @@ Remember, the most challenging part is finding the right texts and Lottie files 
 All the items in the onboarding screen are defined in a list in the shared module's onboarding package. Here's an example:
 
 ```kotlin
-val allSwipeDatas = listOf(
+val onboardingItems = listOf(
     OnboardingSwipeUniquePageData( 
         titleText = "Launch ideas in no time",
         subtitleText = "with a battle-tested app template",
         buttonText = "Next",
-        lottie = "presence"
+        resId = "presence"
     ),
     OnboardingSwipeUniquePageData( 
         titleText = "Prioritize key features",
         subtitleText = "you don't need to start from scratch",
         buttonText = "Next",
-        lottie = "capture"
+        resId = "capture"
     ),
     OnboardingSwipeUniquePageData( 
         titleText = "Some crazy feature",
         subtitleText = "start now",
         buttonText = "Start",
-        lottie = "ai"
+        resId = "ai"
     ),
 ),
 ...
@@ -47,7 +48,8 @@ You can modify the title and subtitle text to meet your needs.
 Soon, you'll also be able to localize the texts in AppKickstarter. 
 For the resources, use an identifier such as "presence", "capture", or "ai". 
 This identifier maps to the appropriate resource for Android. 
-We've chosen this method since Lottie is currently not supported on iOS.
+We've chosen this method since Lottie is currently not supported on Compose for iOS. 
+For iOS images are displayed.
 
 ## Calling the Screen
 
