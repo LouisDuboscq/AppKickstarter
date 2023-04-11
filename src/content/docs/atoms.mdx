@@ -1,0 +1,281 @@
+--- 
+title: "Atoms"
+description: "Discover all the atoms components in AppKickstarter."  
+--- 
+
+The components below are sorted alphabetically.
+
+## BackIcon
+
+A simple back icon to use in top of your screens 
+
+```kotlin
+fun BackIcon(navigateBack: () -> Unit)
+```
+
+Example : 
+```kotlin
+BackIcon {
+    navController.navigateUp()
+}
+```
+
+## BasicToggle
+
+A basic toggle with a good scale and KickstarterTheme applied.
+
+```kotlin
+fun BasicToggle(
+    checked: Boolean,
+    modifier: Modifier = Modifier,
+    onCheckedChange: (Boolean) -> Unit,
+)
+```
+
+Example : 
+```kotlin
+var checked by remember { mutableStateOf(false) }
+BasicToggle(checked) { checked = !checked }
+```
+
+## CircleImage
+
+A simple circle image with pre-built multiplatform image rendering, fetching, caching, etc built on top of [compose-imageloader](https://github.com/qdsfdhvh/compose-imageloader).
+
+```kotlin
+fun CircleImage(url: String, modifier: Modifier = Modifier)
+```
+
+Example : 
+```kotlin
+CircleImage("https://i.pravatar.cc/150?u=a042581f4e29026704d")
+```
+
+
+## DefaultBadge
+
+A text with a nice rounded backgroud color. KickstarterTheme applied.
+
+```kotlin
+fun DefaultBadge(
+    text: String,
+    modifier: Modifier = Modifier,
+    backgroundColor: Color = KickstarterTheme.colors.sheetBackground,
+    textColor: Color =  KickstarterTheme.colors.textOnBackground,
+)
+```
+
+Example : 
+```kotlin
+DefaultBadge("Hello")
+```
+
+
+## Heading
+
+A text with a large font useful to display important informations such as screen titles or sections.
+
+```kotlin
+fun Heading(
+    text: String,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign? = null,
+    color: Color = KickstarterTheme.colors.textOnBackground
+)
+```
+
+Example : 
+```kotlin
+Heading("My title")
+```
+
+
+## IconWithBackgroundColor
+
+An icon with a background color.
+
+```kotlin
+fun IconWithBackgroundColor(
+    imageVector: ImageVector,
+    colorIcon: Color,
+    modifier: Modifier = Modifier,
+    innerPadding: Dp = 8.dp,
+    shape: Shape = CircleShape,
+    tintIcon: Color = Color.White,
+)
+```
+
+Example : 
+```kotlin
+IconWithBackgroundColor(Icons.Rounded.Home, Color.Blue)
+```
+
+
+## PressableButton
+
+A button with specific design and which reacts to press event. KickstarterTheme applied
+
+```kotlin
+fun PressableButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    pattern: ImageBitmap? = null
+)
+```
+
+Example : 
+```kotlin
+PressableButton("Press me") { 
+    // do something on click
+}
+```
+
+
+
+
+## PressableButton
+
+A simple button with KickstarterTheme applied
+
+```kotlin
+fun PrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier)
+```
+
+Example : 
+```kotlin
+PrimaryButton("Press me") { 
+    // do something on click
+}
+```
+
+
+
+## SimpleIcon
+
+A simple icon.
+
+
+```kotlin
+fun SimpleIcon(
+    imageVector: ImageVector,
+    modifier: Modifier = Modifier
+)
+```
+
+Example : 
+```kotlin
+SimpleIcon(Icons.Rounded.Home)  
+```
+
+
+
+
+## SimpleIconButton
+
+A simple icon button with badge supported.
+
+
+```kotlin
+fun SimpleIconButton(
+    imageVector: ImageVector,
+    modifier: Modifier = Modifier,
+    badge: String? = null,
+    onClick: () -> Unit,
+)
+```
+
+Example 1 : 
+```kotlin
+SimpleIconButton(Icons.Rounded.Home) {
+    // do something on click
+}
+```
+
+Exemple 2 : 
+```kotlin
+SimpleIconButton(Icons.Rounded.Home, badge = "new") {
+    // do something on click
+}
+```
+
+
+
+## SimpleLabel
+
+A simple label with KickstarterTheme applied.
+
+
+```kotlin
+fun SimpleLabel(
+    text: String,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign? = null,
+    color: Color = KickstarterTheme.colors.textOnBackground
+)
+```
+
+Example : 
+```kotlin
+SimpleLabel("Hello")
+```
+
+
+## SquareImage
+
+A simple image that works for multiple platforms.
+
+
+```kotlin
+fun SquareImage(url: String, modifier: Modifier = Modifier)
+```
+
+Example : 
+```kotlin
+SquareImage("https://i.pravatar.cc/150?u=a042581f4e29026704d")
+```
+
+
+
+## Subtitle
+
+A subtitle with KickstarterTheme applied.
+
+```kotlin
+fun Subtitle(
+    text: String,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign? = null,
+    color: Color = KickstarterTheme.colors.subtitle
+)
+```
+
+Example : 
+```kotlin
+Subtitle("11/04/2023")
+```
+
+
+## Subtitle
+
+A simple transparent button.
+
+```kotlin
+fun TransparentButton(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color = KickstarterTheme.colors.textOnBackground,
+    onClick: () -> Unit
+)
+```
+
+Example : 
+```kotlin
+TransparentButton("Click me") {
+    // do something on click 
+}
+```
+
+
+

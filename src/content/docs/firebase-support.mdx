@@ -1,0 +1,101 @@
+--- 
+title: "Firebase support"
+description: "Learn how to use the AppKickstarter Firebase wrapper in a multi-platform project for authentication and data transfer objects management."  
+--- 
+
+This documentation outlines the usage of Firebase wrapper in a multi-platform project that supports both Android and iOS platforms. 
+The Firebase module is defined using Koin and provides a set of authentication functions through the KickstarterAuth interface, which can be called by both platforms. 
+Additionally, the KickstarterFirebaseFirestore class provides methods to perform CRUD operations on data transfer objects.
+
+## Initialization
+
+Firebase is set up as the default initialization in AppKickstarter. However, the project is designed to allow for the possibility of plugging in other backends like Supabase, Ktor, and others.
+
+To initialize Firebase in the Android project, Koin is used along with the initFirebase function:
+ 
+```kotlin
+initFirebase(this)
+
+initKoin {
+    modules(
+        listOf(
+            module { androidContext(this@KickstarterApplication) },
+            androidAppModule,
+            firebaseModule
+        )
+    )
+}
+```
+
+The firebaseModule is defined as:
+
+```kotlin
+val firebaseModule = module {
+    single { Firebase.firestore }
+    single { Firebase.auth }
+    singleOf(::KickstarterFirebaseAuth).bind(KickstarterAuth::class)
+    singleOf(::KickstarterFirebaseFirestore).bind(KickstarterRemoteDB::class)
+}
+```
+ 
+## Authentication
+
+The KickstarterAuth interface defines all the possible actions of the backend responsible for authentication. These actions include :
+
+```kotlin
+suspend fun signout()
+suspend fun getCurrentUser(): CurrentUser?
+suspend fun observeAuthStateChanged(): Flow<CurrentUser?>
+suspend fun observeSessionStatus(): Flow<SessionStatus>
+suspend fun signInAnonymously(): CurrentUser?
+suspend fun resetPassword(email: String)
+suspend fun updateProfile(displayName: String?, photoUrl: String?)
+
+@Throws(
+    BadEmailFormatException::class,
+    PasswordInvalidException::class,
+    EmptyOrNullValueException::class,
+    EmailAlreadyUsedException::class,
+    CancellationException::class
+)
+suspend fun createUserWithEmailAndPassword(email: String, password: String): CurrentUser?
+
+@Throws(
+    BadEmailFormatException::class,
+    PasswordInvalidException::class,
+    EmptyOrNullValueException::class,
+    CancellationException::class
+)
+suspend fun signInWithEmailAndPassword(email: String, password: String): CurrentUser?
+```
+
+## Data transfer objects
+
+The KickstarterFirebaseFirestore class provides methods to perform CRUD operations on data transfer objects. 
+For example, the uploadPost(post: Post) function allows creating or updating a post. 
+It uses the PostDto class to handle data transfer objects. 
+The getAllPosts() function fetches all the posts from the Firestore database.
+
+```kotlin
+class KickstarterFirebaseFirestore(
+    private val firestore: FirebaseFirestore,
+    private val auth: KickstarterAuth,
+) : KickstarterRemoteDB {
+
+    override suspend fun uploadPost(post: Post): String {
+        val postDto = post.toDto() 
+        return if (postDto.remoteId == null) {
+            create(postDto) 
+        } else {
+            update(postDto) 
+        }
+    }
+
+    override suspend fun getAllPosts(): List<PostDto> {
+        return getAll("posts")
+            .map {
+                it.data(strategy = PostDto.serializer()).toPost()
+            }
+    }
+}
+```

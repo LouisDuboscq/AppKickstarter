@@ -1,0 +1,76 @@
+--- 
+title: "Onboarding"
+description: "Learn on how to customize the onboarding experience in AppKickstarter by changing the text and resources, as well as mapping resource identifiers to the corresponding R.raw files in the Android app."  
+--- 
+ 
+A well-designed onboarding process is crucial to maintain user engagement and motivation. Our high-quality onboarding system effectively showcases your app's key features and is customizable to meet your specific needs.
+
+Our onboarding process in AppKickstarter is demonstrated in this onboarding GIF:
+
+<p align="center">
+    <img src="/images/onboarding.gif" alt="Onboarding screen in AppKickstarter"/> 
+</p>
+
+To personalize your onboarding experience, you can change the texts and resources. Simply modify the texts in the shared module's onboarding file and add your Lottie files to the R.raw folder in the androidApp module. Finally, link each onboarding item to your R.raw files in the MainScreen on the androidApp module.
+
+Remember, the most challenging part is finding the right texts and Lottie files for your onboarding.
+
+## Defining Items
+
+All the items in the onboarding screen are defined in a list in the shared module's onboarding package. Here's an example:
+
+```kotlin
+val onboardingItems = listOf(
+    OnboardingSwipeUniquePageData( 
+        titleText = "Launch ideas in no time",
+        subtitleText = "with a battle-tested app template",
+        buttonText = "Next",
+        resId = "presence"
+    ),
+    OnboardingSwipeUniquePageData( 
+        titleText = "Prioritize key features",
+        subtitleText = "you don't need to start from scratch",
+        buttonText = "Next",
+        resId = "capture"
+    ),
+    OnboardingSwipeUniquePageData( 
+        titleText = "Some crazy feature",
+        subtitleText = "start now",
+        buttonText = "Start",
+        resId = "ai"
+    ),
+),
+...
+)
+```
+
+You can modify the title and subtitle text to meet your needs. 
+Soon, you'll also be able to localize the texts in AppKickstarter. 
+For the resources, use an identifier such as "presence", "capture", or "ai". 
+This identifier maps to the appropriate resource for Android. 
+We've chosen this method since Lottie is currently not supported on Compose for iOS. 
+For iOS images are displayed.
+
+## Calling the Screen
+
+When you call the onboardingScreen in the androidApp module, provide the ID of the Lottie file (R.raw.your_file):
+
+```kotlin
+@Composable
+fun OnboardingSwipeScreenAndroid(
+    headerContent: @Composable (String) -> Unit,
+    requestContinue: () -> Unit
+)
+```
+
+You don't have to modify the lambda parameter for requestContinue since AppKickstarter saves the value indicating that the user has already seen the onboarding in offline storage and won't display it again.
+The last step is to map the resource identifier to your R.raw file (your Lottie file), like so:
+
+```kotlin
+val resId: Int = when (it) {
+    "ai" -> R.raw.ai
+    "presence" -> R.raw.social_network
+    "schedule" -> R.raw.schedule
+    else -> throw IllegalAccessException()
+}
+```

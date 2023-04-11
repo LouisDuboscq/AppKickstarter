@@ -1,0 +1,162 @@
+--- 
+title: "Support iOS with your Android app codebase"
+description: "Learn things you can share with iOS that you usually do in the Android platform"  
+--- 
+
+The components below are sorted alphabetically.
+
+## AvatarWithIcon
+
+An avatar with an icon.
+
+```kotlin
+fun AvatarWithIcon(
+    url: String,
+    imageVector: ImageVector,
+    iconBackgroundColor: Color,
+    tintIcon: Color,
+    modifier: Modifier = Modifier,
+)
+```
+
+Example : 
+```kotlin
+AvatarWithIcon("https://i.pravatar.cc/150?u=a042581f4e29026704d", Icons.Rounded.TrendUp)
+```
+
+
+
+
+## FeedItemWithAvatar
+
+An item in a list which displays a feedItemData (url, name, text, date).
+
+```kotlin
+fun FeedItemWithAvatar(
+    feedItemData: FeedItemWithAvatarData,
+    modifier: Modifier = Modifier
+)
+```
+
+Example : 
+```kotlin
+val item = FeedItemWithAvatarData(
+    "https://i.pravatar.cc/150?u=a042581f4e29026704d", 
+    "Mary", 
+    "joined as CMO",
+    "11/04/2023"
+)
+FeedItemWithAvatar(item)
+```
+
+
+ 
+ 
+
+## FeedItemWithIcon
+
+An item in a list which displays a SimpleFeedItemData (imageVector, colorIcon, annotatedString, date).
+
+```kotlin
+fun FeedItemWithIcon(
+    simpleFeedItemData: SimpleFeedItemData,
+    modifier: Modifier = Modifier
+)
+```
+
+Example : 
+```kotlin
+val simpleFeedItemData = SimpleFeedItemData(
+    imageVector = Icons.Rounded.Person,
+    colorIcon = Color(0XFFd89f91),
+    annotatedString = buildAnnotatedString {
+        append("Applied to ")
+        withStyle(
+            SpanStyle(fontWeight = FontWeight.ExtraBold)
+        ) {
+            append("Front End Developer")
+        }
+    },
+    date = "Sep 20"
+)
+FeedItemWithIcon(
+    simpleFeedItemData = simpleFeedItemData,
+    modifier = centerHorizontallyModifier.padding(horizontal = 16.dp),
+)
+```
+
+
+ 
+ 
+
+##  LoadingPrimaryButton
+
+An loading button that displays a CircularProgressIndicator inside and which is disabled. 
+The style is same as PrimaryButton but with some variation as it is disabled.
+
+```kotlin 
+fun LoadingPrimaryButton(text: String, modifier: Modifier)
+```
+
+Example : 
+```kotlin 
+LoadingPrimaryButton("Request in progress")
+```
+
+
+
+
+##  TextFieldWithHint
+
+An enhanced edit text with a label above. 
+
+```kotlin 
+fun TextFieldWithHint(
+    value: MutableState<String>,
+    modifier: Modifier = Modifier,
+    placeholder: String,
+    label: String,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions(),
+    password: Boolean = false,
+)
+```
+
+Example : 
+```kotlin 
+val text = remember { mutableStateOf("") }
+TextFieldWithHint(text, placeholder = "Louis", label = "Enter your name")
+```
+
+
+
+
+
+##  ToggleWithLabel
+
+An simple toggle with a label at right.
+
+```kotlin 
+fun ToggleWithLabel(
+    text: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier
+)
+```
+
+Example : 
+```kotlin  
+var checked by remember { mutableStateOf(true) }
+ToggleWithLabel(
+    "Stay logged in",
+    checked,
+    { checked = !checked },
+    modifier = centerHorizontallyModifier
+)
+```
+
+
+
+
+ 

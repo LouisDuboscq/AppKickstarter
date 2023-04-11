@@ -1,0 +1,126 @@
+--- 
+title: "Support iOS with your Android app codebase"
+description: "Learn things you can share with iOS that you usually do in the Android platform"  
+--- 
+
+
+## KickstarterCard
+
+An icon with a background color.
+
+```kotlin
+ fun KickstarterCard(onClick: () -> Unit, content: @Composable ColumnScope.() -> Unit)
+```
+
+Example : 
+```kotlin
+KickstarterCard(onClick = {
+    // do something on click
+}) {
+    SimpleLabel("Super item")
+    Subtitle("11/04/2023")
+}
+```
+
+
+
+## KickstarterModalBottomSheetLayout
+
+A default modal bottom sheet layout which displays a screen in back layer and 
+a list of ItemSheetContentData in front layer when bottomState is in show mode.
+
+```kotlin
+fun KickstarterModalBottomSheetLayout(
+    bottomState: ModalBottomSheetState,
+    sheetData: List<ItemSheetContentData>,
+    content: @Composable () -> Unit,
+)
+```
+
+Example : 
+```kotlin
+val bottomStateScope = rememberCoroutineScope()
+val bottomState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+val sheetData = listOf(
+    ItemSheetContentData(
+        imageVector = Icons.Rounded.Edit,
+        text = "Edit post",
+        onClick = { ... }
+    ),
+    ItemSheetContentData(
+        imageVector = Icons.Rounded.Delete,
+        text = "Delete post",
+        onClick = { ... }
+    ),
+    ItemSheetContentData(
+        imageVector = Icons.Rounded.Visibility,
+        text = "See post",
+        onClick = { ... }
+    ),
+    ItemSheetContentData(
+        imageVector = Icons.Rounded.Check,
+        text = "Set post as done",
+        onClick = { ... }
+    ),
+
+    ItemSheetContentData(
+        imageVector = Icons.Rounded.ContentCopy,
+        text = "Copy post",
+        onClick = { ... }
+    )
+)
+KickstarterModalBottomSheetLayout(bottomState, sheetData) {
+    TransparentButton("Open modal") { bottomStateScope.launch { bottomState.show() } }
+}
+```
+
+
+
+
+
+
+
+## KickstarterScaffold
+
+A default scaffold which displays a simple top app bar, supports back navigation, 
+supports paddingValues and displays your content by default in the center. 
+You can also change verticalArrangement to display your content at the top.
+Also you can pass actions which is a row layout displayed in topAppBar at the end, useful to display button actions
+
+```kotlin
+fun KickstarterScaffold(
+    title: String? = null,
+    navigateBack: (() -> Unit)? = null,
+    actions: (@Composable RowScope.() -> Unit)? = null,
+    verticalArrangement: Arrangement.Vertical = Arrangement.Center,
+    content: @Composable ColumnScope.() -> Unit
+)
+```
+
+Example 1 (detail post with top app bar, title, back navigation and three dots action button): 
+```kotlin
+KickstarterScaffold(
+    title = "Detail post", 
+    navigateBack = { navController.navigateUp() }, 
+    actions = {
+        SimpleActionButton(Icons.Rounded.MoreVert) {
+            // do something on click the three dots button
+        }
+    }
+) {
+    SimpleLabel("Content at center")
+}
+```
+
+
+Example 2 (Full screen layout without top app bar and content at top): 
+```kotlin
+KickstarterScaffold(
+    verticalArrangement = Arrangement.Top
+) {
+    Heading("Hello customer", modifier = Modifier.padding(top = 32.dp, start = 32.dp))
+    SimpleLabel("Welcome to AppKickstarter")
+}
+```
+
+

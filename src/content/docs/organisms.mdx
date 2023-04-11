@@ -1,0 +1,207 @@
+--- 
+title: "Support iOS with your Android app codebase"
+description: "Learn things you can share with iOS that you usually do in the Android platform"  
+--- 
+
+The components below are sorted alphabetically.
+
+## ClickableSetting
+
+A clicable item with a title, a subtitle and a icon
+
+```kotlin
+fun ClickableSetting(
+    imageVector: ImageVector,
+    title: String,
+    subtitle: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+)
+```
+
+Example : 
+```kotlin
+ClickableSettingAndroid(
+    title = "Account settings",
+    subtitle = "Personal informations",
+    modifier = Modifier.padding(horizontal = 16.dp),
+    imageVector = Icons.Rounded.Person,
+    onClick = { ... }
+)
+```
+
+
+
+## EmailPasswordForm
+
+An email password form (two TextFieldWithHint and a PressableButton).
+
+```kotlin
+fun EmailPasswordForm(
+    modifier: Modifier = Modifier,
+    emailLabel: String = "Email",
+    passwordLabel: String = "Password",
+    buttonLabel: String = "Login",
+    onDone: (String, String) -> Unit
+)
+```
+
+Example : 
+```kotlin
+ var e by remember { mutableStateOf("") }
+var p by remember { mutableStateOf("") }
+EmailPasswordForm(
+    onDone = { email, password ->
+        e = email
+        p = password
+    },
+    modifier = centerHorizontallyModifier,
+)
+```
+
+
+
+## FeedStackWithAvatar
+
+An email password form (two TextFieldWithHint and a PressableButton).
+
+```kotlin
+fun FeedStackWithAvatar(
+    feedItems: List<FeedItemWithAvatarData>,
+    modifier: Modifier = Modifier
+)
+```
+
+Example : 
+ 
+```kotlin 
+val item1 = FeedItemWithAvatarData(
+    avatarUrl = "https://i.pravatar.cc/150?u=a042584f4e29026704b",
+    date = "1h",
+    text = "Sent a message",
+    name = "François"
+)
+val item2 = FeedItemWithAvatarData(
+    avatarUrl = "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+    date = "4h",
+    text = "Sent a message",
+    name = "Michellee"
+)
+val item3 = FeedItemWithAvatarData(
+    avatarUrl = "https://i.pravatar.cc/150?u=a042581f4e29026704f",
+    date = "13h",
+    text = "Sent a message",
+    name = "Elisabeth"
+) 
+FeedStackWithAvatar(listOf(item1, item2, item3) )
+```
+
+
+## KickstarterTopAppBar
+
+A simple top app bar .
+
+```kotlin
+fun KickstarterTopAppBar(
+    title: String,
+    navigateBack: () -> Unit,
+    actions: (@Composable RowScope.() -> Unit)? = null
+)
+```
+
+Example : 
+ 
+```kotlin 
+KickstarterTopAppBar(
+    "Detail post", 
+    navigateBack = { navController.navigateUp() }, 
+    actions = { 
+        SimpleIconButton(Icons.Rounded.MoreVert) {}
+    }
+)
+```
+
+
+
+
+## SimpleFeedWithIcons
+
+A simple feed item with icons.
+
+```kotlin
+fun SimpleFeedWithIcons(
+    feedItems: List<SimpleFeedItemData>,
+    modifier: Modifier = Modifier
+)
+```
+
+Example : 
+ 
+```kotlin 
+
+val simpleFeedItemData1 = SimpleFeedItemData(
+    imageVector = Icons.Rounded.Person,
+    colorIcon = Color(0XFFd89f91),
+    annotatedString = buildAnnotatedString {
+        withStyle(
+            SpanStyle(fontWeight = FontWeight.ExtraBold)
+        ) {
+            append("Jonathan Snyder ")
+        }
+        append("just signed up")
+    },
+    date = "Sep 20"
+)
+val simpleFeedItemData2 = SimpleFeedItemData(
+    imageVector = Icons.Rounded.Lock,
+    colorIcon = Color.Blue,
+    annotatedString = buildAnnotatedString {
+        append("Access locked for ")
+        withStyle(
+            SpanStyle(fontWeight = FontWeight.ExtraBold)
+        ) {
+            append("Samantha Gray")
+        }
+    },
+    date = "Sep 22"
+)  
+SimpleFeedWithIcons(
+    listOf(
+        simpleFeedItemData1,
+        simpleFeedItemData2, 
+    )
+)
+```
+
+
+
+
+## ToggleSetting
+
+A simple toggleable item with title, icon and cta (toggle).
+
+```kotlin 
+fun ToggleSetting(
+    imageVector: ImageVector,
+    title: String,
+    subtitle: String,
+    modifier: Modifier = Modifier,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
+)
+
+```
+
+Example : 
+ 
+```kotlin 
+ToggleSetting(
+    title = "Daily reminder notifications",
+    subtitle = "Reminders are ${if (remindersChecked) "enabled" else "disabled"}",
+    checked = remindersChecked,
+    onCheckedChange = { remindersChecked = !remindersChecked },
+    modifier = Modifier.padding(horizontal = 16.dp),
+    imageVector = Icons.Rounded.Alarm
+)
+```
+

@@ -1,0 +1,36 @@
+--- 
+title: "Customization"
+description: "Learn things you can share with iOS that you usually do in the Android platform"  
+--- 
+
+The components below are sorted alphabetically.
+
+## KickstarterPaywall
+
+A enhanced paywall screen where you just have to setup your own header. 
+The footer is already pre-built with all the plans in parameters.
+
+```kotlin  
+fun KickstarterPaywall(
+    plans: List<UIBillingPlan>,
+    onClickAlreadyPurchased: () -> Unit,
+    onClickClose: () -> Unit,
+    onClickContinue: (UIBillingPlan) -> Unit,
+    onClickExplanation: () -> Unit,
+    header: @Composable () -> Unit,
+)
+```
+
+Example : 
+ 
+```kotlin 
+KickstarterPaywallAndroid(
+    plans = revenueCatItems.toUIBillingPlans(),
+    onClickAlreadyPurchased = ::restorePurchases,
+    onClickClose = ::closePaywall,
+    onClickContinue = ::onClickContinue,
+    onClickExplanation = {},
+    header = { SwipeAllFeatures() }
+)
+```
+
