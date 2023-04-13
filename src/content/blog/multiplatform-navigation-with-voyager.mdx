@@ -1,0 +1,223 @@
+---
+draft: false
+title: "Voyager: The Navigation Library for Kotlin Multiplatform and Compose Multiplatform"
+snippet: "Learn why Voyager is an excellent tool for developing cross-platform apps"
+image: {
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    alt: "full stack web development"
+}
+publishDate: "2023-04-13"
+category: "Library"
+author: "Louis Duboscq"
+tags: [voyager, compose-multiplatform]
+--- 
+  
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+
+
+## Introduction
+
+Voyager is a new navigation library built specifically for Compose multiplatform, which is designed to make navigation in Compose-based apps simpler and more intuitive. 
+
+It offers a composable API that allows developers to create screens with minimal effort, and provides an easy-to-use navigation [stack that supports push, pop, replace](https://voyager.adriel.cafe/stack-api#snapshotstatestack), and other common navigation operations. 
+
+With Voyager, developers can build complex, multi-screen apps with ease, and can take advantage of Compose's powerful tooling and state management capabilities to create responsive and performant UIs. 
+
+## Why it's important for Compose multiplatform applications
+
+Voyager offers a unified approach to navigation in a multiplatform Compose project. 
+
+By using Voyager in the shared module of the app, there's no need to duplicate the navigation implementation for each platform, reducing the development effort and improving the code maintainability. 
+
+Additionally, Voyager offers seamless integration with Compose's lifecycle and state management, making it a powerful and efficient solution for multiplatform navigation in Jetpack Compose.
+
+## Basic setup of Voyager
+
+In your MainActivity (or any other activity that uses Jetpack Compose), use the Navigator composable to set up your app's navigation:
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            Navigator(HomeScreen)
+        }
+    }
+}
+```
+
+Use the push method of the Navigator instance to navigate to a new screen. Here is an example of how you can navigate from the HomeScreen to the DetailScreen:
+
+
+```kotlin
+data class DetailScreen(private val itemId: Int) : Screen {
+    @Composable
+    override fun Content() {
+        // Your detail screen content goes here
+    }
+}
+
+class HomeScreen : Screen {
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.current
+
+        Button(onClick = { navigator.push(DetailScreen(itemId = 123)) }) {
+            Text("View details")
+        }
+    }
+}
+```
+
+This code sets up the Navigator with the HomeScreen as the initial screen. 
+The push method is used to navigate to the DetailScreen when the user taps the "View details" button. 
+The LocalNavigator is used to get a reference to the current navigator instance.
+
+## Screen models, state management, coroutine and Koin integration
+
+State management is a crucial part of any mobile app. 
+Voyager's StateScreenModel is a helpful tool for managing screen state and updating the UI based on changes to that state. 
+The StateScreenModel class extends the ScreenModel interface and provides a mutable MutableState property that can be used to hold and update the current state of the screen.
+
+To use the StateScreenModel in a Voyager screen, you can define a sealed class that represents the possible states for your screen. 
+For example:
+
+```kotlin
+sealed class PersonScreenState {
+    object Init: PersonScreenState()
+    object Loading : PersonScreenState()
+    data class Content(val person: Person) : PersonScreenState()
+}
+```
+Then, define a StateScreenModel that takes the initial state as a parameter:
+
+```kotlin
+class PersonDetailScreenModel(
+    private val repository: PersonRepository
+) : StateScreenModel<MyScreenState>(initialState) {
+ 
+    fun getPerson(id: String) {
+        coroutineScope.launch {
+            mutableState.value = State.Loading
+            mutableState.value = State.Result(person = getPerson(id))
+        } 
+    }
+}
+```
+
+> One of the benefits of using Voyager's StateScreenModel is the reduction in code required for state management. 
+> 
+> Since StateScreenModel integrates a mutable state, there's no need to manually define a public StateFlow for the state and a private mutableStateFlow for the same state. This saves developers from writing a lot of boilerplate code and reduces the likelihood of errors.
+
+
+### Coroutines integration 
+
+As you can see in this code, Voyager integrates seamlessly with coroutines.
+
+It makes it easy to manage asynchronous operations within screen models. 
+
+Screen models in Voyager come with a coroutineScope property that allows you to launch coroutines and ensure they are properly cancelled when the screen model is disposed. 
+
+The `getPerson` function launches a coroutine using `coroutineScope.launch`. 
+This allows you to perform asynchronous operations such as network requests, database queries, and other time-consuming tasks without blocking the UI thread.
+
+
+### Integration of dependency injection with Koin
+
+You can then use this StateScreenModel in your screen and update the state as needed, which will automatically trigger a recomposition of the UI.
+
+In your screen, you can then inject the screen model using the getScreenModel() function from the koin voyager library. 
+Here is an example:
+
+```kotlin
+class PersonDetailScreen(val id: String) : Screen {
+
+    @Composable
+    override fun Content() {
+        val screenModel = getScreenModel<PersonDetailScreenModel>() { parametersOf(id) }
+        val state by screenModel.state.collectAsState()
+
+        when (state) {
+            is State.Loading -> LoadingContent()
+            is State.Result -> PersonContent(state.post)
+        }
+    }
+}
+```
+
+Voyager integrates well with the Koin dependency injection framework.
+It allows for easy management and injection of dependencies into screen models. 
+To use Koin with Voyager, you will need to include the Koin dependency in your project and define your Koin modules.
+
+To define a Koin module for a screen model, you can use the factory component and provide a lambda that returns an instance of the screen model. Here is an example:
+
+```kotlin
+val homeModule = module {
+    factory { HomeScreenModel() }
+}
+```
+  
+## Transition
+
+Voyager comes with a built-in transition mechanism that allows you to create smooth transitions between screens. 
+
+To use the transition mechanism, you can pass a Transition instance to the Navigator composable. 
+
+The Transition instance defines how the transition should be animated. 
+
+For example, the following code shows how to use the SlideTransition to animate the transition between screens:
+
+
+```kotlin
+setContent {
+    Navigator(HomeScreen) { navigator ->
+        SlideTransition(navigator)
+    }
+}
+```
+
+In this example, the SlideTransition is used to animate the transition between screens. 
+The SlideTransition takes the navigator object as an argument, which is used to get the current screen and the previous screen. 
+The SlideTransition then animates the transition between these screens by sliding the new screen in from the right.
+
+There are several other built-in transitions available in Voyager, such as the FadeTransition and the ScaleTransition. 
+You can also create your own custom transitions by implementing the Transition interface.
+
+## Why we love Voyager
+
+At AppKickstarter, we love using Voyager because it is an efficient solution for implementing navigation in our Kotlin Multiplatform projects. 
+Voyager solves the problem of duplicate navigation code in our Android and iOS projects by providing a shared navigation module. 
+
+Additionally, its integration with popular Kotlin tools such as Koin and Coroutines makes it easy to manage dependencies and asynchronous tasks.
+
+## Open Source template with Voyager
+
+We offer [a free and open source template](https://github.com/AppKickstarter/StarterOS) for building multiplatform apps using Compose multiplatform and Voyager. 
+
+Our template includes everything you need to get started, from setting up Voyager to defining screens and injecting dependencies using Koin.
+
+## Upgrade Your Cross-Platform App Development with AppKickstarter
+
+For those looking for additional features and dedicated support, we also offer a premium version called AppKickstarter. 
+
+With AppKickstarter, you'll have access to features such as authentication with Firebase, data storage with Firebase and SqlDelight, onboarding screens, and payment integration with RevenueCat. 
+
+Our team is dedicated to providing you with the support you need to build the best possible cross-platform app.
+
+If you're interested in learning more about AppKickstarter and how it can help you take your project to the next level, please visit our website to learn more and purchase your license today. 
+
+<div class="mt-6 flex flex-col sm:flex-row gap-3"  align="center">
+    <Link  
+        href="https://appkickstarter.com" 
+        class="flex gap-3 items-center "
+        rel="noopener"
+    >
+        <Icon class="text-white w-5 h-5" name="bx:bxs-rocket" />
+        Upgrade with AppKickstarter
+    </Link>
+</div> 
+
+We believe that AppKickstarter is the ultimate tool for building high-quality cross-platform apps, and we're confident that you'll love using it as much as we do.
+
+  
