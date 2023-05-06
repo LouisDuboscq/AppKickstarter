@@ -95,13 +95,13 @@ fun KickstarterScaffold(
 )
 ```
 
-Example 1 (detail post with top app bar, title, back navigation and three dots action button): 
+Example of a detail post screen with top app bar, title, back navigation and three dots action button: 
 ```kotlin
 KickstarterScaffold(
-    title = "Detail post", 
-    navigateBack = { navController.navigateUp() }, 
+    title = "Detail post",
+    navigateBack = {   },
     actions = {
-        SimpleActionButton(Icons.Rounded.MoreVert) {
+        SimpleIconButton(Icons.Rounded.MoreVert) {
             // do something on click the three dots button
         }
     }
@@ -110,15 +110,6 @@ KickstarterScaffold(
 }
 ```
 
+![](/images/kickstarterscaffold1.png)
 
-Example 2 (Full screen layout without top app bar and content at top): 
-```kotlin
-KickstarterScaffold(
-    verticalArrangement = Arrangement.Top
-) {
-    Heading("Hello customer", modifier = Modifier.padding(top = 32.dp, start = 32.dp))
-    SimpleLabel("Welcome to AppKickstarter")
-}
-```
-
-
+ 
