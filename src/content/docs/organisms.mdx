@@ -2,36 +2,7 @@
 title: "Organisms in AppKickstarter"
 description: "Discover the organisms components and how to use them"  
 --- 
-
-The components below are sorted alphabetically.
-
-## ClickableSetting
-
-A clicable item with a title, a subtitle and a icon
-
-```kotlin
-fun ClickableSetting(
-    imageVector: ImageVector,
-    title: String,
-    subtitle: String,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
-)
-```
-
-Example : 
-```kotlin
-ClickableSettingAndroid(
-    title = "Account settings",
-    subtitle = "Personal informations",
-    modifier = Modifier.padding(horizontal = 16.dp),
-    imageVector = Icons.Rounded.Person,
-    onClick = { ... }
-)
-```
-
-
-
+ 
 ## EmailPasswordForm
 
 An email password form (two TextFieldWithHint and a PressableButton).
@@ -48,7 +19,7 @@ fun EmailPasswordForm(
 
 Example : 
 ```kotlin
- var e by remember { mutableStateOf("") }
+var e by remember { mutableStateOf("") }
 var p by remember { mutableStateOf("") }
 EmailPasswordForm(
     onDone = { email, password ->
@@ -59,7 +30,7 @@ EmailPasswordForm(
 )
 ```
 
-
+![](/images/EmailPasswordForm.png)
 
 ## FeedStackWithAvatar
 
@@ -96,6 +67,7 @@ val item3 = FeedItemWithAvatarData(
 FeedStackWithAvatar(listOf(item1, item2, item3) )
 ```
 
+![](/images/FeedStackWithAvatar.png)
 
 ## KickstarterTopAppBar
 
@@ -173,6 +145,7 @@ SimpleFeedWithIcons(
 )
 ```
 
+![](/images/SimpleFeedWithIcons.png)
 
 
 
@@ -195,6 +168,7 @@ fun ToggleSetting(
 Example : 
  
 ```kotlin 
+var remindersChecked by remember { mutableStateOf(false) }                 
 ToggleSetting(
     title = "Daily reminder notifications",
     subtitle = "Reminders are ${if (remindersChecked) "enabled" else "disabled"}",
@@ -205,3 +179,4 @@ ToggleSetting(
 )
 ```
 
+![](/images/ToggleSetting.png)
