@@ -1,0 +1,32 @@
+--- 
+title: "List"
+description: "Discover all the list components in AppKickstarter."  
+--- 
+
+## SimpleEnum
+```kotlin
+fun SimpleEnum(list: List<SimpleEnumData>)
+```
+
+```kotlin
+val datas = listOf(
+    SimpleEnumData(
+        Icons.Rounded.Visibility,
+        "UI That Gets You Hired.",
+        "Get more clients with UI Kit that wows and apps that zip."
+    ),
+    SimpleEnumData(
+        Icons.Rounded.Coffee,
+        "Become more productive.",
+        "Drink coffee, cast spells, conquer the day."
+    ),
+    SimpleEnumData(
+        Icons.Rounded.DarkMode,
+        "Lights Out, Style On.",
+        "Dark mode support. Because bright ideas need a break."
+    ),
+)
+SimpleEnum(datas)
+```
+
+![](/images/SimpleEnum.png)
