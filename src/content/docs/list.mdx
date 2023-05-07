@@ -8,6 +8,8 @@ description: "Discover all the list components in AppKickstarter."
 fun SimpleEnum(list: List<SimpleEnumData>)
 ```
 
+### Example 
+
 ```kotlin
 val datas = listOf(
     SimpleEnumData(
@@ -30,3 +32,36 @@ SimpleEnum(datas)
 ```
 
 ![](/images/SimpleEnum.png)
+
+## FeaturesItemEnum
+
+```kotlin
+fun FeatureItemsEnum(list: List<FeatureItemData>)
+```
+
+```kotlin
+ val datas = listOf(
+    FeatureItemData(
+        Icons.Rounded.Visibility,
+        Color.White,
+        Color(0XFFF9A03F),
+        "UI That Gets You Hired.",
+        "Get more clients with UI Kit that wows and apps that zip."
+    ),
+    FeatureItemData(
+        Icons.Rounded.Coffee,
+        Color.White,
+        Color(0XFF4CAF50),
+        "Become more productive.",
+        "Drink coffee, cast spells, conquer the day."
+    ),
+    FeatureItemData(
+        Icons.Rounded.DarkMode,
+        Color.White,
+        Color(0XFF1C1C1C),
+        "Lights Out, Style On.",
+        "Dark mode support. Because bright ideas need a break."
+    ),
+)
+FeatureItemsEnum(datas)
+```

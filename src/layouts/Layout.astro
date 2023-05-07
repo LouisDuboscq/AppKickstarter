@@ -27,7 +27,7 @@ const { title } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "AppKickstarter"
-  : "AppKickstarter - Starter Template for Android, iOS and desktop built with Kotlin multiplatform, Compose multiplatform and SwiftUI";
+  : "AppKickstarter - Starter Template for Android and iOS built with Kotlin multiplatform and Firebase";
 ---
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="AppKickstarter is a starter template for Android, iOS and desktop built with Kotlin multiplatform, Compose multiplatform and SwiftUI"
+      description="AppKickstarter is a starter template for Android and iOS built with Kotlin multiplatform"
       canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
@@ -52,7 +52,7 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `AppKickstarter - Starter Template for Android iOS and desktop`,
+          title: `AppKickstarter - Starter Template for Android and iOS`,
           image: resolvedImageWithDomain,
         },
         image: {
