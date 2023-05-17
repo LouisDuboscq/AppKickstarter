@@ -1,8 +1,8 @@
-import { defineConfig } from "astro/config";
+import { defineConfig } from "astro/config.js";
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";  
+import sitemap from "@astrojs/sitemap";   
 
 export default defineConfig({
   site: "https://appkickstarter.com",
