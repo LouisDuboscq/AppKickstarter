@@ -1,3 +1,57 @@
+---
+const testimonials1 = [
+  {
+    name: "Guillaume Duhan",
+    job: "CTO and Tech Advisor",
+    url: "https://www.linkedin.com/in/guillaumeduhan/",
+    image: "/images/guillaume.jpeg",
+    text: "Louis created a Kotlin/Firebase template. For all those who have mobile projects, I recommend it 😉",
+  },
+  {
+    name: "Chris Scholly",
+    job: "Founder and iOS dev",
+    url: "https://www.linkedin.com/in/chrisscholly/",
+    image: "/images/chris.jpeg",
+    text: "AppKickstarter is really nice! $149 is a gift. Worth $1k at least I think.",
+  },
+  {
+    name: "Catalin Ghita",
+    job: "Author, instructor and Android dev",
+    url: "https://twitter.com/CatalinGhita4",
+    image: "/images/catalin.jpg",
+    text: "I never played around with KMM before but AppKickstarter sounds really good!",
+  },
+];
+
+
+
+
+
+const testimonials2 = [
+  {
+    name: "Sébastien BREGEON",
+    job: "CEO of We Love Ruby",
+    url: "https://www.linkedin.com/in/sebastien-bregeon/",
+    image: "/images/sebastien.png",
+    text: "Ideal for making an MVP on mobile. I recommend 🔥",
+  },
+  {
+    name: "Salah",
+    job: "Maker of GPTGame",
+    url: "https://twitter.com/adidawi",
+    image: "/images/salah.jpg",
+    text: "Wow appkickstarter is cool!",
+  },
+  {
+    name: "Shervin Koushan",
+    job: "Maker of AnyTracker",
+    url: "https://twitter.com/KoushanShervin",
+    image: "/images/shervin.jpg",
+    text: "AppKickstarter is very good! Might use it for my next project!",
+  },
+];
+---
+
 <!-- Container for demo purpose -->
 <div class="container mt-24 px-6 mx-auto">
   <section class="mb-32 text-gray-800 text-center">
@@ -6,695 +60,226 @@
     </h2>
 
     <div class="grid mt-10 md:grid-cols-3 gap-x-6 gap-y-6 lg:gap-x-12">
-      <a
-        href="https://www.linkedin.com/in/guillaumeduhan/"
-        class="block hover:bg-slate-50 py-2 px-4 rounded">
-        <div class="mb-0">
-          <div class="flex justify-center mb-6">
-            <img
-              src="/images/guillaume.jpeg"
-              class="rounded-full shadow-lg w-32"
-            />
-          </div>
-          <h5 class="text-lg font-bold mb-4">Guillaume Duhan</h5>
-          <h6 class="font-medium text-slate-500 mb-4">CTO and Tech Advisor</h6>
-          <p class="mb-4">
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fas"
-              data-icon="quote-left"
-              class="w-6 pr-2 inline-block"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512">
-              <path
-                fill="currentColor"
-                d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
-              </path>
-            </svg>
-            Louis created a Kotlin/Firebase template. For all those who have mobile
-            projects, I recommend it 😉
-          </p>
-          <ul class="flex justify-center mb-0">
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-          </ul>
-        </div>
-      </a>
-
-      <a
-        href="https://twitter.com/CatalinGhita4"
-        class="block hover:bg-slate-50 py-2 px-4 rounded">
-        <div class="mb-0">
-          <div class="flex justify-center mb-6">
-            <img
-              src="/images/catalin.jpg"
-              class="rounded-full shadow-lg w-32"
-            />
-          </div>
-          <h5 class="text-lg font-bold mb-4">Catalin Ghita</h5>
-          <h6 class="font-medium text-slate-500 mb-4">
-            Author, instructor and Android dev
-          </h6>
-          <p class="mb-4">
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fas"
-              data-icon="quote-left"
-              class="w-6 pr-2 inline-block"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512">
-              <path
-                fill="currentColor"
-                d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
-              </path>
-            </svg>
-            I never played around with KMM before but AppKickstarter sounds really
-            good!
-          </p>
-          <ul class="flex justify-center mb-0">
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-          </ul>
-        </div>
-      </a>
-
-      <a
-        href="https://www.linkedin.com/in/chrisscholly/"
-        class="block hover:bg-slate-50 py-2 px-4 rounded">
-        <div class="mb-0">
-          <div class="flex justify-center mb-6">
-            <img src="/images/chris.jpeg" class="rounded-full shadow-lg w-32" />
-          </div>
-          <h5 class="text-lg font-bold mb-4">Chris Scholly</h5>
-          <h6 class="font-medium text-slate-500 mb-4">Founder and iOS dev</h6>
-          <p class="mb-4">
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fas"
-              data-icon="quote-left"
-              class="w-6 pr-2 inline-block"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512">
-              <path
-                fill="currentColor"
-                d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
-              </path>
-            </svg>
-            AppKickstarter is really nice! $149 is a gift. Worth $1k at least I think.
-          </p>
-          <ul class="flex justify-center mb-0">
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-            <li>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                class="w-4 text-yellow-500"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512">
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                </path>
-              </svg>
-            </li>
-          </ul>
-        </div>
-      </a>
-
-        <div class="grid md:grid-cols-3 gap-x-6 lg:gap-x-12 mt-10">
-
-      <a
-      href="https://www.linkedin.com/in/sebastien-bregeon/"
-      class="block hover:bg-slate-50 py-2 px-4 rounded">
-          <div class="mb-12 md:mb-0">
-            <div class="flex justify-center mb-6">
-              <img
-                src="/images/sebastien.png"
-                class="rounded-full shadow-lg w-32"
-              />
+      {
+        testimonials1.map((item) => (
+          <a
+            href={item.url}
+            class="block hover:bg-slate-50 py-2 px-4 rounded">
+            <div class="mb-0">
+              <div class="flex justify-center mb-6">
+                <img src={item.image} class="rounded-full shadow-lg w-32" />
+              </div>
+              <h5 class="text-lg font-bold mb-4">{item.name}</h5>
+              <h6 class="font-medium text-slate-500 mb-4">{item.job}</h6>
+              <p class="mb-4">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="quote-left"
+                  class="w-6 pr-2 inline-block"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path
+                    fill="currentColor"
+                    d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"></path>
+                </svg>
+                {item.text}
+              </p>
+              <ul class="flex justify-center mb-0">
+                <li>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="star"
+                    class="w-4 text-yellow-500"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512">
+                    <path
+                      fill="currentColor"
+                      d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                  </svg>
+                </li>
+                <li>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="star"
+                    class="w-4 text-yellow-500"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512">
+                    <path
+                      fill="currentColor"
+                      d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                  </svg>
+                </li>
+                <li>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="star"
+                    class="w-4 text-yellow-500"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512">
+                    <path
+                      fill="currentColor"
+                      d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                  </svg>
+                </li>
+                <li>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="star"
+                    class="w-4 text-yellow-500"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512">
+                    <path
+                      fill="currentColor"
+                      d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                  </svg>
+                </li>
+                <li>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="star"
+                    class="w-4 text-yellow-500"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512">
+                    <path
+                      fill="currentColor"
+                      d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                  </svg>
+                </li>
+              </ul>
             </div>
-            <h5 class="text-lg font-bold mb-4">Sébastien BREGEON</h5>
-            <h6 class="font-medium text-slate-500 mb-4">CEO of We Love Ruby</h6>
-            <p class="mb-4">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="quote-left"
-                class="w-6 pr-2 inline-block"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512">
-                <path
-                  fill="currentColor"
-                  d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
-                </path>
-              </svg>
-              Ideal for making an MVP on mobile. I recommend 🔥
-            </p>
-            <ul class="flex justify-center mb-0">
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-            </ul>
-          </div>
-        </a>
+          </a>
+        ))
+      }
+      </div>
 
-        <a
-          href="https://twitter.com/adidawi"
-          class="block hover:bg-slate-50 py-2 px-4 rounded">
-          <div class="mb-12 md:mb-0">
-            <div class="flex justify-center mb-6">
-              <img
-                src="/images/salah.jpg"
-                class="rounded-full shadow-lg w-32"
-              />
-            </div>
-            <h5 class="text-lg font-bold mb-4">Salah @adidawi</h5>
-            <h6 class="font-medium text-slate-500 mb-4">Maker of GPTGame</h6>
-            <p class="mb-4">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="quote-left"
-                class="w-6 pr-2 inline-block"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512">
-                <path
-                  fill="currentColor"
-                  d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
-                </path>
-              </svg>
-              Wow appkickstarter is cool!
-            </p>
-            <ul class="flex justify-center mb-0">
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-            </ul>
-          </div>
-        </a>
-
-        <a
-          href="https://twitter.com/KoushanShervin"
-          class="block hover:bg-slate-50 py-2 px-4 rounded">
-          <div class="mb-0">
-            <div class="flex justify-center mb-6">
-              <img
-                src="/images/shervin.jpg"
-                class="rounded-full shadow-lg w-32"
-              />
-            </div>
-            <h5 class="text-lg font-bold mb-4">Shervin Koushan</h5>
-            <h6 class="font-medium text-slate-500 mb-4">Maker of AnyTracker</h6>
-            <p class="mb-4">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="quote-left"
-                class="w-6 pr-2 inline-block"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512">
-                <path
-                  fill="currentColor"
-                  d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
-                </path>
-              </svg>
-              AppKickstarter is very good! Might use it for my next project!
-            </p>
-            <ul class="flex justify-center mb-0">
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="star"
-                  class="w-4 text-yellow-500"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512">
-                  <path
-                    fill="currentColor"
-                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                  </path>
-                </svg>
-              </li>
-            </ul>
-          </div>
-        </a>
-      </a>
-    </div>
-    </div>
+      <div class="grid mt-10 md:grid-cols-3 gap-x-6 gap-y-6 lg:gap-x-12">
+        {
+          testimonials2.map((item) => (
+            <a
+              href={item.url}
+              class="block hover:bg-slate-50 py-2 px-4 rounded">
+              <div class="mb-0">
+                <div class="flex justify-center mb-6">
+                  <img src={item.image} class="rounded-full shadow-lg w-32" />
+                </div>
+                <h5 class="text-lg font-bold mb-4">{item.name}</h5>
+                <h6 class="font-medium text-slate-500 mb-4">{item.job}</h6>
+                <p class="mb-4">
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="quote-left"
+                    class="w-6 pr-2 inline-block"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512">
+                    <path
+                      fill="currentColor"
+                      d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"></path>
+                  </svg>
+                  {item.text}
+                </p>
+                <ul class="flex justify-center mb-0">
+                  <li>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="star"
+                      class="w-4 text-yellow-500"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 576 512">
+                      <path
+                        fill="currentColor"
+                        d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="star"
+                      class="w-4 text-yellow-500"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 576 512">
+                      <path
+                        fill="currentColor"
+                        d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="star"
+                      class="w-4 text-yellow-500"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 576 512">
+                      <path
+                        fill="currentColor"
+                        d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="star"
+                      class="w-4 text-yellow-500"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 576 512">
+                      <path
+                        fill="currentColor"
+                        d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="star"
+                      class="w-4 text-yellow-500"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 576 512">
+                      <path
+                        fill="currentColor"
+                        d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                    </svg>
+                  </li>
+                </ul>
+              </div>
+            </a>
+          ))
+        }
+        </div>
 
     <!-- Container for demo purpose -->
   </section>
