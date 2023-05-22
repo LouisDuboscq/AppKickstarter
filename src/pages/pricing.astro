@@ -19,7 +19,7 @@ const pricing = [
       "Email Support"
     ],
     button: {
-      text: "Get Started",
+      text: "Purchase Once, Build Forever",
       link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7",
     },
   },
@@ -39,7 +39,7 @@ const pricing = [
       "Our apps source code" 
     ],
     button: {
-      text: "Get Started",
+      text: "Invest in Your Mobile App Success",
       link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7",
     },
   },
@@ -68,7 +68,10 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc">Get lifetime access to our private Github team and join our Discord community for support. You'll also have access to additional resources to improve your skills. Pay once and receive unlimited updates to build as many apps as you want.</Fragment>
+      <Fragment slot="desc">
+        Get lifetime access to our private Github team and join our Discord community for support.<br>
+        You'll also have access to additional resources to improve your skills.<br>
+        <strong>Pay once and receive unlimited updates to build as many apps as you want.</strong></Fragment>
     </Sectionhead> 
     <div class="grid md:grid-cols-3 gap-5 mx-auto max-w-4xl mt-12">
       {pricing.map((item) => <Pricing plan={item} />)}
