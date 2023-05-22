@@ -1,6 +1,6 @@
 --- 
-title: "Welcome to AppKickstarter!"
-description: "AppKickstarter is a mobile app development template that can help you jumpstart your project. It provides a pre-configured project structure, basic app features, and integration with Firebase backend services."  
+title: "Welcome to AppKickstarter, your go-to boilerplate for rapidly building MVPs on Android and iOS platforms !"
+description: "Our mission is to accelerate your mobile app development journey by providing a well-organized project structure, essential app features, and seamless integration with Firebase backend services. With AppKickstarter, you can focus on what truly matters - bringing your unique app idea to life, while we take care of the groundwork. Let's kickstart your app development adventure together!"  
 --- 
 
 <iframe 
@@ -43,11 +43,32 @@ After creating the repository, copy the ssh address from Github and open Android
 - Copy the google-services.json file to your Android app module in Android Studio
 - Return to the script and press enter to continue
 
+
+Make sure to add in iosApp/iosApp (at same level as Info.plist) the Google-service-Info.plist via Xcode. 
+If you don't add it via xcode you'll have an error at startup (at firebase initialization)
+
+In your app target, in xcode, change the product name to your app name if it is still AppKickstarter
+
+### Firebase setup
+
+You have to change the authentication rules in Firebase to this : 
+
+``` 
+// Allow read/write access on all documents to any user signed in to the application
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+```
+
 ### Synchronize and run the app
 
 - Synchronize Gradle files
-- Run the app
+- Run the app on Android and iOS
 
 ## Need help?
 
-If you encounter any issues during the setup process, check the troubleshooting section in the readme file or reach out to our support team at support@appkickstarter.com. We're here to help you build amazing apps!
+If you encounter any issues during the setup process, check the troubleshooting section in the readme file or reach out to our support team [here](/contact). We're here to help you build amazing apps!

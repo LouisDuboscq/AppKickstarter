@@ -1,19 +1,20 @@
 --- 
 title: "Installation of your project"
-description: "Learn how to set up environment variables, signing config, and APIs for the AppKickstarter mobile app template, including RevenueCat, OpenAI, Replicate, Logsnag, and Amplitude."  
+description: "We'll walk you through the process of configuring environment variables, signing configurations, and integrating APIs such as RevenueCat, Logsnag, and Amplitude. We understand the importance of a smooth setup experience, and that's why we've made it easy for you by consolidating all user environment variables and data in the local.properties.example file."  
 --- 
 
 import Button from "@components/ui/button.astro";
 
+To get started, all you need to do is copy the values from local.properties.example into your local.properties file. We'll guide you step-by-step, ensuring a seamless and efficient setup process. So, let's dive in and kickstart your app development journey with AppKickstarter!
+
 ## Environment Variables
 
-AppKickstarter provides a secure file to store all the API keys and secrets for your project. 
-This file is declared on the gitignore by default, so it is not included in the template or your project's GitHub remote repository. 
-The file, called local.properties, is stored locally, which means that all the secrets are not accessible if someone tries to reverse engineer the app on the Play Store. 
-Your secrets are safe.
+AppKickstarter prioritizes the security of your project by offering a dedicated file to store all API keys and secrets. 
 
-To get started with AppKickstarter, you need to set up your own data.
+This file, named local.properties, is automatically added to the .gitignore, ensuring it remains excluded from the template and your project's GitHub remote repository. 
+As a result, your sensitive information stays protected, even if someone attempts to reverse engineer the app on the Play Store.
 
+To begin your journey with AppKickstarter, simply set up your own data within the local.properties file, and enjoy a secure and streamlined development experience.
 
 ## Signing Configuration
 
@@ -29,7 +30,9 @@ RELEASE_KEY_PASSWORD=your_key_password
 
 ## Apis
 
-AppKickstarter comes with handy support for multiple useful tools linked to an API. We believe that these tools are useful in most cases, but note that all of the below APIs are optional. You can take what you need and leave the others empty.
+AppKickstarter comes with handy support for multiple useful tools linked to an API. 
+We believe that these tools are useful in most cases, but note that all of the below APIs are optional. 
+You can take what you need and leave the others empty.
 
 ### Subscriptions
 
@@ -40,30 +43,6 @@ revenue_cat_api_key=your_api_key
 ```
 [Learn more about Subscriptions in AppKickstarter](/documentation/subscriptions)
  
-### AI 
-
-AI is a trending topic right now, and we want to help you kickstart your next ideas. 
-There are a lot of things to discover, which is why we have pre-built the basic usage of an AI app for you. 
-
-#### OpenAI
-
-If your app supports AI features, such as ChatGPT, GPT3.5-turbo, GPT-4, etc., you need to write down your [OpenAI](https://openai.com/) API key:
-
-```
-openai_api_key=your_api_key
-```
-[Learn more about OpenAI in AppKickstarter](/documentation/ai#openai)
-
-#### ControlNet
-
-If you want to build features with [ControlNet](https://github.com/lllyasviel/ControlNet) and [Replicate](https://replicate.com/), you need to write down your API key:
-
-```
-replicate_api_key=your_api_key
-```
-
-[Learn more about Replicate and ControlNet in AppKickstarter](/documentation/ai#replicate)
-
 ### Real-time Notifications and Analytics
 
 If you want to receive real-time notifications about the usage of your app by users, we support [Logsnag](https://logsnag.com/) for this. All you need to do is to write down your API key:
