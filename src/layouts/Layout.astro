@@ -19,7 +19,7 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/images/screenshot-landingpage.png",
+  "/images/affiche_seo.png",
   Astro.site
 ).toString();
 
@@ -44,8 +44,8 @@ const makeTitle = title
       description="AppKickstarter is a starter template for Android and iOS built with Kotlin multiplatform"
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@louisduboscq",
+        site: "https://appkickstarter.com",
         card: "summary_large_image",
       }}
       openGraph={{
