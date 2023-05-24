@@ -27,8 +27,7 @@ You can embed a Compose UI view directly in a SwiftUI view hierarchy. This allow
 For example:
 swift
 
-Copy
-
+```
 struct MyView: View {
     var body: some View {
         ComposeView {
@@ -36,15 +35,15 @@ struct MyView: View {
         }
     }
 }
+```
 Embedding SwiftUI/UIKit views in Compose
 You can also embed SwiftUI and UIKit views like MapKit directly in your Compose UI. This gives you access to all of iOS's native UI components from within Compose.
 For example:
 kotlin
-
-Copy
-
+ ```
 @Composable
 fun MyComposeScreen() {  
     MapView()  // Embeds a MapKit MKMapView
 }
+```
 This two-way interoperability gives you the best of both worlds - the flexibility of Compose's declarative UI framework with access to iOS's rich set of native UI components. You have the
