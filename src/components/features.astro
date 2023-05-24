@@ -3,8 +3,30 @@
   import { Icon } from "astro-icon";
 
   const features = [
+
+  {
+      title: "Payments enabled day 1",
+      description:
+        "Use our pre-built paywalls connected to your RevenueCat",
+      icon: "bx:bxs-dollar-circle",
+      destination: "/documentation/subscriptions",
+    },
     {
-      title: "Develop scalable apps faster with Firebase",
+      title: "Authentication",
+      description:
+        "Ready to use authentication with login, signup and reset password screens",
+      icon: "bx:bxs-log-in-circle",
+      destination: "/documentation/authentication",
+    },
+    {
+      title: "Multiplatform UI Kit",
+      description:
+        "Create visually appealing app interfaces with our clean interface components",
+      icon: "bx:bxs-brush",
+      destination: "/documentation/uikit",
+    },
+    {
+      title: "Develop apps faster with Firebase",
       description:
         "Use Firebase integration in KMM app for faster development and lower costs",
       icon: "bx:bxs-album",
@@ -16,20 +38,6 @@
         "Improve retention of your app",
       icon: "bx:bxs-bulb",
       destination: "/documentation/onboarding",
-    },
-    {
-      title: "Authentication",
-      description:
-        "Ready to use authentication with login, signup and reset password screens",
-      icon: "bx:bxs-log-in-circle",
-      destination: "/documentation/authentication",
-    },
-    {
-      title: "Payments enabled day 1",
-      description:
-        "Use our pre-built paywalls connected to your RevenueCat",
-      icon: "bx:bxs-dollar-circle",
-      destination: "/documentation/subscriptions",
     },
    /* {
       title: "Home screen",
@@ -52,13 +60,6 @@
       icon: "bx:bxs-like",
       destination: "/features/offline",
     },*/
-    {
-      title: "Multiplatform UI Kit",
-      description:
-        "Create visually appealing and intuitive app interfaces with our clean interface components",
-      icon: "bx:bxs-brush",
-      destination: "/documentation/uikit",
-    },
   /*  {
       title: "Multiplatform resources",
       description: "Define once your translations for multiple platforms.",
@@ -87,7 +88,7 @@
     <div>
       <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
       <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-      <a href={item.destination}>See more</a>
+      <!--<a href={item.destination}>See more</a>-->
     </div>
   </div>
   ))

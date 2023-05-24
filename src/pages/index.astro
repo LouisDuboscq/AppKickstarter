@@ -19,8 +19,16 @@ import SimpleNoTricksPricing from "@components/simpleNoTricksPricing.astro";
   <Container>
     <Hero /> 
     <!--<Logos />-->
+ 
+    <video width="784" height="441" controls class="mx-auto rounded-3xl ">
+      <source src="images/video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <Testimonials /> 
+    <Cta />
+   
     <Features /> 
-    <Testimonials />
 
     <!--
 <div  class="grid gap-16 max-w-4xl mx-auto md:gap-10 items-center mt-24" >
@@ -28,7 +36,6 @@ import SimpleNoTricksPricing from "@components/simpleNoTricksPricing.astro";
     <iframe class="items-center" width="560" height="315" src="https://www.youtube.com/embed/a56Jr2iT-2U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
    -->
-    <Cta />
     <SimpleNoTricksPricing />
   </Container>
 </Layout>
