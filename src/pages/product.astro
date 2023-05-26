@@ -1,0 +1,164 @@
+---
+import Container from "@components/container.astro";
+import Cta from "@components/cta.astro";
+import Features from "@components/features.astro";
+import Footer from "@components/footer.astro";
+import Hero from "@components/hero.astro";
+import Logos from "@components/logos.astro";
+import Layout from "@layouts/Layout.astro";
+import Testimonials from "@components/testimonials.astro";
+
+import { Image } from "@astrojs/image/components";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+import Newsletter from "@components/newsletter.astro";
+import SimpleNoTricksPricing from "@components/simpleNoTricksPricing.astro";
+---
+
+<Layout title="">
+  <Container>
+    
+    <Hero /> 
+
+
+    
+ 
+    <!--<Logos />-->
+ 
+    <h2 class="text-3xl font-bold lg:text-4xl lg:tracking-tight my-24 text-center">
+      Watch how AppKickstarter helps you build native apps.
+    </h2>
+
+    <video width="784" height="441" controls class="mx-auto rounded-3xl my-24 ">
+      <source src="images/video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+ 
+    <Testimonials /> 
+
+    <h2 class="text-3xl font-bold lg:text-4xl lg:tracking-tight mt-24 mb-8 text-center">
+      Building an iOS/Android app from scratch take a significant amount of time and money.
+    </h2>
+
+    <p class="text-slate-600 text-center mb-24"> 
+      Look at this estimate for the foundations of a new app
+    </p>
+ 
+    
+    <div class="bg-white rounded-lg shadow-lg">
+      <table class="min-w-full">
+        <thead>
+          <tr>
+            <th class="py-4 px-6 bg-white font-semibold text-left text-slate-900">Name</th>
+            <th class="py-4 px-6 bg-white font-semibold text-left text-slate-900">Number of Days</th>
+            <th class="py-4 px-6 bg-white font-semibold text-left text-slate-900">Cost for 1 platform</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-900">Authentication with Firebase</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">3 to 6 days</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">$1500 - $3600</td>
+          </tr>
+          <tr>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-900">Onboarding screens</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">2 to 4 days</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate text-slate-500">$500 - $2400</td>
+          </tr>
+          <tr>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-900">Local SQLite database setup</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">1 to 2 days</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">$500 - $1200</td>
+          </tr>
+          <tr>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-900">Integrating key libraries</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">1 to 3 days</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">$500 - $1800</td>
+          </tr>
+          <tr>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-900">Navigation flow</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">2 to 4 days</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">$1000 - $2400</td>
+          </tr>
+          <tr>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-590000">Settings screen</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">2 to 4 days</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">$1000 - $2400</td>
+          </tr>
+          <tr>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-900">Paywall screen</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">3 to 5 days</td>
+            <td class="py-4 px-6 border-b border-gray-200 text-slate-500">$1500 - $3000</td>
+          </tr>
+        </tbody> 
+        <tfoot>
+          <tr>
+            <td class="py-4 px-6 bg-white font-bold text-left text-slate-900">Total</td>
+            <td class="py-4 px-6 bg-white font-bold text-left text-slate-900">12 to 28 days</td>
+            <td class="py-4 px-6 bg-white font-bold text-left text-slate-900">$6,000 - $15,000</td>
+          </tr>
+        </tfoot>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+ <!--
+  <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mx-auto my-24">And you just have the basics for just one platform.</h2>
+  <img src="/images/7n58fn.jpg" alt="Image" class="h-48 mx-auto rounded-2xl">
+ -->
+
+
+<SimpleNoTricksPricing />
+ 
+   
+    <Features /> 
+    <Cta />
+    
+
+    <!--
+<div  class="grid gap-16 max-w-4xl mx-auto md:gap-10 items-center mt-24" >
+ <p class="text-center text-slate-500">Get started in 2 minutes</p> 
+    <iframe class="items-center" width="560" height="315" src="https://www.youtube.com/embed/a56Jr2iT-2U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+   -->
+ 
+    
+    
+    <script>
+      let countdownDate = new Date("May 30, 2023 00:00:00").getTime();
+    
+      setInterval(function() {
+        let now = new Date().getTime();
+        let distance = countdownDate - now;
+    
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); 
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+        document.getElementById("countdown").innerHTML = 
+          `<p>Lock in your lifetime access now before the price rises to $250 in</p>
+           <p>
+             <span>${days}</span>d <span>${hours}</span>h 
+             <span>${minutes}</span>m <span>${seconds}</span>s
+           </p>`;
+      }, 1000);
+    </script>
+
+<!--
+<a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" class="bg-black text-white text-center mx-auto  fixed bottom-0 py-8 px-8 my-24 rounded-3xl left-1/2 transform -translate-x-1/2">
+  <div id="countdown"></div>  
+</a>
+ -->
+  </Container>
+
+
+</Layout>
