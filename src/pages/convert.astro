@@ -15,7 +15,7 @@ import Newsletter from "@components/newsletter.astro";
 import SimpleNoTricksPricing from "@components/simpleNoTricksPricing.astro"; 
 import { SEO } from "astro-seo"; 
 import Navbar from "@components/navbar/navbar.astro";
-import "@fontsource/inter/variable.css"; 
+import "@fontsource/inter/variable.css";
 
 export interface Props {
   title: string;
@@ -88,12 +88,12 @@ const makeTitle = title
       </video>
 
       <h2
-        class="text-3xl lg:text-4xl font-bold lg:tracking-tight my-24">
+        class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">
         Building an iOS/Android app from scratch takes a significant amount of
         time and money.
       </h2>
   
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-gray-100 p-16 rounded-lg">
+      <div class="flex justify-between bg-gray-100 p-16 rounded-lg">
         <div class="text-center">
           <h4 class="text-left text-gray-600">Cost</h4>
           <p class="text-4xl text-left font-bold">$15,000</p>
@@ -105,11 +105,14 @@ const makeTitle = title
         <div class="text-center">
           <h4 class="text-left text-gray-600">Platform</h4> 
             <p class="text-4xl text-left font-bold">Only 1</p> 
-        </div> 
+        </div>
+
+
         <div class="text-center">
           <h4 class="text-left text-gray-600">Number of unique features</h4> 
             <p class="text-4xl text-left font-bold">0</p> 
-        </div> 
+        </div>
+         
       </div>
 
       
@@ -119,7 +122,7 @@ const makeTitle = title
         $15,000 and take up to 28 days to develop for just 1 platform</strong> covering:
       </h3>
   
-      <div class="bg-white rounded-lg shadow-lg ">
+      <div class="bg-white rounded-lg shadow-lg">
         <table class="min-w-full">
           <thead>
             <tr>
@@ -234,74 +237,77 @@ const makeTitle = title
       </div>
   
       <h2
-        class="text-3xl lg:text-4xl font-bold lg:tracking-tight my-24">
+        class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">
         AppKickstarter helps you save up to 90% of the time and cost of custom app
         development by providing:
       </h2>
-    
+   
 
 
-      <div class=""> 
-        <ol class="">
-           <li class="mb-2"><strong>Build native iOS and Android apps faster</strong></li>
+
+
+
+
+      <div class="p-4"> 
+        <ol class="ml-6"> <li class="mb-2"><strong>Build native iOS and Android apps faster</strong></li>
         
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Ready to launch a high-quality native app for <strong>both Android and iOS</strong></span>
+        <li class="mb-2">
+          <span class="text-slate-600">Ready to launch a high-quality native app for <strong>both Android and iOS</strong></span>
         </li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Tons of reusable UI components to speed up development</span> 
+        <li class="mb-2">
+          <span class="text-slate-600">Tons of reusable UI components to speed up development</span> 
         </li>
         
         <li class="mb-2"><strong>Save time and money</strong></li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• A pre-built paywall connected to RevenueCat</span>
+        <li class="mb-2">
+          <span class="text-slate-600">A pre-built paywall connected to RevenueCat</span>
         </li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Onboarding flows for better user retention</span>
+        <li class="mb-2">
+          <span class="text-slate-600">Onboarding flows for better user retention</span>
         </li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Firebase integration included</span> 
+        <li class="mb-2">
+          <span class="text-slate-600">Firebase integration included</span> 
         </li>
          
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Authentication with login, signup and password reset</span> 
+        <li class="mb-2">
+          <span class="text-slate-600">Authentication with login, signup and password reset</span> 
         </li>
         
         <li class="mb-2"><strong>Modern technologies</strong></li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Kotlin Multiplatform</span>
+        <li class="mb-2">
+          <span class="text-slate-600">Kotlin Multiplatform</span>
         </li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Compose Multiplatform</span>
+        <li class="mb-2">
+          <span class="text-slate-600">Compose Multiplatform</span>
         </li> 
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Firebase</span>
+        <li class="mb-2">
+          <span class="text-slate-600">Firebase</span>
         </li>
         
         <li class="mb-2"><strong>Lifetime value</strong></li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Lifetime access and free updates</span>
+        <li class="mb-2">
+          <span class="text-slate-600">Lifetime access and free updates</span>
         </li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Unlimited access - Build as many apps as you want</span>
+        <li class="mb-2">
+          <span class="text-slate-600">Unlimited access - Build as many apps as you want</span>
         </li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Email support from our team</span>
+        <li class="mb-2">
+          <span class="text-slate-600">Email support from our team</span>
         </li>
         
-        <li class="mb-2 ml-6">
-          <span class="text-slate-600">• Cutting-edge technologies to future-proof your apps</span>
+        <li class="mb-2">
+          <span class="text-slate-600">Cutting-edge technologies to future-proof your apps</span>
         </li>
         </ol> </div>
 
@@ -309,40 +315,14 @@ const makeTitle = title
 
   
       <h2
-      class="text-3xl lg:text-4xl font-bold lg:tracking-tight mt-24 mb-8"> 
+      class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24"> 
   And it's just $149. For now.
   </h2>
     
-
-
-
-    
-  <script>
-    let countdownDate = new Date("May 30, 2023 00:00:00").getTime();
   
-    setInterval(function() {
-      let now = new Date().getTime();
-      let distance = countdownDate - now;
-  
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); 
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
-      document.getElementById("countdown").innerHTML = 
-        `<p>Price rises soon to $250 in
-           <span>${days}</span>d <span>${hours}</span>h 
-           <span>${minutes}</span>m <span>${seconds}</span>s</p>`;
-    }, 1000);
-  </script>
-   
-  
-   <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" class="text-slate-900 mb-24">
-    <div id="countdown"></div>  
-  </a>
    
   <div
-    class="bg-black p-8 md:px-20 md:py-20 my-24 mx-auto rounded-lg flex flex-col items-center text-center relative isolate overflow-hidden ">
+    class="bg-black p-8 md:px-20 md:py-20 my-24 mx-auto rounded-lg flex flex-col items-center text-center relative isolate  overflow-hidden ">
     <h2 class="text-white text-4xl md:text-6xl tracking-tight">
       Lock your price and start building your MVP.
     </h2>
