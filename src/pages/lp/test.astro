@@ -1,0 +1,399 @@
+---
+import Container from "@components/container.astro";
+import Cta from "@components/cta.astro";
+import Features from "@components/features.astro";
+import Footer from "@components/footer.astro";
+import Hero from "@components/hero.astro";
+import Logos from "@components/logos.astro";
+import Layout from "@layouts/Layout.astro";
+import Testimonials from "@components/testimonials.astro";
+
+import { Image } from "@astrojs/image/components";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+import Newsletter from "@components/newsletter.astro";
+import SimpleNoTricksPricing from "@components/simpleNoTricksPricing.astro"; 
+import { SEO } from "astro-seo"; 
+import Navbar from "@components/navbar/navbar.astro";
+import "@fontsource/inter/variable.css"; 
+import Nonclickabletestimonials from "@components/nonclickabletestimonials.astro";
+
+export interface Props {
+  title: string;
+}
+
+// const { src } = await getImage({
+//   src: "../../assets/hero.png",
+//   width: 800,
+//   height: 742,
+//   format: "avif",
+// });
+// console.log(src);
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  "/images/affiche_seo.png",
+  Astro.site
+).toString();
+
+const { title } = Astro.props;
+
+const makeTitle = title
+  ? title + " | " + "AppKickstarter"
+  : "AppKickstarter - Starter Template for Android and iOS built with Kotlin multiplatform and Firebase";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/business-startup.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <SEO
+      title={makeTitle}
+      description="AppKickstarter is a starter template for Android and iOS built with Kotlin multiplatform"
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@louisduboscq",
+        site: "https://appkickstarter.com",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: `AppKickstarter - Starter Template for Android and iOS`,
+          image: resolvedImageWithDomain,
+        },
+        image: {
+          alt: "AppKickstarter landing page screenshot",
+        },
+      }}
+    />
+  </head>
+  <body>
+    
+    <Container>
+      <h1
+        class="text-4xl lg:text-5xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter my-24 text-center">
+        Save up to 90% of the time and cost of custom app development
+      </h1>
+  
+      <video width="784" height="441" controls class="mx-auto rounded-3xl my-24 ">
+        <source src="images/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <h2
+        class="text-3xl lg:text-4xl font-bold lg:tracking-tight my-24">
+        Building an iOS/Android app from scratch takes a significant amount of
+        time and money.
+      </h2>
+  
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-gray-100 p-16 rounded-lg">
+        <div class="text-center">
+          <h4 class="text-left text-gray-600">Cost</h4>
+          <p class="text-4xl text-left font-bold">$15,000</p>
+        </div>
+        <div class="text-center">
+          <h4 class="text-left text-gray-600">Time</h4>
+          <p class="text-4xl text-left font-bold">28 days</p>
+        </div>
+        <div class="text-center">
+          <h4 class="text-left text-gray-600">Platform</h4> 
+            <p class="text-4xl text-left font-bold">Only 1</p> 
+        </div> 
+        <div class="text-center">
+          <h4 class="text-left text-gray-600">Number of unique features</h4> 
+            <p class="text-4xl text-left font-bold">0</p> 
+        </div> 
+      </div>
+
+      
+      <h3
+      class="text-1xl lg:text-2xl lg:tracking-tight text-slate-700 my-8"> 
+        According to estimates, the foundations of a new app could <strong>cost up to
+        $15,000 and take up to 28 days to develop for just 1 platform</strong> covering:
+      </h3>
+  
+      <div class="bg-white rounded-lg shadow-lg ">
+        <table class="min-w-full">
+          <thead>
+            <tr>
+              <th
+                class="py-4 px-6 bg-white font-semibold text-left text-slate-900"
+                >Name</th
+              >
+              <th
+                class="py-4 px-6 bg-white font-semibold text-left text-slate-900"
+                >Number of Days</th
+              >
+              <th
+                class="py-4 px-6 bg-white font-semibold text-left text-slate-900"
+                >Cost for 1 platform</th
+              >
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-900"
+                >Authentication with Firebase</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >3 to 6 days</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >$1500 - $3600</td
+              >
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-900"
+                >Onboarding screens</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >2 to 4 days</td
+              >
+              <td
+                class="py-4 px-6 border-b border-gray-200 text-slate text-slate-500"
+                >$500 - $2400</td
+              >
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-900"
+                >Local SQLite database setup</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >1 to 2 days</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >$500 - $1200</td
+              >
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-900"
+                >Integrating key libraries</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >1 to 3 days</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >$500 - $1800</td
+              >
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-900"
+                >Navigation flow</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >2 to 4 days</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >$1000 - $2400</td
+              >
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-590000"
+                >Settings screen</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >2 to 4 days</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >$1000 - $2400</td
+              >
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-900"
+                >Paywall screen</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >3 to 5 days</td
+              >
+              <td class="py-4 px-6 border-b border-gray-200 text-slate-500"
+                >$1500 - $3000</td
+              >
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="py-4 px-6 bg-white font-bold text-left text-slate-900"
+                >Total</td
+              >
+              <td class="py-4 px-6 bg-white font-bold text-left text-slate-900"
+                >12 to 28 days</td
+              >
+              <td class="py-4 px-6 bg-white font-bold text-left text-slate-900"
+                >$6,000 - $15,000</td
+              >
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+  
+      <h2
+        class="text-3xl lg:text-4xl font-bold lg:tracking-tight my-24">
+        AppKickstarter helps you save up to 90% of the time and cost of custom app
+        development by providing:
+      </h2>
+    
+
+
+      <div class=""> 
+        <ol class="">
+           <li class="mb-2"><strong>Build native iOS and Android apps faster</strong></li>
+        
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Ready to launch a high-quality native app for <strong>both Android and iOS</strong></span>
+        </li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Tons of reusable UI components to speed up development</span> 
+        </li>
+        
+        <li class="mb-2"><strong>Save time and money</strong></li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• A pre-built paywall connected to RevenueCat</span>
+        </li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Onboarding flows for better user retention</span>
+        </li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Firebase integration included</span> 
+        </li>
+         
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Authentication with login, signup and password reset</span> 
+        </li>
+        
+        <li class="mb-2"><strong>Modern technologies</strong></li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Kotlin Multiplatform</span>
+        </li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Compose Multiplatform</span>
+        </li> 
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Firebase</span>
+        </li>
+        
+        <li class="mb-2"><strong>Lifetime value</strong></li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Lifetime access and free updates</span>
+        </li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Unlimited access - Build as many apps as you want</span>
+        </li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Email support from our team</span>
+        </li>
+        
+        <li class="mb-2 ml-6">
+          <span class="text-slate-600">• Cutting-edge technologies to future-proof your apps</span>
+        </li>
+        </ol> </div>
+
+
+        <Nonclickabletestimonials />
+
+  
+      <h2
+      class="text-3xl lg:text-4xl font-bold lg:tracking-tight mt-24 mb-8"> 
+        And it's just $149 for now. But becomming more and more mature a new price is planned.
+  </h2>
+    
+
+    
+  <script>
+    let countdownDate = new Date("May 30, 2023 00:00:00").getTime();
+  
+    setInterval(function() {
+      let now = new Date().getTime();
+      let distance = countdownDate - now;
+  
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); 
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+      document.getElementById("countdown").innerHTML = 
+        `<p>Price rises soon to $250 in
+           <span>${days}</span>d <span>${hours}</span>h 
+           <span>${minutes}</span>m <span>${seconds}</span>s</p>`;
+    }, 1000);
+  </script>
+   
+  
+   <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" class="text-slate-900 mb-24">
+    <div id="countdown" class="text-slate-900"></div>  
+  </a>
+   
+  <div
+    class="bg-black p-8 md:px-20 md:py-20 my-24 mx-auto rounded-lg flex flex-col items-center text-center relative isolate overflow-hidden ">
+    <h2 class="text-white text-4xl md:text-6xl tracking-tight">
+      Lock your price and start building your MVP.
+    </h2>
+    <p class="text-slate-400 mt-4 text-lg md:text-xl">
+      Start building your android and iOS app today and streamline your development process. 
+      Do it in days, not months.
+    </p>
+    <div class="flex mt-5">
+      <Link href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" style="inverted">Start Building Unlimited Apps for $149</Link>
+    </div>
+    
+    <div
+    class="absolute left-1/2 top-0 -z-10 -translate-x-1/2 -translate-y-1/2  xl:-top-6 blur-3xl "
+    aria-hidden="true">
+    <div
+      class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-70"
+      style="clip-path: polygon(0% 100%, 30% 100%, 50% 50%, 70% 100%, 100% 100%, 70% 70%, 50% 50%, 30% 70%);">
+    </div>
+  </div>
+  </div>
+  
+  
+    </Container>
+    
+
+
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+
+  <script async src="https://cdn.splitbee.io/sb.js"></script>
+
+  <script>window.lemonSqueezyAffiliateConfig = { store: "appkickstarter" };</script>
+  <script src="https://lmsqueezy.com/affiliate.js" defer></script>
+
+
+
+  <!-- adds tracker -->
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10861327737"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-10861327737');
+</script>
+
+</html> 
