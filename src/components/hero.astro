@@ -6,7 +6,7 @@ import { Icon } from "astro-icon";
 ---
 
 <main
-  class="grid lg:grid-cols-2 place-items-center sm:pt-12 md:pt-12">
+  class="grid lg:grid-cols-2 place-items-center  ">
   <div class="py-6 md:order-2 sm:order-2 ">
     <img src="/images/hero_screen.png" alt="coding dev illustration"/>
   </div> 
@@ -14,30 +14,32 @@ import { Icon } from "astro-icon";
   <div>
     <h1
       class="text-4xl lg:text-5xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Launch your app idea in 3 days
+      Create Android and iOS apps at lightning speed with a Kotlin/Compose multiplatform boilerplate
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      A starter project to help you build Android and iOS apps up to 10x faster using Kotlin Multiplatform. Includes essential features to validate your idea and launch your minimum viable product.
-    </p>
+      Get started fast with our easy-to-use Kotlin boilerplate for Android and iOS. 
+    </p>  
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="#"
-        target="_blank"
-        href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" 
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-rocket" />
-        Get Lifetime Access Now
-      </Link>
+    
       <Link
         size="lg"
         style="outline"
         rel="noopener"
-        href="/documentation"
+        target="_blank"
+        href="https://github.com/AppKickstarter/KMPStarterOS"
         class="flex gap-1 items-center justify-center" >
         <Icon class="text-black w-4 h-4" name="bx:bx-bookmark" />
-        Read the docs
+        Limited open source version
       </Link>
+      <Link
+      href="#"
+      target="_blank"
+      href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" 
+      class="flex gap-1 items-center justify-center font-bold"
+      rel="noopener">
+      <Icon class="text-white w-5 h-5" name="bx:bxs-rocket" />
+      BUY NOW
+    </Link>
     </div>
   </div>
 </main>
