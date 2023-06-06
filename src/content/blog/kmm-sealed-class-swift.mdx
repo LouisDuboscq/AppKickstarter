@@ -3,13 +3,13 @@ draft: false
 title: "How to use Kotlin multiplatform sealed class in Swift"
 snippet: "Learn how to transform your sealed class into Swift enums"
 image: {
-    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
-    alt: "full stack web development"
+    src: "/images/blog/sealed-class-swift.png",
+    alt: "Kotlin sealed class in Swift"
 }
 publishDate: "2023-03-06"
 category: "Tutorials"
 author: "Louis Duboscq"
-tags: [android]
+tags: [android, ios, swift, kotlin]
 --- 
 
 ## The problem
@@ -56,7 +56,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("dev.icerock.moko:kswift-gradle-plugin:0.6.1")
+        classpath("dev.icerock.moko:kswift-gradle-plugin:<latest>")
     }
 }
 ````
@@ -73,41 +73,7 @@ kswift {
 }
 ```
 
-Rebuild the project and the kswift library generated for us the Swift api : 
-
-```swift
-public enum DestinationKs {
-
-  case home
-  case settings
-  case storybook
-
-  public var sealed: Destination {
-    switch self {
-    case .home:
-      return shared.Destination.Home() as shared.Destination
-    case .settings:
-      return shared.Destination.Settings() as shared.Destination
-    case .storybook:
-      return shared.Destination.Storybook() as shared.Destination
-    }
-  }
-
-  public init(_ obj: Destination) {
-    if obj is shared.Destination.Home {
-      self = .home
-    } else if obj is shared.Destination.Settings {
-      self = .settings
-    } else if obj is shared.Destination.Storybook {
-      self = .storybook
-    } else {
-      fatalError("DestinationKs not synchronized with Destination class")
-    }
-  }
-}
-```
-
-Now we can access to the sealed class in a more Swift way :
+Rebuild the project and the kswift library generated for us the Swift api and now we can access to the sealed class in a more Swift way :
 
 ```swift
 let destination: Destination = .home
