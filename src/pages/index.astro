@@ -18,124 +18,179 @@ import Video from "@components/video.astro";
 ---
 
 <Layout title="">
-  <Container> 
-    <Hero /> 
-    <Testimonials /> 
-    <Features /> 
-  
+  <Container>
+    <Hero />
+    <Testimonials />
+    <Features />
+
     <div class="my-16 flex items-center justify-center w-full">
-      <img src="/images/github.svg"/>
+      <img src="/images/github.svg" />
       <p class="ml-2">Last commit : June 2, 2023</p>
-    </div>  
+    </div>
 
-    <Video/>
+    <Video />
 
-    
- 
     <!--<Logos />-->
- 
-    
- 
- 
 
-
- <!--
+    <!--
   <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mx-auto my-24">And you just have the basics for just one platform.</h2>
   <img src="/images/7n58fn.jpg" alt="Image" class="h-48 mx-auto rounded-2xl">
  -->
 
+    <h2
+      class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">
+      How It Works
+    </h2>
 
- <h2 class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">
-  How It Works
-</h2>
+    <div
+      class="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start">
+      <div
+        class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
+        <div class="px-6 py-4">
+          <h2 class="text-xl font-bold text-gray-800">Download</h2>
+          <p class="mt-2 text-gray-600">
+            After purchasing you receive a github invite link. Download the full
+            codebase.
+          </p>
+        </div>
+      </div>
 
-<div class="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start">
-  <div class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
-    <div class="px-6 py-4">
-      <h2 class="text-xl font-bold text-gray-800">Download</h2>
-      <p class="mt-2 text-gray-600">
-        After purchasing you receive a github invite link. Download the full codebase.
-      </p>
+      <div
+        class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
+        <div class="px-6 py-4">
+          <h2 class="text-xl font-bold text-gray-800">Setup</h2>
+          <p class="mt-2 text-gray-600">
+            Setup in minutes your environment following the instructions <a
+              href="https://appkickstarter.com/documentation/getting-started"
+              class="underline">here</a
+            >.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2">
+        <div class="px-6 py-4">
+          <h2 class="text-xl font-bold text-gray-800">Build</h2>
+          <p class="mt-2 text-gray-600">
+            Start building your own features easily and get a head start with
+            the right tools today.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
-    <div class="px-6 py-4">
-      <h2 class="text-xl font-bold text-gray-800">Setup</h2>
-      <p class="mt-2 text-gray-600">
-        Setup in minutes your environment following the instructions <a href="https://appkickstarter.com/documentation/getting-started" class="underline">here</a>.
-      </p>
+    <h2
+      class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">
+      Why Use a Mobile App Boilerplate?
+    </h2>
+
+    <p class="text-slate-700 prose mx-auto">
+      As mobile dev, I've seen many businesses waste time and money building
+      standard mobile app features. This Kotlin boilerplate helps developers
+      focus on valuable features for their customers.
+
+      <br /><br />
+      For a fraction of the cost, you'll have a production-ready multiplatform app
+      saving months of time and thousands of dollars.
+      <img src="/images/signature.png" class="h-16" />
+    </p>
+
+    <h2
+      class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">
+      Why Use a Paid App Boilerplate Over Open Source?
+    </h2>
+    <div
+      class="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start">
+      
+      <div
+        class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
+        <div class="px-6 py-4">
+          <h2 class="text-xl font-bold text-gray-800">Leading template</h2>
+          <p class="mt-2 text-gray-600">
+            No other open source template provides this level of functionality,
+            features and components for your mobile apps.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
+        <div class="px-6 py-4">
+          <h2 class="text-xl font-bold text-gray-800">Reliable</h2>
+          <p class="mt-2 text-gray-600">
+            Bugs are fixed within 24 hours and new updates pushed weekly. No
+            waiting around for the community to add features or fix issues.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2">
+        <div class="px-6 py-4">
+          <h2 class="text-xl font-bold text-gray-800">Helpful</h2>
+          <p class="mt-2 text-gray-600">
+            Get help right away via email or Discord, no need to spend your
+            valuable time on Stack Overflow searching for answers.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2">
-    <div class="px-6 py-4">
-      <h2 class="text-xl font-bold text-gray-800">Build</h2>
-      <p class="mt-2 text-gray-600">
-        Start building your own features easily and get a head start with the right tools today.
-      </p>
-    </div>
-  </div>
-</div>
-
-
- 
- <h2 class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">
-  Why Use a Mobile App Boilerplate?
-</h2>
-
-<p class="text-slate-700  prose mx-auto">
-  As mobile dev, I've seen many businesses waste time and money building standard mobile app features. 
-  This Kotlin boilerplate helps developers focus on valuable features for their customers. 
-  
-  <br><br>
-  For a fraction of the cost, you'll have a production-ready multiplatform app saving months of time and thousands of dollars.
-  <img src="/images/signature.png" class="h-16"/>
-</p>
-
-
-
- 
-<h2 class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">
-  Why Use a Paid App Boilerplate Over Open Source?
-</h2> 
-<div class="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start">
-  <div class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
-    <div class="px-6 py-4">
-      <h2 class="text-xl font-bold text-gray-800">Leading template</h2>
-      <p class="mt-2 text-gray-600">
-        No other open source template provides this level of functionality, features and components for your mobile apps.
-      </p>
-    </div>
-  </div>
-
-  <div class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
-    <div class="px-6 py-4">
-      <h2 class="text-xl font-bold text-gray-800">Reliable</h2>
-      <p class="mt-2 text-gray-600">
-        Bugs are fixed within 24 hours and new updates pushed weekly. No waiting around for the community to add features or fix issues.
-      </p>
-    </div>
-  </div>
-
-  <div class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2">
-    <div class="px-6 py-4">
-      <h2 class="text-xl font-bold text-gray-800">Helpful</h2>
-      <p class="mt-2 text-gray-600">
-        Get help right away via email or Discord, no need to spend your valuable time on Stack Overflow searching for answers.
-      </p>
-    </div>
-  </div>
-</div>
-
-
-<Testimonials2 />
-<Cta />
-<!--
-<SimpleNoTricksPricing />
--->
 
     
+
+
+    <div
+    class="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start mt-6">
+    
+    <div
+      class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
+      <div class="px-6 py-4">
+        <div class="flex items-center">
+          <h2 class="text-xl font-bold text-gray-800">Lifetime access</h2>
+          <span class="relative flex h-3 w-3 ml-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"
+            ></span>
+          </span>
+        </div>
+       
+        <p class="mt-2 text-gray-600">
+          Lifetime access and updates included with any purchase. Lifetime access was our initial offer. Soon all plans will change to free updates for 1 year.
+        </p>
+        
+      </div>
+    </div>
+
+    <div
+      class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2 mb-4 md:mb-0">
+      <div class="px-6 py-4">
+        <h2 class="text-xl font-bold text-gray-800">Voting system</h2>
+        <p class="mt-2 text-gray-600">
+          Everyone in the mastermind has a voice in voting for features/improvements/libs on the roadmap.
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden mx-2">
+      <div class="px-6 py-4">
+        <h2 class="text-xl font-bold text-gray-800">Clean Architecture</h2>
+        <p class="mt-2 text-gray-600"> 
+          Our project architecture is Screaming and Flexible. Use Cases are clearly visible in the project’s structure and you are able to switch frameworks, database or server like pairs of gloves.
+        </p>
+      </div>
+    </div>
+  </div>
+
+ 
+    <Testimonials2 />
+    <Cta />
+    <!--
+<SimpleNoTricksPricing />
+-->
 
     <!--
 <div  class="grid gap-16 max-w-4xl mx-auto md:gap-10 items-center mt-24" >
@@ -143,23 +198,24 @@ import Video from "@components/video.astro";
     <iframe class="items-center" width="560" height="315" src="https://www.youtube.com/embed/a56Jr2iT-2U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
    -->
- 
-    
-    
+
     <script>
       let countdownDate = new Date("June 5, 2023 00:00:00").getTime();
-    
-      setInterval(function() {
+
+      setInterval(function () {
         let now = new Date().getTime();
         let distance = countdownDate - now;
-    
+
         let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); 
+        let hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-        document.getElementById("countdown").innerHTML = 
-          `<p>Lock in your lifetime access now before the price rises to $250 in</p>
+
+        document.getElementById(
+          "countdown"
+        ).innerHTML = `<p>Lock in your lifetime access now before the price rises to $250 in</p>
            <p>
              <span>${days}</span>d <span>${hours}</span>h 
              <span>${minutes}</span>m <span>${seconds}</span>s
@@ -167,12 +223,10 @@ import Video from "@components/video.astro";
       }, 1000);
     </script>
 
-<!--
+    <!--
 <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" class="bg-black text-white text-center mx-auto  fixed bottom-0 py-8 px-8 my-24 rounded-3xl left-1/2 transform -translate-x-1/2">
   <div id="countdown"></div>  
 </a>
  -->
   </Container>
-
-
 </Layout>

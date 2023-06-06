@@ -38,6 +38,8 @@ const { frontmatter } = Astro.props;
       </div>
     </div>
 
+    <img src={frontmatter.image.src} />
+
     <div class="mx-auto prose prose-lg mt-6">
       <slot />
     </div>

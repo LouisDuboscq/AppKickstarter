@@ -60,11 +60,15 @@ const { Content } = await entry.render();
       </div>
     </div>
 
+
+    
+
     <div class="mx-auto prose prose-lg mt-6">
+      <img src={entry.data.image.src} />
       <Content />
+      <Newsletter />
     </div>
 
-    <Newsletter />
 
     <div class="text-center mt-8">
       <a
