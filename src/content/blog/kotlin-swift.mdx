@@ -76,6 +76,8 @@ fun MyScreenAndroid() {
 }
 ```
 
+### iOSMain and ComposeUIViewController
+
 On the iosMain module we wrap our MyScreen composable into a ComposeUIViewController : 
 
 ```kotlin
@@ -133,4 +135,85 @@ struct iOSApp: App {
 
 ![alt](/images/basic-compose-mpp-both.png)
 
-That's all! You learned to render your first Compose multiplatform component in SwiftUI.
+## iOS UIKit inside Compose multiplatform thanks to UIKitView
+
+There's a method called `UIKitView`that enables interoperability between UIKit and Compose. 
+It works the same way as `AndroidView` when you want to transform an Android view (legacy view system) into a Compose component. 
+
+For example to use an UITextField in Kotlin you can do this in your iOSMain package : 
+
+```kotlin  
+@Composable
+fun ComposeUITextField(value: String, onValueChange: (String) -> Unit, modifier: Modifier) {
+    UIKitView(
+        factory = {
+            val textField = object : UITextField(CGRectMake(0.0, 0.0, 0.0, 0.0)) {
+                @ObjCAction
+                fun editingChanged() {
+                    onValueChange(text ?: "")
+                }
+            }
+            textField.addTarget(
+                target = textField,
+                action = NSSelectorFromString(textField::editingChanged.name),
+                forControlEvents = UIControlEventEditingChanged
+            )
+            textField
+        },
+        modifier = modifier,
+        update = { textField ->
+            textField.text = value
+        },
+        onRelease = { textField ->
+            textField.removeTarget(
+                target = textField,
+                action = NSSelectorFromString(textField::editingChanged.name),
+                forControlEvents = UIControlEventEditingChanged
+            )
+        },
+    )
+}
+```
+
+And to use it in your shared UI in commonMain, as the commonMain package does not have access to iOSMain (the way KMM architecture works), 
+you must create an expect actual function like this : 
+
+Expect function in commonMain : 
+
+```kotlin
+@Composable
+expect fun PlatformTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier
+)
+```
+
+Actual function in iosMain : 
+
+```kotlin 
+@Composable
+actual fun PlatformTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier,
+) = ComposeUITextField(value, onValueChange, modifier)
+```
+
+Actual function in AndroidMain : 
+
+```kotlin 
+@Composable
+actual fun PlatformTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier,
+) = TextField(value, onValueChange, modifier)
+```
+
+## Conclusion
+
+That's all! You learned to render your first Compose multiplatform component in SwiftUI using ComposeUIViewController and UIViewControllerRepresentable. 
+You also learned how to use your iOSKit knowledge to build iOS inside Compose multiplatform. 
+
+If you enjoyed it and want to learn more about building android and iOS apps thanks to KMM and Compose multiplatform subscribe to our newsletter.
