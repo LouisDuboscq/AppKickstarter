@@ -1,7 +1,7 @@
 ---
 draft: false
-title: "Basic Compose multiplatform setup to render ui on iOS with SwiftUI"
-snippet: "Learn to display your first compose multiplatform ui on iOS with SwiftUI"
+title: "Kotlin Swift - Jetpack Compose iOS"
+snippet: "Jetpack Compose iOS, interoperability, ComposeUIViewController, UIViewControllerRepresentable, UIKitView..."
 image: {
     src: "/images/blog/first-composable-ios.png",
     alt: "Jetpack Compose on iOS interoperability, ComposeUIViewController, UIViewControllerRepresentable"
@@ -12,8 +12,30 @@ author: "Louis Duboscq"
 tags: [kmm, compose-multiplatform, ios]
 --- 
 
-In this post, you'll learn how to render compose multiplatform composables into SwiftUI for iOS. 
-If you're an Android developer, you'll see it's just a matter of putting the composables in the right place and removing the Android dependencies (Context, permissions, navigation, ...).
+In this post, you'll learn how to **render compose multiplatform composables into SwiftUI for iOS**. 
+
+You'll also learn how to **create an iOS UIKit component into Jetpack Compose** (Compose multiplatform).
+
+Thanks to this guide you'll master the **interoperability in Compose multiplatform** and the keywords : **UIKitView, ComposeUIViewController and UIViewControllerRepresentable** will ne longer have secrets for you.
+
+## How the guide is organized 
+
+- Build the shared ui component
+- Write specific code in androidMain and iOSMain packages for both platforms
+- Write the client code (Kotlin MainActivity and SwiftUI) and call our shared UI
+- Learn UIKitView to write iOS UIKit component into Compose
+
+## iOS developers
+
+If you are an iOS developer, you'll learn Kotlin/Swift interoperability and KMM/Compose multiplatform are not another black box tech to use instead of your favorites tools (XCode, Swift, SwiftUI, etc). 
+We know that because of Xamarin, React Native, and flutter, among others, you're skeptical.
+But KMM/Compose multiplatform is the tool to add to your toolbox rather than a replacement for it.
+
+## Android developers
+
+If you are an Android developer, you'll see it's just a matter of putting the composables in the right place and removing the Android dependencies (Context, permissions, navigation, ...).
+
+## Before all - Setup 
 
 Before all, create a kotlin multiplatform module and add the compose multiplatform plugin (org.jetbrains.compose) and dependencies :
 
@@ -23,13 +45,13 @@ implementation(compose.foundation)
 implementation(compose.material3)
 ```
 
-## 1. UI on shared module
+## 1. Build UI on shared module
 
-Define your screen in shared module as you would build it in a simple Android Compose application.
+Define your screen in the shared module as you would build it in a simple Android Compose application.
 
 ```kotlin
 @Composable
-internal fun MyScreen() {
+fun MyScreen() {
     Column {
         Text("Hello from compose")
         Button(onClick= {}) { Text("Click me")}
@@ -37,20 +59,24 @@ internal fun MyScreen() {
 }
 ```
 
-Note the internal keyword, this is a current limitation in the compose multiplatform development. 
+Here our screen MyScreen is built and normally can be used in an application. 
+But for iOS, the composable functions can not be called directly, they must be wrapped into an UIViewController.
+That's why we use the androidMain and iOSMain packages.
 
-## 2. Expose the internal screen to use it later
+## 2. Use androidMain and iOSMain packages
 
-On the androidMain module : 
+
+On the androidMain module we call the MyScreen composable and before we setup the decor (bottom and status bar to have a beautiful screen) thanks to the accompanist library : systemuicontroller.
 
 ```kotlin
 @Composable
 fun MyScreenAndroid() {
+    setupDecor()
     MyScreen()
 }
 ```
 
-On the iosMain module : 
+On the iosMain module we wrap our MyScreen composable into a ComposeUIViewController : 
 
 ```kotlin
 fun MyScreenIos(): UIViewController = ComposeUIViewController {
@@ -58,11 +84,13 @@ fun MyScreenIos(): UIViewController = ComposeUIViewController {
 }
 ```
 
+That way it's possible to call it inside the iOS app. The decoration (safe area) will be managed in the iOS code. 
+
 ## 3 Client apps
 
 ### Android
 
-Simply call in the android app the exposed screen built in kotlin multiplatform module.
+On Android it's simple. Just call in the android app the exposed screen built in kotlin multiplatform module.
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
