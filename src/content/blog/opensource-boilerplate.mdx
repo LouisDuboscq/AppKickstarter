@@ -9,43 +9,29 @@ image: {
 publishDate: "2023-04-12"
 category: "Open source"
 author: "Louis Duboscq"
-tags: [kmm, android, ios]
---- 
-  
+tags: [kmm, android, ios]   
+---
+ 
 import Link from "@components/ui/link.astro";
-import { Icon } from "astro-icon";
-
+import BasicButton from "@components/basic-button.astro";
+import { Icon } from "astro-icon";  
+ 
 ## Introduction 
 
 In this blog post, we're introducing a free and open source Kotlin Multiplatform starter that's designed to make it easy to build apps for both iOS and Android. We'll cover the features included in the starter, how it was built, and the benefits it provides to developers. Whether you're new to Kotlin Multiplatform development or you're looking for a way to save time on your next project, this starter is a great place to begin. By the end of this post, you'll have a better understanding of what the starter has to offer and how it can help you build great apps quickly and easily.
  
- 
- <div class=" place-items-center ">
-<div class="mt-6 flex flex-col sm:flex-row gap-3"  align="center">
-<p    class="flex gap-3 items-center "></p>
-    <Link 
-        target="_blank"
-        href="https://github.com/AppKickstarter/StarterOS" 
-        class="flex gap-3 items-center "
-        rel="noopener"
-    >
-        <Icon class="text-white w-5 h-5" name="bx:bxs-star" />
-        Star the template to bookmark it
-    </Link>
-<p    class="flex gap-3 items-center "></p>
-</div> 
-</div>
+<p align="center"> 
+ <BasicButton text="Star the template" url="https://github.com/AppKickstarter/StarterOS"></BasicButton>
+</p>
 
-## Table of content
+## How this guide is organized
  
- - [Brief overview of Kotlin Multiplatform and its benefits](#benefits) 
- - [Libraries installed](#libraries) 
- - [Save Time and Effort](#save) 
- - [How Our Kotlin Multiplatform Starter Stands Out from Flutter and React Native](#future) 
- - [Contribute to the Project!](#contribute)
- - [Upgrade Your Cross-Platform App Development with AppKickstarter](#upgrade)
-
-  
+ - Brief overview of Kotlin Multiplatform and its benefits 
+ - Libraries installed
+ - How it saves time and effort 
+ - How our Kotlin Multiplatform starter stands out from Flutter and React Native 
+ - You can contribute to the Project
+ - Go further with AppKickstarter 
 
  <a id="benefits"></a>
 
@@ -160,17 +146,10 @@ AppKickstarter includes additional features, such as authentication with Firebas
 AppKickstarter also includes dedicated support from our team, ensuring that you have the assistance you need to build the best possible cross-platform app.
 
 If you're interested in learning more about AppKickstarter and how it can help you take your project to the next level, please visit our website to learn more and purchase your license today. 
-
-<div class="mt-6 flex flex-col sm:flex-row gap-3"  align="center">
-    <Link  
-        href="https://appkickstarter.com" 
-        class="flex gap-3 items-center "
-        rel="noopener"
-    >
-        <Icon class="text-white w-5 h-5" name="bx:bxs-rocket" />
-        Upgrade with AppKickstarter
-    </Link>
-</div> 
+  
+<p align="center"> 
+ <BasicButton text="Upgrade with AppKickstarter" url="/"></BasicButton>
+</p>
 
 We believe that AppKickstarter is the ultimate tool for building high-quality cross-platform apps, and we're confident that you'll love using it as much as we do.
 
