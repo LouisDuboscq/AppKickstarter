@@ -6,6 +6,7 @@ export interface Props {
 const { name, size = "sm" } = Astro.props;
 ---
 
+<!--
 <li
   class={`inline-block ${
     size === "sm" ? "my-1 underline-offset-4" : "my-3 mx-1 underline-offset-8"
@@ -25,3 +26,10 @@ const { name, size = "sm" } = Astro.props;
     &nbsp;<span>{name.toLowerCase()}</span>
   </a>
 </li>
+ -->
+ 
+<div class="flex items-center justify-center">
+  <span class="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-gray-500 rounded-full">
+    New
+  </span>
+</div>
