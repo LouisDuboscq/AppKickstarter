@@ -1,10 +1,10 @@
 ---
 draft: false
-title: "Easily build audio apps with Jukebox"
-snippet: "Jukebox is an android library that helps you focusing on your audio UI and manages independently media player under the hood."
+title: "Kotlin mediaplayer - Easily build audio apps with Jukebox"
+snippet: "Jukebox is an android library that helps you focusing on your audio UI and manages independently the android.media.MediaPlayer under the hood."
 image: {
     src: "/images/blog/jukebox.png",
-    alt: "Build audio android applications with Jukebox library"
+    alt: "Kotlin mediaplayer - Build audio android applications with Jukebox library"
 }
 publishDate: "2022-12-10"
 category: "Showcase"
@@ -18,7 +18,9 @@ Introducing Jukebox, an android library that helps you focusing on your audio UI
 
 It’s built on top of jetpack compose and media player. And the focus is on flexibility to change loading, error and audio views.
 
-Here’s more infos on it :
+Here are more infos on it :
+
+## Launch the Jukebox composable
 
 Launch the Jukebox composable with the minimal parameters and get ready to use slider and audio player.
 
@@ -30,7 +32,7 @@ Here’s the result
 
 As I said, the goal is to provide an abstraction of audio management and easy to customize audio view.
 
-Here’s how to change the audio view :
+## Change the audio view
 
 ![Pass parameters to Jukebox](https://cdn.hashnode.com/res/hashnode/image/upload/v1670503232782/F-8Sm2XD_.png?auto=compress,format&format=webp)
 
@@ -40,12 +42,18 @@ And here’s the result :
 
 These two views, slider and circular loading with action buttons are just sample but you can build anything you want.
 
+## Jukebox definition
+
 If you want to take a look at the Jukebox definition, here it is :
 
 ![Component definition](https://cdn.hashnode.com/res/hashnode/image/upload/v1670503287758/Jv5LaTyK_.png?auto=compress,format&format=webp)
 
-Here’s how to call play and pause, which are the commands understood by Jukebox :
+## Call play and pause
+
+How to call play and pause, which are the commands understood by Jukebox :
 
 ![Commands to play and pause jukebox and media player](https://cdn.hashnode.com/res/hashnode/image/upload/v1670503302645/8OssDheU9.png?auto=compress,format&format=webp)
 
-[The library is released on Github, you can find it here](https://github.com/LouisDuboscq/Jukebox).
+[We open sourced our library on Github, you can find it here](https://github.com/LouisDuboscq/Jukebox).
+
+If you want to learn more about KMM, Compose multiplatform and building apps for Android and iOS, subscribe to our newsletter.
