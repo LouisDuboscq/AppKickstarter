@@ -1,10 +1,10 @@
 ---
 draft: false
-title: "An Android ViewModel step by step with TDD"
-snippet: "Learn how to divide your code to have each part its responsibility, and have a tested and maintainable code."
+title: "TDD Android"
+snippet: "Learn how to divide your code to have each part its responsibility, and have a tested and maintainable code. We'll in this guide demo how to TDD an Android ViewModel."
 image: {
     src: "/images/blog/viewmodel-tdd.png",
-    alt: "An Android ViewModel step by step with TDD"
+    alt: "TDD Android"
 }
 publishDate: "2021-09-24 22:31"
 category: "Tutorials"
@@ -33,7 +33,11 @@ This is the functional requirements we'll develop :
 - User wants to revert a saved signature by clicking the clear canvas button. It then hides the non-modifiable image and shows the canvas.
 - If the signature is not saved, then back should not be allowed and a dialog explaining there are modifications not saved should appear.
 - On another side, if signature is saved then back is allowed.
-
+  
+<p align="center">
+    <img src="/images/blog/grab_attention_tdd.jpg" alt="Grabbing your attention thanks to a beautiful meme, read the most important : the TDD guideline"/> 
+</p>
+ 
 And we'll try to follow the [TDD guidelines](https://tddmanifesto.com/getting-started) : 
 
 
@@ -388,5 +392,5 @@ We've seen how to build an android view model using TDD approach.
 
 With practice, you will know how to divide your code to have each part its responsibility, and have a tested and maintainable code. 
 
-I know that with this code, I just need to plug my composable functions, just observe states and effects and it will work with an important code coverage.
+We know that with this code, we just need to plug our composable functions, just observe states and effects and it will work with an important code coverage.
  
