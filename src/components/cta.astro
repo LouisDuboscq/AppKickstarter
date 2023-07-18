@@ -1,26 +1,30 @@
 ---
+import WhiteButton from "./white-button.astro";
 import Link from "./ui/link.astro";
 ---
 
 <div
-  class="bg-black p-8 md:px-20 md:py-20 my-24 mx-auto rounded-lg flex flex-col items-center text-center relative isolate  overflow-hidden ">
+  class="bg-black p-8 md:px-20 md:py-20 my-24 mx-auto rounded-lg flex flex-col items-center text-center relative isolate overflow-hidden">
   <h2 class="text-white text-2xl md:text-2xl tracking-tight">
-    Kickstart Your Android & iOS App With a Kotlin/Compose Multiplatform Boilerplate
+    Kickstart Your Android & iOS App With a Kotlin/Compose Multiplatform
+    Boilerplate
   </h2>
-  <p class="text-slate-400 mt-4 text-lg md:text-xl"> 
+  <p class="text-slate-400 my-4 text-lg md:text-xl">
     Save 3 months of effort + $15,407 today
   </p>
-  <div class="flex mt-5">
-    <Link href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" style="inverted" class="font-bold">BUY NOW</Link>
-  </div>
 
+  <WhiteButton
+    class="flex font-bold"
+    text="BUY NOW"
+    url="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7"
+  />
 
   <div
-  class="absolute left-1/2 top-0 -z-10 -translate-x-1/2 -translate-y-1/2  xl:-top-6 blur-3xl "
-  aria-hidden="true">
-  <div
-    class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-70"
-    style="clip-path: polygon(0% 100%, 30% 100%, 50% 50%, 70% 100%, 100% 100%, 70% 70%, 50% 50%, 30% 70%);">
+    class="absolute left-1/2 top-0 -z-10 -translate-x-1/2 -translate-y-1/2 xl:-top-6 blur-3xl"
+    aria-hidden="true">
+    <div
+      class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-70"
+      style="clip-path: polygon(0% 100%, 30% 100%, 50% 50%, 70% 100%, 100% 100%, 70% 70%, 50% 50%, 30% 70%);">
+    </div>
   </div>
-</div>
 </div>

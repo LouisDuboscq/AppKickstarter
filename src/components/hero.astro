@@ -3,43 +3,84 @@ import { Picture } from "@astrojs/image/components";
 import heroImage from "assets/being-creative.svg";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
+import BasicButton from "./basic-button.astro";
+import BorderButton from "./border-button.astro";
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center  ">
-  <div class="py-6 md:order-2 sm:order-2 ">
-    <img src="/images/hero_screen.png" alt="coding dev illustration"/>
-  </div> 
-
+<main class="">
   <div>
-    <h1
-      class="text-4xl lg:text-5xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Create Android and iOS apps at lightning speed with a Kotlin/Compose multiplatform boilerplate
-    </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Get started fast with our easy-to-use Kotlin boilerplate for Android and iOS. 
-    </p>  
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-    
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        target="_blank"
-        href="https://github.com/AppKickstarter/KMPStarterOS"
-        class="flex gap-1 items-center justify-center" >
-        <Icon class="text-black w-4 h-4" name="bx:bx-bookmark" />
-        Limited open source version
-      </Link>
-      <Link
-      href="#"
-      target="_blank"
-      href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7" 
-      class="flex gap-1 items-center justify-center font-bold"
-      rel="noopener">
-      <Icon class="text-white w-5 h-5" name="bx:bxs-rocket" />
-      BUY NOW
-    </Link>
-  </div> 
+    <div
+      class="w-fit pt-20 pb-10 text-6xl font-bold mx-auto">
+      <h1 class="text-4xl lg:text-5xl xl:text-4xl lg:tracking-tight xl:tracking-tighter text-center text-slate-800">
+        The Kotlin and Compose Multiplatform App Boilerplate to<br>
+
+        <span class="xl:text-5xl  bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent">
+          Launch Android and iOS Apps at Lightning Speed
+        </span>
+
+        
+      </h1>
+    </div>
+
+    <p
+      class="text-center text-slate-900">
+      Build unlimited apps with AppKickstarter.<br />
+      Save months of work and focus on building a profitable business.<br />
+      Get lifetime access for only $149.
+    </p>
+
+    <div
+      class="mt-6 flex flex-col sm:flex-row gap-3 lg:justify-center lg:items-center sm:justify-center sm:items-center">
+      
+      <BorderButton class="flex gap-1 items-center justify-center font-bold" text="Book a 15 min video call" url="https://calendly.com/duboscq-louis/15min"/>
+       
+       <BasicButton class="flex gap-1 items-center justify-center font-bold" text="BUY NOW" url="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7"/>
+       
+    </div>
   </div>
-</main>
+
+
+<div class="flex justify-center my-48">
+
+
+  <div class=" mx-auto">
+    <img
+      src="/images/login.png"
+      alt="coding dev illustration"
+      class="transform origin-center transition-transform duration-300 hover:scale-110"
+    />
+  </div>
+
+  <div class="  mx-auto">
+    <img
+      src="/images/bottom-sheet-android.png"
+      alt="coding dev illustration"
+      class="transform origin-center transition-transform duration-300 hover:scale-110"
+    />
+  </div>
+
+  <div class="  mx-auto">
+    <img
+      src="/images/bottom-sheet-ios.png"
+      alt="coding dev illustration"
+      class="transform origin-center transition-transform duration-300 hover:scale-110"
+    />
+  </div>
+  <div class=" mx-auto">
+    <img
+      src="/images/storyboard.png"
+      alt="coding dev illustration"
+      class="transform origin-center transition-transform duration-300 hover:scale-110"
+    />
+  </div>
+
+  <div class="  mx-auto">
+    <img
+      src="/images/settings.png"
+      alt="coding dev illustration"
+      class="transform origin-center transition-transform duration-300 hover:scale-110"
+    />
+  </div>
+</div> 
+</main> 
+ 
