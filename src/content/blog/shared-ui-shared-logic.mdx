@@ -1,7 +1,7 @@
 ---
 draft: false
-title: "Shared UI vs Shared Logic"
-snippet: "Discover how to use RevenueCat in a Kotlin multiplatform mobile project"
+title: "Shared UI vs Shared Logic: Embracing Kotlin Multiplatform's Approach"
+snippet: "Shared UI is a history of failure. Shared logic is the history of computing. Truth or oversimplification?"
 image: {
     src: "/images/affiche_seo.png",
     alt: "Voyager KMM Compose multiplatform library"
@@ -12,25 +12,82 @@ author: "Louis Duboscq"
 tags: [ui, shared]
 --- 
 
-Shared UI vs Shared Logic
+## Introduction
 
+In the world of cross-platform development, the debate between Shared UI and Shared Logic has been ongoing for years. 
 
-I was watching a talk recently and one of my quotes came up as kind of a defense of avoiding shared UI:
+You have probably heard this before:
 
-“Shared UI is a history of failure. Shared logic is the history of computing.”
+> Shared UI is a history of failure. Shared logic is the history of computing.
+ 
+While this quote may resonate with some developers, it oversimplifies the nuanced reality of cross-platform development. 
 
-It’s a good quote for a talk. Fits neatly on a slide and gets tweets. However, it lacks nuance. Shared UI has many examples of bad attempts and compromise, and shared logic is all over the place. “The web is shared UI!” Yes, but 15 years into the “smartphone era”, native dev is still going strong ⏰. That is true, contrary to most people’s expectations, mine included.
+In this article, we will explore the advantages of Kotlin Multiplatform (KMP), its unique approach of optionally sharing code, and how it addresses the challenges of Shared UI while embracing Shared Logic.
 
-We like KMP because it is designed to be optionally included. Out of the box, that’s just for logic. That means a much lower risk of adoption by any size team. Along with a number of other characteristics, we believe that means almost certain success for the KMP platform. KMP encourages efficiencies while discouraging non-native experiences.
+## The Rise of Shared Logic in Computing
 
-However, it was clear from the start that KMP would have a UI story. When I describe KMP, in my “other” quotes, I don’t say “non-UI logic” but rather “not-necessarily UI logic”. That is the key distinction here, and why I’m excited about Compose on iOS and other platforms. Most “cross-platform” frameworks encourage an all-or-nothing approach. You build the UI and logic with the UI definition they provide, and in the language that they mandate (often a very different one). You can mix native and cross-platform with any of them, technically speaking, but they make it rather difficult and unproductive to do so at scale. That is because good interop is hard. KMP’s approach of focusing on interop and building up from there, while arguably more difficult and certainly a longer path, will pay off in the long term.
+Shared logic, the practice of reusing code for the core functionalities across platforms, has been a foundational principle in computing. 
 
-I see common pushback from native devs that, basically, iOS apps aren’t going to (re)write all of their screens with Compose. I agree. However, that’s the difference. You can have common screens in most of your app, then replace some of the main UI on iOS with native screens, still talking to the common Kotlin architecture. On Android, assuming Jetpack Compose is successful, everything is “native”, so no compromise.
+It has enabled developers to maximize efficiency and maintain consistency between different applications. 
 
-Imagine an app with a bunch of settings screens and other data display screens that you only see occasionally, or never. It has a few main screens you use 90% of the time. On iOS, those main screens are fully native and communicate “under the hood” to a shared architecture. Everything else is a shared UI. Over time, maybe some screens that aren’t changing much get a native refresh. You can do that incrementally.
+Shared logic serves as the backbone of numerous successful applications and has proven its reliability time and again.
 
-Can you do that with, say, another popular portable UI framework? Yes, you can create a transparent overlay and pass through click events, and communicate between platforms with IPC channels. That is “technically possible”, but in a word, it sucks 🔥. There’s a big difference between “technically possible” and “core use case”.
+However, it is essential to recognize that Shared Logic is not without its challenges. 
 
-Optionally sharing code, and (arguably 🙂 screens, is core to KMP’s design rather than an exceptional case. It’ll make a huge difference in practice.
+Different platforms have distinct UI paradigms, which often leads to the need for platform-specific UI implementations. 
 
-Of course, “UI story” isn’t accurate. It’s more than one. Come hear about Redwood at Droidcon NYC! That’s 2 UI options for KMP in one post.
+The tension arises when trying to combine Shared Logic with platform-specific UI, resulting in compromises and suboptimal user experiences.
+
+## The Shared UI Predicament: Striking a Balance
+
+Shared UI, on the other hand, has had a history filled with mixed results. 
+
+Attempts to create one-size-fits-all UI components have often led to clunky, non-native experiences that fail to meet user expectations. Nevertheless, some platforms, like the web, have managed to succeed with Shared UI. 
+
+Native development on platforms like iOS has proven its resilience despite the increasing popularity of cross-platform frameworks.
+
+## KMP's Approach: Optionally Shared Code
+
+Kotlin Multiplatform (KMP) offers a refreshing perspective on the Shared UI vs. Shared Logic debate. 
+
+One of the defining characteristics of KMP is its design to be optionally included. 
+
+By default, KMP focuses on sharing logic, ensuring a lower risk of adoption by any development team, regardless of its size. 
+
+This approach encourages efficiency while discouraging the creation of non-native experiences.
+
+## The Beauty of Not-Necessarily UI Logic
+
+KMP's philosophy lies in the concept of "not-necessarily UI logic." 
+
+Unlike most cross-platform frameworks that enforce an all-or-nothing approach, KMP allows developers to build UI and logic independently and mix native and cross-platform elements more seamlessly. 
+
+This level of interop, though challenging, pays off in the long run.
+
+## The KMP Approach in Practice
+
+Imagine an app with multiple settings and data display screens, of which only a few are frequently used. 
+
+With KMP, developers can have these main screens fully native on iOS, communicating with a shared Kotlin architecture underneath. 
+
+This means that most of the app's UI can be shared, while crucial parts can still take advantage of the native platform capabilities.
+
+## Comparing KMP with Other Portable UI Frameworks
+
+Some portable UI frameworks attempt to enable similar functionalities, but they often come with compromises that negatively impact user experience. 
+
+For instance, transparent overlays and click event pass-throughs may be technically possible, but they often result in subpar user interactions. 
+
+KMP, on the other hand, incorporates a more comprehensive approach to optionally shared code, making it a superior choice for core use cases.
+
+## Conclusion
+
+In conclusion, the Shared UI vs. Shared Logic debate requires a more nuanced understanding of the challenges and benefits of each approach. 
+
+While Shared Logic has long been the cornerstone of computing, combining it with Shared UI has often resulted in suboptimal user experiences. 
+
+Kotlin Multiplatform (KMP) offers an innovative solution by emphasizing optionally shared code, giving developers the flexibility to mix native and cross-platform elements effectively. 
+
+By doing so, KMP encourages efficient development practices and opens up new possibilities for creating exceptional user experiences on various platforms. 
+
+As the world of cross-platform development continues to evolve, KMP's approach may prove to be the key to unlocking the full potential of Shared Logic while gracefully handling the complexities of Shared UI.
