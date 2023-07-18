@@ -1,0 +1,36 @@
+---
+draft: false
+title: "Shared UI vs Shared Logic"
+snippet: "Discover how to use RevenueCat in a Kotlin multiplatform mobile project"
+image: {
+    src: "/images/affiche_seo.png",
+    alt: "Voyager KMM Compose multiplatform library"
+}
+publishDate: "2023-07-02"
+category: "Library"
+author: "Louis Duboscq"
+tags: [ui, shared]
+--- 
+
+Shared UI vs Shared Logic
+
+
+I was watching a talk recently and one of my quotes came up as kind of a defense of avoiding shared UI:
+
+“Shared UI is a history of failure. Shared logic is the history of computing.”
+
+It’s a good quote for a talk. Fits neatly on a slide and gets tweets. However, it lacks nuance. Shared UI has many examples of bad attempts and compromise, and shared logic is all over the place. “The web is shared UI!” Yes, but 15 years into the “smartphone era”, native dev is still going strong ⏰. That is true, contrary to most people’s expectations, mine included.
+
+We like KMP because it is designed to be optionally included. Out of the box, that’s just for logic. That means a much lower risk of adoption by any size team. Along with a number of other characteristics, we believe that means almost certain success for the KMP platform. KMP encourages efficiencies while discouraging non-native experiences.
+
+However, it was clear from the start that KMP would have a UI story. When I describe KMP, in my “other” quotes, I don’t say “non-UI logic” but rather “not-necessarily UI logic”. That is the key distinction here, and why I’m excited about Compose on iOS and other platforms. Most “cross-platform” frameworks encourage an all-or-nothing approach. You build the UI and logic with the UI definition they provide, and in the language that they mandate (often a very different one). You can mix native and cross-platform with any of them, technically speaking, but they make it rather difficult and unproductive to do so at scale. That is because good interop is hard. KMP’s approach of focusing on interop and building up from there, while arguably more difficult and certainly a longer path, will pay off in the long term.
+
+I see common pushback from native devs that, basically, iOS apps aren’t going to (re)write all of their screens with Compose. I agree. However, that’s the difference. You can have common screens in most of your app, then replace some of the main UI on iOS with native screens, still talking to the common Kotlin architecture. On Android, assuming Jetpack Compose is successful, everything is “native”, so no compromise.
+
+Imagine an app with a bunch of settings screens and other data display screens that you only see occasionally, or never. It has a few main screens you use 90% of the time. On iOS, those main screens are fully native and communicate “under the hood” to a shared architecture. Everything else is a shared UI. Over time, maybe some screens that aren’t changing much get a native refresh. You can do that incrementally.
+
+Can you do that with, say, another popular portable UI framework? Yes, you can create a transparent overlay and pass through click events, and communicate between platforms with IPC channels. That is “technically possible”, but in a word, it sucks 🔥. There’s a big difference between “technically possible” and “core use case”.
+
+Optionally sharing code, and (arguably 🙂 screens, is core to KMP’s design rather than an exceptional case. It’ll make a huge difference in practice.
+
+Of course, “UI story” isn’t accurate. It’s more than one. Come hear about Redwood at Droidcon NYC! That’s 2 UI options for KMP in one post.
