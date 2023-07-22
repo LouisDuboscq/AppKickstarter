@@ -7,16 +7,13 @@ import Pricing from "@components/pricing.astro";
 const pricing = [
   {
     name: "Developer",
-    idealFor: "Access to the complete repository and get regular updates.",
+    idealFor: "Access to the template and be part of the community.",
     price: "$149",
     popular: true,
     features: [ 
-      "UI Kit",
-      "Paywall",  
-      "Onboarding", 
-      "Firebase setup",
-      "Authentication",
-      "Email Support"
+      "Template",
+      "Community",  
+      "Exclusive opportunities"
     ],
     button: {
       text: "BUY NOW",
@@ -25,7 +22,7 @@ const pricing = [
   },
   {
     name: "Ultimate Pro",
-    idealFor: "Perfect if you're serious about taking your app development skills to the next level.",
+    idealFor: "Perfect if you're serious about taking your multiplatform app development skills to the next level.",
     price: "$349",/*{
       monthly: "$349",
       annual: "$16",
@@ -34,9 +31,10 @@ const pricing = [
     },*/
     popular: false,
     features: [
-      "Developer plan +", 
-      "Instant Messaging Support",
-      "Our apps source code" 
+      "Developer plan",  
+      "GP4 app codebase",
+      "Audio app codebase",
+      "Offline app codebase"
     ],
     button: {
       text: "BUY NOW",
@@ -69,7 +67,7 @@ const pricing = [
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
       <Fragment slot="desc">
-        Get lifetime access to our private Github team and join our Discord community for support.<br>
+        Get lifetime access to our private Github team and join our Slack community for support.<br>
         You'll also have access to additional resources to improve your skills.<br>
         <strong>Pay once and receive unlimited updates to build as many apps as you want.</strong></Fragment>
     </Sectionhead> 
