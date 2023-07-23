@@ -37,7 +37,7 @@ const { dog } = Astro.params;
 const { gg, titleTag, pageTitle } = Astro.props;
 ---
     
-<Layout title={pageTitle}>
+<Layout title={pageTitle} description=""></Layout>
   <div>Bon chien, {dog}, {gg}!</div>
   <p>{titleTag}</p>
 </Layout>

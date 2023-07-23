@@ -6,6 +6,7 @@ import "@fontsource/inter/variable.css";
 
 export interface Props {
   title: string;
+  description: string;
 }
 
 // const { src } = await getImage({
@@ -23,7 +24,9 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+
+const dynamicTitle = title;
 
 const makeTitle = title
   ? title + " | " + "AppKickstarter"
@@ -39,8 +42,8 @@ const makeTitle = title
     <meta name="generator" content={Astro.generator} />
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
-    <SEO
-      title={makeTitle}
+     <SEO
+      title={dynamicTitle}  
       description="AppKickstarter - Create Android and iOS apps at lightning speed with a Kotlin/Compose multiplatform boilerplate"
       canonical={canonicalURL}
       twitter={{
@@ -52,14 +55,14 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `AppKickstarter - Create Android and iOS apps at lightning speed with a Kotlin/Compose multiplatform boilerplate`,
+          title: dynamicTitle,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "AppKickstarter - Create Android and iOS apps at lightning speed with a Kotlin/Compose multiplatform boilerplate",
+          alt: dynamicTitle,
         },
       }}
-    />
+    /> 
   </head>
   <body class="bg-slate-50">
     <Navbar />

@@ -8,7 +8,7 @@ import Sectionhead from "@components/sectionhead.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} description={frontmatter.description ? frontmatter.description : ""}>
   <Container>
  
     <div class="mx-auto max-w-[735px] mt-14">

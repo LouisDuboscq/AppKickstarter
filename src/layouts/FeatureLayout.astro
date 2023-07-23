@@ -12,7 +12,7 @@ export interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title}> 
+<Layout title={frontmatter.title} description={frontmatter.description ? frontmatter.description : ""}> 
  <Container>
     <Sectionhead>
       <Fragment slot="title">{frontmatter.title}</Fragment>

@@ -21,7 +21,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={entry.data.title} description={entry.data.description}>
   <Container>
     <!--<Sectionhead>
       <Fragment slot="title">{entry.data.title}</Fragment>
