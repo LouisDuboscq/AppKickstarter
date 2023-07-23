@@ -9,7 +9,8 @@ const posts = await getCollection("blog");
 let tags = getUniqueTags(posts);
 ---
 
-<Layout title="Tags">
+<Layout title="Tags" description="Tags for AppKickstarter blog"
+image="/images/affiche_seo.png">
     <Container>
     <ul>
         {tags.map(tag => <Tag name={tag} size="lg" />)}
