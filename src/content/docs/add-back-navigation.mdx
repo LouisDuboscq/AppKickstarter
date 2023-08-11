@@ -1,0 +1,74 @@
+--- 
+title: "Add back navigation easily in your Compose multiplatform application"
+description: "AppKickstarter makes it easy, discover how below."  
+--- 
+
+Given you have a screen that navigates to another : 
+
+```kotlin
+@Composable 
+fun Screen1Content() {
+    PrimaryButton(
+        text = "navigate to 2",
+        onClick = {} 
+    )
+}
+
+@Composable
+object Screen2: Screen {
+    @Composable
+    override fun Content() {
+        Screen2Content()
+    }
+}
+
+@Composable
+fun Screen2Content() {
+    Text("Screen 2")
+}
+```
+
+To make navigation to screen 2 you just need to call push on a navigator instance : 
+
+```kotlin
+@Composable 
+fun Screen1Content() {
+    val navigator = LocalNavigator.currentOrThrow
+    PrimaryButton(
+        text = "navigate to 2",
+        onClick = { navigator.push(Screen2) } 
+    )
+}
+```
+
+To navigate back from the second screen and have the back icon you just have to wrap your content inside KickstarterScaffold component : 
+
+```kotlin
+@Composable
+fun Screen2Content( 
+    navigateBack: () -> Unit,
+) {
+    KickstarterScaffold(
+        title = "Screen 2",
+        navigateBack = navigateBack
+    ) {
+        // todo render your amazing screen content
+    }
+}  
+```
+
+Finally, you need to pass navigateBack to Screen2Content from Screen2 composable :
+
+```kotlin
+@Composable
+object Screen2: Screen {
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+        Screen2Content(navigateBack = navigator::pop)
+    }
+}
+```
+
+Note that we could create the navigator instance in Screen2Content and do pop in this component. 
+But we don't want to have navigation dependencies in content composables so that they are pure : they only takes datas and callbacks, dependending only on Compose UI. 
