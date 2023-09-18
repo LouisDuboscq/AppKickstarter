@@ -9,7 +9,7 @@ image: {
 publishDate: "2023-03-07"
 category: "Tutorials"
 author: "Louis Duboscq"
-tags: [kmm, compose-multiplatform, ios]
+tags: [kmp, compose-multiplatform, ios]
 --- 
 
 In this post, you'll learn how to **render compose multiplatform composables into SwiftUI for iOS**. 
@@ -27,9 +27,9 @@ Thanks to this guide you'll master the **interoperability in Compose multiplatfo
 
 ## iOS developers
 
-If you are an iOS developer, you'll learn Kotlin/Swift interoperability and KMM/Compose multiplatform are not another black box tech to use instead of your favorites tools (XCode, Swift, SwiftUI, etc). 
+If you are an iOS developer, you'll learn Kotlin/Swift interoperability and KMP/Compose multiplatform are not another black box tech to use instead of your favorites tools (XCode, Swift, SwiftUI, etc). 
 We know that because of Xamarin, React Native, and flutter, among others, you're skeptical.
-But KMM/Compose multiplatform is the tool to add to your toolbox rather than a replacement for it.
+But KMP/Compose multiplatform is the tool to add to your toolbox rather than a replacement for it.
 
 ## Android developers
 
@@ -175,7 +175,7 @@ fun ComposeUITextField(value: String, onValueChange: (String) -> Unit, modifier:
 }
 ```
 
-And to use it in your shared UI in commonMain, as the commonMain package does not have access to iOSMain (the way KMM architecture works), 
+And to use it in your shared UI in commonMain, as the commonMain package does not have access to iOSMain (the way KMP architecture works), 
 you must create an expect actual function like this : 
 
 Expect function in commonMain : 
@@ -216,4 +216,4 @@ actual fun PlatformTextField(
 That's all! You learned to render your first Compose multiplatform component in SwiftUI using ComposeUIViewController and UIViewControllerRepresentable. 
 You also learned how to use your iOSKit knowledge to build iOS inside Compose multiplatform. 
 
-If you enjoyed it and want to learn more about building android and iOS apps thanks to KMM and Compose multiplatform subscribe to our newsletter.
+If you enjoyed it and want to learn more about building android and iOS apps thanks to KMP and Compose multiplatform subscribe to our newsletter.

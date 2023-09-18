@@ -1,31 +1,31 @@
 ---
 draft: false
-title: "Practical introduction to KMM"
-snippet: "What is KMM, what are the basics and how to start"
+title: "Practical introduction to KMP (Kotlin multiplatform)"
+snippet: "What is KMP, what are the basics and how to start"
 image: {
     src: "/images/blog/practical-intro-kmm.png",
-    alt: "Practical introduction to KMM"
+    alt: "Practical introduction to KMP (Kotlin multiplatform)"
 }
 publishDate: "2023-01-17 21:05"
 category: "Tutorials"
 author: "Louis Duboscq"
-tags: [android, ios, kmm]
+tags: [android, ios, kmp]
 --- 
 
-## The practical intro to KMM
+## The practical intro to KMP
 
-The "Practical intro to KMM" is a short guide that covers the essential information you need to know to create a Kotlin Multiplatform mobile app. 
+The "Practical intro to KMP" is a short guide that covers the essential information you need to know to create a Kotlin Multiplatform mobile app. 
 It includes information on the unique features and functions of KMM, the methodology for cross-platform development, and helpful libraries. 
 This resource provides a practical introduction to KMM, helping you get started with creating your own app.
 
 ## A word on me
 
-I'm Louis, a mobile developer who started using Kotlin Multiplatform mobile (KMM) in 2019. 
+I'm Louis, a mobile developer who started using Kotlin Multiplatform (KMP) in 2019. 
 Back then, it was difficult to set up and troubleshoot, and the community was small. 
 But now, things have improved and I'm excited to share my experience with KMM and help others get started. 
-If you’re interested in KMM, SwiftUI or Jetpack Compose, I talk about these topics on [Twitter](https://twitter.com/louisduboscq) and [LinkedIn](https://www.linkedin.com/in/louis-duboscq/).
+If you’re interested in KMP, SwiftUI or Jetpack Compose, I talk about these topics on [Twitter](https://twitter.com/louisduboscq) and [LinkedIn](https://www.linkedin.com/in/louis-duboscq/).
 
-## What is KMM?
+## What is KMP?
 
 Kotlin allows you to create cross-platform and native apps without having to learn a new programming language. 
 This means you can use your existing Android app code to create an app for iOS devices. 
@@ -125,7 +125,7 @@ val viewModel = RocketLaunchesViewModel(rocketsService)
 
 This is where dependency injection comes into play. I used [Koin](https://github.com/InsertKoinIO/koin), a pragmatic lightweight dependency injection framework for Kotlin developers. But I know some KMM devs who use [Kodein](https://github.com/kosi-libs/Kodein) which is also a great option.
 
-## Transition Android Kotlin code to KMM code
+## Transition Android Kotlin code to KMP code
 
 - Extract the code you want to be multiplatform and put it in shared module in commonMain package.
 - Remove Android-specific code by replacing it with cross-platform Kotlin code or connecting to Android-specific APIs using **expect and actual** declarations. See the following sections for details.
@@ -229,9 +229,9 @@ To store key-value pairs in a Kotlin Multiplatform project, you can use the [mul
 
 One of the benefits of using Kotlin Multiplatform Mobile (KMM) is the ability to share business logic code across platforms, which makes testing simpler. You will use [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) dependency.
 
-## Kickstart your next KMM app
+## Kickstart your next KMP app
 
-If you want to expedite the process of building a Kotlin Multiplatform app, you may be interested in using a boilerplate project that includes multiple ready-to-use features. One such boilerplate project can be found at [https://appkickstarter.com/](https://appkickstarter.com/). This may be a helpful starting point for your next KMM app.
+If you want to expedite the process of building a Kotlin Multiplatform app, you may be interested in using a template project that includes multiple ready-to-use features. One such template project can be found at [https://appkickstarter.com/](https://appkickstarter.com/). This may be a helpful starting point for your next KMP app.
 
 ## Libraries you want to know
 
@@ -259,14 +259,14 @@ If you want to expedite the process of building a Kotlin Multiplatform app, you 
     
     Get [an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) for Kotlin Slack and join the [#multiplatform channel](https://kotlinlang.slack.com/archives/C3PQML5NU)
     
-- Is a macOS required to build KMM apps?
+- Is a macOS required to build KMP apps?
     
-    To develop iOS applications using Kotlin Multiplatform (KMM), a Mac with macOS is required. This is because writing iOS-specific code and running an iOS app on a simulated or real device can only be done on a Mac. It is not possible to perform these tasks on other operating systems, such as Microsoft Windows. This requirement is set by Apple.
+    To develop iOS applications using Kotlin Multiplatform (KMP), a Mac with macOS is required. This is because writing iOS-specific code and running an iOS app on a simulated or real device can only be done on a Mac. It is not possible to perform these tasks on other operating systems, such as Microsoft Windows. This requirement is set by Apple.
     
-- I thought KMM was also web and desktop but you didn't cover those topics
+- I thought KMP was also web and desktop but you didn't cover those topics
     
-    KMM is Kotlin multiplatform mobile (Android and iOS). KM = Kotlin multiplatform also targets web and desktop. I can’t talk about everything in a short guide, we all have to make choices.
+    KMP is Kotlin multiplatform mobile (Android and iOS). KM = Kotlin multiplatform also targets web and desktop. I can’t talk about everything in a short guide, we all have to make choices.
     
-- Is KMM stable?
+- Is KMP stable?
 
     Kotlin Multiplatform is in Beta. It is almost stable, but migration steps may be required in the future. The team does its best to minimize any changes you have to make.
