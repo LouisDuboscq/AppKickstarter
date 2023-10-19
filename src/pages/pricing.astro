@@ -8,7 +8,7 @@ const pricing = [
   {
     name: "Developer",
     idealFor: "Access to the template and be part of the community.",
-    price: "$149",
+    price: "$200",
     popular: true,
     features: [ 
       "Template",
@@ -16,8 +16,8 @@ const pricing = [
       "Exclusive opportunities"
     ],
     button: {
-      text: "BUY NOW",
-      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7",
+      text: "Get AppKickstarter",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW",
     },
   },
   {
@@ -37,8 +37,8 @@ const pricing = [
       "Offline app codebase"
     ],
     button: {
-      text: "BUY NOW",
-      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7",
+      text: "Get AppKickstarter and showcases",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW",
     },
   },
   {
@@ -71,9 +71,8 @@ const pricing = [
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
       <Fragment slot="desc">
-        Get lifetime access to our private Github team and join our Slack community for support.<br>
-        You'll also have access to additional resources to improve your skills.<br>
-        <strong>Pay once and receive unlimited updates to build as many apps as you want.</strong></Fragment>
+        Get lifetime access to our <strong>private Github team</strong> and join our <strong>Slack community</strong> for support.<br> 
+        Pay once and receive <strong>unlimited updates</strong> to <strong>build as many apps as you want</strong>.</Fragment>
     </Sectionhead> 
     <div class="grid md:grid-cols-3 gap-5 mx-auto max-w-4xl mt-12">
       {pricing.map((item) => <Pricing plan={item} />)}
