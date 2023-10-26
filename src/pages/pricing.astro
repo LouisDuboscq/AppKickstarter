@@ -23,8 +23,8 @@ const pricing = [
   {
     name: "Ultimate Pro",
     idealFor: "Perfect if you're serious about taking your multiplatform app development skills to the next level.",
-    price: "$349",/*{
-      monthly: "$349",
+    price: "$350",/*{
+      monthly: "$350",
       annual: "$16",
       discount: "10%",
       original: "$24",
@@ -45,7 +45,7 @@ const pricing = [
     name: "On-Demand Support",
     idealFor: "Ask us for specific features in addition to AppKickstarter",
     price: "contact us",/*{
-      monthly: "$349",
+      monthly: "$350",
       annual: "$16",
       discount: "10%",
       original: "$24",
@@ -72,9 +72,17 @@ const pricing = [
       <Fragment slot="title">Pricing</Fragment>
       <Fragment slot="desc">
         Get lifetime access to our <strong>private Github team</strong> and join our <strong>Slack community</strong> for support.<br> 
-        Pay once and receive <strong>unlimited updates</strong> to <strong>build as many apps as you want</strong>.</Fragment>
+        Pay once and receive <strong>unlimited updates</strong> to <strong>build as many apps as you want</strong>.
+      </Fragment>
     </Sectionhead> 
-    <div class="grid md:grid-cols-3 gap-5 mx-auto max-w-4xl mt-12">
+
+    <div class="flex items-center justify-center my-12">
+      <div class="bg-gray-300 text-slate-900 font-bold px-4 py-2 rounded-full">
+        🎁 End of 2023 sale (-50%)
+      </div>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-5 mx-auto max-w-4xl">
       {pricing.map((item) => <Pricing plan={item} />)}
     </div>
   </Container>
