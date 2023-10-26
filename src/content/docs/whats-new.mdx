@@ -1,0 +1,60 @@
+--- 
+title: "Whats new feature"
+description: "Showcase New Build Features and Fixes, Engage Your Users, and Convert Them into Paying Customers."  
+--- 
+
+Every update is an opportunity to keep your users engaged in your project. People appreciate apps that are actively maintained and are more likely to pay for regularly updated products.
+
+That's why we've introduced this feature – to showcase the new features and fixes with every build update while also providing an additional opportunity to introduce the paywall.
+
+## Presenting the List
+
+```kotlin  
+override suspend fun whatsNewFor(build: String): List<FeatureItemData> {
+
+    // Define update details for build 10
+    private val updateBuild10 = listOf(
+        FeatureItemData(
+            imageVector = Icons.Rounded.Home,
+            iconTint = Color.White,
+            iconBackgroundColor = Color(0XFFd32727),
+            title = "New feature 11",
+            text = "We've introduced this exciting new feature. You'll find it amazing."
+        ),
+        // ... More features for this build
+    )
+
+    // Return the updates for the specified build
+    return when (build) {
+        "10" -> updateBuild10
+        else -> emptyList()
+    }
+}
+```
+
+In the code above, the whatsNewFor function is called every time the app is launched after onboarding and the user logs in. 
+
+It is called with the build version as a string (version code not version name). 
+
+Simply using the when statement and returning the updateBuild10 variable in the "10" case will display the 'What's New' screen.
+
+## If You Don't Want to Present Updates
+
+You can simply return an empty list every time.
+
+## Hiding the 'What's New' Screen
+
+The 'What's New' screen can be hidden by clicking the close button at the top left or by clicking the continue button.
+
+## Show the Paywall on Continue Button Click
+
+```kotlin  
+PrimaryButton("Continue") {
+    screenModel.updatesVersionSeen()
+    navigator.push(PaywallScreen)
+}
+```
+
+The first line, updatesVersionSeen, updates the version seen to the latest (e.g., 10 in our example), and, through observability, the screen is hidden. 
+
+The second line, navigator.push(PaywallScreen), presents your paywall and offers an opportunity to convert users into paying customers.
