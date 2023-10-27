@@ -10,20 +10,19 @@ That's why we've introduced this feature – to showcase the new features and fi
 ## Presenting the List
 
 ```kotlin  
-override suspend fun whatsNewFor(build: String): List<FeatureItemData> {
+ // Define update details for build 10
+private val updateBuild10 = listOf(
+    FeatureItemData(
+        imageVector = Icons.Rounded.Home,
+        iconTint = Color.White,
+        iconBackgroundColor = Color(0XFFd32727),
+        title = "New feature 1",
+        text = "We've introduced this exciting new feature. You'll find it amazing."
+    ),
+    // ... More features for this build
+)
 
-    // Define update details for build 10
-    private val updateBuild10 = listOf(
-        FeatureItemData(
-            imageVector = Icons.Rounded.Home,
-            iconTint = Color.White,
-            iconBackgroundColor = Color(0XFFd32727),
-            title = "New feature 11",
-            text = "We've introduced this exciting new feature. You'll find it amazing."
-        ),
-        // ... More features for this build
-    )
-
+override suspend fun whatsNewFor(build: String): List<FeatureItemData> { 
     // Return the updates for the specified build
     return when (build) {
         "10" -> updateBuild10
@@ -46,7 +45,7 @@ You can simply return an empty list every time.
 
 The 'What's New' screen can be hidden by clicking the close button at the top left or by clicking the continue button.
 
-## Show the Paywall on Continue Button Click
+## Show the Paywall on Click the Continue Button 
 
 ```kotlin  
 PrimaryButton("Continue") {
