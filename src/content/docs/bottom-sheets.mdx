@@ -38,17 +38,17 @@ KickstarterBottomSheet(
     listOf(
         ItemSheetContentData(
             Icons.Rounded.DarkMode,
-            { selectTheme("dark") },
+            selectDarkTheme,
             "Dark"
         ),
         ItemSheetContentData(
             Icons.Rounded.LightMode,
-            { selectTheme("light") },
+            selectLightTheme,
             "Light",
         ),
         ItemSheetContentData(
             Icons.Rounded.Star,
-            { selectTheme("system") },
+            selectSystemTheme,
             "System",
         )
     )
