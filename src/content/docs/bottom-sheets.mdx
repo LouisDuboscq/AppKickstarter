@@ -1,0 +1,58 @@
+--- 
+title: "Adaptive Bottom sheets"
+description: "Learn how to manage Adaptive Bottom Sheets in AppKickstarter"  
+--- 
+
+The KickstarterBottomSheet component is a versatile component designed to help you display an Adaptive Bottom Sheet with Android and iOS aesthetics. 
+
+This component simplifies the management of various aspects, such as sheet visibility, colors, spacings, onDismissRequest callback, and automatic hiding upon clicking an element.
+ 
+## Theming
+
+The default container color of the KickstarterBottomSheet is derived from the KickstarterTheme and the user's preferred theme (light, dark, or system). 
+
+The entire theme within AppKickstarter is highly customizable to suit your needs.
+
+### Adaptive rendering 
+
+<div className="grid grid-cols-3 gap-4">
+    <div>
+        <img src="/images/bottom-sheet-dark.png" alt="Dark Theme Bottom Sheet" />
+    </div>
+    <div>
+        <img src="/images/bottom-sheet-light.png" alt="Light Theme Botttom Sheet" />
+    </div>
+    <div> 
+        <img src="/images/AdaptiveBottomSheet-ios.png" alt="iOS Botttom Sheet" />
+    </div>
+</div> 
+  
+## API
+
+To use the KickstarterBottomSheet, you need to provide it with a `MutableState<Boolean>` to control the visibility of the Adaptive Bottom Sheet. 
+Additionally, you'll need to specify a list of ItemSheetContentData elements, each containing an icon, text, and an onClick callback.
+
+```kotlin
+KickstarterBottomSheet(
+    openBottomSheetTheme,
+    listOf(
+        ItemSheetContentData(
+            Icons.Rounded.DarkMode,
+            { selectTheme("dark") },
+            "Dark"
+        ),
+        ItemSheetContentData(
+            Icons.Rounded.LightMode,
+            { selectTheme("light") },
+            "Light",
+        ),
+        ItemSheetContentData(
+            Icons.Rounded.Star,
+            { selectTheme("system") },
+            "System",
+        )
+    )
+)
+```
+
+Use this component to enhance your app's user experience by implementing a flexible and adaptive bottom sheet with ease.
