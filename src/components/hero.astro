@@ -25,18 +25,27 @@ import BorderButton from "./border-button.astro";
       It includes authentication, onboarding, navigation, firebase setup and much more! 
     </p>
 
+
+    <div class="flex items-center justify-center my-8"> 
+      <div class="bg-gray-300 text-slate-900 font-bold px-4 py-2 rounded-full">
+        🎁 End of 2023 sale (-50%)
+      </div>
+    </div>
+
     <div
       class="mt-6 flex flex-col sm:flex-row gap-3 lg:justify-center lg:items-center sm:justify-center sm:items-center">
-       
-      <div class="flex items-center justify-center my-8"> 
-        <div class="bg-gray-300 text-slate-900 font-bold px-4 py-2 rounded-full">
-          🎁 End of 2023 sale (-50%)
-        </div>
-      </div>
+      
+      <BorderButton 
+        class="flex gap-1 items-center justify-center font-bold" 
+        text="Try Demo (your app in minutes)" 
+        url="https://play.google.com/store/apps/details?id=com.lduboscq.appkickstarter.android"
+      />
 
-      <BasicButton class="flex gap-1 items-center justify-center font-bold" text="Get AppKickstarter" 
-       url="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW"
-       />
+      <BasicButton 
+        class="flex gap-1 items-center justify-center font-bold" 
+        text="Get AppKickstarter" 
+        url="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW"
+      />
  
     </div>
   </div> 
