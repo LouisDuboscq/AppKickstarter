@@ -31,7 +31,7 @@ import BasicButton from "@components/basic-button.astro";
     <div class="my-16">
       <div class="flex items-center justify-center w-full">
         <img src="/images/github.svg" />
-        <p class="ml-2">Last commit : October 27, 2023   <br/></p> 
+        <p class="ml-2">Last commit : November 7, 2023   <br/></p> 
     </div>
 
     <div class="flex items-center justify-center w-full">
@@ -232,6 +232,16 @@ import BasicButton from "@components/basic-button.astro";
              <span>${minutes}</span>m <span>${seconds}</span>s
            </p>`;
       }, 1000);
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TZHE8390D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2TZHE8390D');
     </script>
 
     <!--
