@@ -9,6 +9,8 @@ import TableOfContents from "@components/RightSidebar/TableOfContents";
 import generateToc from "@utils/generateToc";
 import RightSidebar from "@components/RightSidebar/RightSidebar.astro";
 import MyRightSidebar from "@components/MyRightSidebar.astro";
+import ContainerDocs from "@components/container-docs.astro";
+import LayoutDocs from "@layouts/Layout-docs.astro";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -97,17 +99,17 @@ const { content, githubEditUrl, headings } = Astro.props;
 const overview = "overview ok?";
 ---
 
-<Layout 
+<LayoutDocs
     title={entry.data.title} 
     description={entry.data.description ? entry.data.description : ""}
     image="/images/affiche_seo.png"
 >
-    <Container class="overflow-visible">  
+    <ContainerDocs class="overflow-visible">  
         
         <div class="flex gap-4 mt-16 relative md:flex h-screen overflow-hidden">
             <MySidebar selected={entry.slug} />  
             <div class="w-screen flex-1 h-screen overflow-y-auto"> 
-                <main class="prose prose-lg mx-auto">  
+                <main class="prose prose-lg">  
                     <Sectionhead align="left" mt="mt-0">
                         <Fragment slot="title">{entry.data.title}</Fragment>
                         <Fragment slot="desc">{entry.data.description}</Fragment> 
@@ -132,7 +134,7 @@ const overview = "overview ok?";
                     </div> 
                 </div>
             </div>
-            <MyRightSidebar selected={entry.slug} page={entry.slug}/>  
+          <!--<MyRightSidebar selected={entry.slug} page={entry.slug}/>  -->
         </div> 
     </Container> 
 </Layout>

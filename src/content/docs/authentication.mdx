@@ -1,35 +1,71 @@
 --- 
 title: "Authentication"
-description: "Learn things you can share with iOS that you usually do in the Android platform"  
---- 
-
-AppKickstarter simplifies authentication and user management using Firebase authentication, 
+description: "AppKickstarter simplifies authentication and user management using Firebase authentication, 
 providing a ready-to-use login and sign-up screen with various account management functions like logging in, signing up, resetting forgotten passwords (sent via email), 
-and logging out (navigating back to the login page from the settings screen). 
-Additionally, users can implement a custom login and sign-up logic while still using the pre-built UI by utilizing the LoginAndSignupScreen composable with customizable parameters.
+and logging out (navigating back to the login page from the settings screen). "  
+--- 
 
 ## Firebase authentication
 
-Our app offers a pre-built login and sign up screen with Firebase provider that is readily available for use. 
+Our app template offers a pre-built login and sign up screen with Firebase provider that is readily available for use. 
 Simply display the composable and it will function seamlessly.
 
-```kotlin
-EmailPasswordFormFirebase(
-    onSuccess = { currentUser ->
+To make this works you need to enable Firebase authentication. 
 
-    }
-)
-```
+<img src="/images/docs/firebase_authentication_start.png" alt="Firebase Authentication in Kotlin multiplatform and Compose multiplatform with AppKickstarter" /> 
 
-## Screens
+## Email Password 
+
+After enabling Firebase Authentication if you want Email Password authentication, you just have to enable email/password authentication in Firebase. 
+
+<img src="/images/docs/firebase_email_password.png" alt="Firebase Authentication with Email password in Kotlin multiplatform and Compose multiplatform with AppKickstarter" /> 
+
+By default AppKickstarter provides ready to use authentication feature and screens with Email/Password and provides a reset password screen:
 
 <p class="grid md:grid-cols-3 gap-10">  
- <img src="/images/login-ios.png" alt="Login screen in AppKickstarter" width="300" /> 
- <img src="/images/signup-ios.png" alt="Signup screen in AppKickstarter" width="300" /> 
- <img src="/images/forgot-password-ios.png" alt="Forgot password screen in AppKickstarter" width="300" /> 
+ <img src="/images/docs/login.png" alt="Login screen in Kotlin Multiplatform and Compose Multiplatform" width="300" /> 
+ <img src="/images/docs/signup.png" alt="Kotlin multiplatform Signup and Compose multiplatform Signup" width="300" /> 
+ <img src="/images/docs/reset_password.png" alt="Kotlin multiplatform and Compose multiplatform reset password" width="300" /> 
 </p>
 
-## Custom provider 
+## Google Sign in
+
+Almost everything is ready in AppKickstarter to enable Google Sign in. You just need to follow these little configuration steps:
+
+### Firebase
+
+Enable Google sign in in Firebase. 
+
+<img src="/images/docs/firebase_google.png" alt="Firebase Authentication with Google Sign In in Kotlin multiplatform and Compose multiplatform with AppKickstarter" /> 
+
+
+### Android
+
+Update the the local.properties with the client id for Android.
+
+```
+google_server_client_id_for_android=yourclientid.apps.googleusercontent.com
+```
+
+### iOS
+
+Update the the local.properties with the client id for iOS.
+
+```
+google_server_client_id_for_ios=yourclientid.apps.googleusercontent.com
+```
+
+Then, in XCode, you have to add the reversed client id that you can find in your GoogleService-Info.plist.
+Select your app from the TARGETS section, then select the Info tab, and expand the URL Types section.
+Copy the value of that key, and paste it into the URL Schemes box on the configuration page. Leave the other fields untouched.
+
+<a href="https://firebase.google.com/docs/auth/ios/google-signin?hl=en#implement_google_sign-in" target="_blank">
+<img src="/images/docs/google_sign_in_ios_url_type.png" alt="Google Sign in Kotlin multiplatform and Compose multiplatform with AppKickstarter" /> 
+</a>
+
+For more informations [follow the guide here](https://firebase.google.com/docs/auth/ios/google-signin?hl=en#implement_google_sign-in).
+ 
+## Custom Authentication without Firebase
 
 You can customize the login and sign up logic while still utilizing the pre-built UI by implementing the following code in Kotlin:
 
