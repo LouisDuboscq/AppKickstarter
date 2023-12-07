@@ -6,11 +6,13 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
+        'playfair': ['Playfair Display', 'serif'],
+        'inter': ['Inter', 'sans-serif'],
       },
     },
   },
   plugins: [
     require("@tailwindcss/typography"),
     //require('@tailwindcss/forms'),
-  ],
+  ], 
 };
