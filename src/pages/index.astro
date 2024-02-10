@@ -16,6 +16,57 @@ import SimpleNoTricksPricing from "@components/simpleNoTricksPricing.astro";
 import Testimonials2 from "@components/testimonials2.astro";
 import Video from "@components/video.astro";
 import BasicButton from "@components/basic-button.astro";
+import Pricing from "@components/pricing.astro";
+import Faq from "@components/faq.astro";
+
+const pricing = [
+  {
+    name: "",
+    idealFor: "Limited yet useful free version",
+    oldPrice: "69 EUR",
+    price: "FREE",
+    popular: false,
+    features: [ 
+      "Navigation",
+      "DI",  
+      "Cache",
+      "Resources"
+    ],
+    button: {
+      text: "Get Free Version",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/ae28a01d-04c0-4b0b-9c25-0782a8362fa6",
+    },
+  },
+  {
+    name: "",
+    idealFor: "Save weeks of development time",
+    oldPrice: "400 EUR",
+    price: "259 EUR", 
+    popular: true,   
+    features: [ 
+      "Lifetime updates",
+      "Unlimited usage of code & unlimited projects",
+      "Navigation", 
+      "Cache and offline file system",
+      "Resources",  
+      "Onboarding",
+      "Firebase, Google and Apple Sign In",  
+      "Theme management", 
+      "Monetization",  
+      "Analytics",
+      "Maps and locations",  
+      "In-App Changelog", 
+      "CI/CD", 
+      "Slack community", 
+      "And more (see docs)"
+    ],
+    button: {
+      text: "Get Lifetime access",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW",
+    }
+  }
+];
+
 ---
 
 
@@ -34,7 +85,7 @@ import BasicButton from "@components/basic-button.astro";
     <div class="sticky top-20 flex items-center justify-center my-4" style="z-index: 10;"> 
       <div class="bg-slate-200 text-slate-900 font-bold px-4 py-2 rounded-full text-center">
         <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW">
-          🎁 Last discount to grab now (-37%)
+          150€ off for the first 100 (17 left)
         </a> 
       </div>
     </div>
@@ -162,10 +213,7 @@ import BasicButton from "@components/basic-button.astro";
         </div>
       </div>
     </div>
-
-    
-
-
+  
     <div
     class="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start mt-6">
     
@@ -217,43 +265,26 @@ import BasicButton from "@components/basic-button.astro";
   <h2 class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">Trusted by developers and companies</h2>
   <div class="famewall-embed" data-src="appkickstarter" data-format="grid" style="width:100%;"></div>
   <script type="text/javascript" src="https://embed.famewall.io/frame.js" defer></script>
-   
+    
+  <div id="pricing" class="my-24">
+    <h2 class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center ">
+      Pricing 
+    </h2>
+     <p class="text-lg mt-4 text-slate-600 text-center ">
+      150€ off for the first 100 (17 left)
+    </p> 
+  </div> 
+  <div class="grid md:grid-cols-2 gap-5 mx-auto max-w-4xl">
+    {pricing.map((item) => <Pricing plan={item} />)}
+  </div>
+ 
+
+  <h2 class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center my-24">Frequently Asked Questions</h2>
+  
+  <Faq class="my-24"/> 
+
   <Cta />
-    <!--
-<SimpleNoTricksPricing />
--->
-
-    <!--
-<div  class="grid gap-16 max-w-4xl mx-auto md:gap-10 items-center mt-24" >
- <p class="text-center text-slate-500">Get started in 2 minutes</p> 
-    <iframe class="items-center" width="560" height="315" src="https://www.youtube.com/embed/a56Jr2iT-2U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-   -->
-
-    <script>
-      let countdownDate = new Date("June 5, 2023 00:00:00").getTime();
-
-      setInterval(function () {
-        let now = new Date().getTime();
-        let distance = countdownDate - now;
-
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById(
-          "countdown"
-        ).innerHTML = `<p>Lock in your lifetime access now before the price rises to $250 in</p>
-           <p>
-             <span>${days}</span>d <span>${hours}</span>h 
-             <span>${minutes}</span>m <span>${seconds}</span>s
-           </p>`;
-      }, 1000);
-    </script>
-
+   
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TZHE8390D"></script>
     <script>

@@ -1,6 +1,8 @@
 ---
 import { Tick } from "@components/ui/icons";
 import Link from "@components/ui/link.astro";
+import BorderButton from "./border-button.astro";
+import BasicButton from "./basic-button.astro";
 
 const { plan } = Astro.props;
 ---
@@ -10,6 +12,11 @@ const { plan } = Astro.props;
     <div class="text-center">
       <h4 class="text-lg font-medium text-gray-400">{plan.name}</h4>
        
+      <p class="mt-3 text-4xl font-bold text-black md:text-4xl line-through">
+        {
+          plan.oldPrice 
+       }
+      </p>
       <p class="mt-3 text-4xl font-bold text-black md:text-4xl">
         {
           plan.price && typeof plan.price === "object"
@@ -41,13 +48,26 @@ const { plan } = Astro.props;
       }
     </ul>
     <div class="flex mt-8">
-      <Link
-        href={plan.button.link || "#"}
-        target="_blank"
-        block
-        style={plan.popular ? "primary" : "outline"}>
-        {plan.button.text || "Get Started"}
-      </Link>
+  
+      {plan.popular ? (
+    // Render this div if the plan is popular
+      
+        <BasicButton 
+        class="flex gap-1 items-center justify-center font-bold" 
+        text="Get AppKickstarter" 
+        url={plan.button.link}
+      /> 
+  ) : (
+    // Render a Link if the plan is not popular
+    <BorderButton 
+      target="_blank"
+      block
+          class="flex gap-1 items-center justify-center font-bold" 
+          text={plan.button.text || "Get Started"}
+          url={plan.button.link}
+        /> 
+  )
+  }
     </div> 
   </div>
 </div>
