@@ -81,11 +81,24 @@ const pricing = [
 
   <Container> 
 
+    <style> 
+        @keyframes backgroundColorChange {
+          0% { background-color: #000000; } 
+          25% { background-color: #422535; } 
+          50% { background-color: #673954; }  
+          75% { background-color: #301c2b; } 
+          100% { background-color: #020102; }  
+        }
+  
+        .animate-bg-color {
+          animation: backgroundColorChange 3s infinite;  
+        } 
+    </style>
 
-    <div class="sticky top-20 flex items-center justify-center my-4" style="z-index: 10;"> 
-      <div class="bg-slate-200 text-slate-900 font-bold px-4 py-2 rounded-full text-center">
+    <div class="sticky top-2 flex items-center justify-center my-4 " style="z-index: 10;"> 
+      <div class="bg-slate-200 text-slate-50 font-bold px-4 py-2 rounded-full text-center animate-bg-color">
         <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW">
-          150€ off for the first 100 (17 left)
+         150€ off for the first 100 (17 left)
         </a> 
       </div>
     </div>
