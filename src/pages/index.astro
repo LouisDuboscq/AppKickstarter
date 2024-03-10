@@ -40,8 +40,8 @@ const pricing = [
   {
     name: "",
     idealFor: "Save weeks of development time",
-    oldPrice: "400 EUR",
-    price: "250 EUR", 
+    oldPrice: "300 EUR",
+    price: "150 EUR", 
     popular: true,   
     features: [ 
       "Lifetime updates",
@@ -62,7 +62,7 @@ const pricing = [
     ],
     button: {
       text: "Get Lifetime access",
-      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=LAUNCH",
     }
   }
 ];
@@ -96,26 +96,27 @@ const pricing = [
         } 
     </style>
 
+<!--
     <div class="sticky top-2 flex items-center justify-center my-4 " style="z-index: 10;"> 
       <div class="bg-slate-200 text-slate-50 font-bold px-4 py-2 rounded-full text-center animate-bg-color">
-        <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=A5MZA0NW">
+        <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=LAUNCH">
          150€ off for the first 100 (17 left)
         </a> 
       </div>
-    </div>
+    </div>-->
 
     <Hero />
-    <!--<Testimonials />-->
+    <!--<Testimonials />
     <Features />
 
     <div class="my-16">
       <div class="flex items-center justify-center w-full">
         <img src="/images/github.svg" />
-        <p class="ml-2">Last commit : January 09, 2024<br/></p> 
+        <p class="ml-2">Last commit : 2 days ago<br/></p> 
     </div>
 
     <div class="flex items-center justify-center w-full">
-      <p class="ml-2">Up to date: Kotlin 1.9.21, Compose multiplatform 1.5.11</p> 
+      <p class="ml-2">Up to date: Kotlin 1.9.22, Compose multiplatform 1.6.0</p> 
     </div>
   </div>
  
@@ -284,9 +285,10 @@ const pricing = [
     <h2 class="text-3xl lg:text-4xl font-bold lg:tracking-tight text-center ">
       Pricing 
     </h2>
-     <p class="text-lg mt-4 text-slate-600 text-center ">
+    <!-- <p class="text-lg mt-4 text-slate-600 text-center ">
       150€ off for the first 100 (17 left)
     </p> 
+     -->
   </div> 
   <div class="grid md:grid-cols-2 gap-5 mx-auto max-w-4xl">
     {pricing.map((item) => <Pricing plan={item} />)}
