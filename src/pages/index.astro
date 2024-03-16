@@ -40,8 +40,8 @@ const pricing = [
   {
     name: "",
     idealFor: "Save weeks of development time",
-    oldPrice: "300 EUR",
-    price: "150 EUR", 
+    oldPrice: "",
+    price: "300 EUR", 
     popular: true,   
     features: [ 
       "Lifetime updates",
@@ -62,13 +62,12 @@ const pricing = [
     ],
     button: {
       text: "Get Lifetime access",
-      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=LAUNCH",
+      link: "https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7",
     }
   }
 ];
 
 ---
-
 
 <Layout 
   title="AppKickstarter Mobile app Template" 
@@ -77,7 +76,8 @@ const pricing = [
 >
 
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="41a5dccd-5c87-4328-a701-90d16369c2d3" data-blockingmode="auto" type="text/javascript"></script>
- 
+  <script src='https://cdn.paritydeals.com/banner.js'></script>
+  
   <!-- Google tag (gtag.js) -->  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TZHE8390D"></script>
   <script>
@@ -87,10 +87,6 @@ const pricing = [
 
     gtag('config', 'G-2TZHE8390D');
   </script> 
-
-
-  <script src='https://cdn.paritydeals.com/banner.js'></script>
-
 
   <Container> 
 
@@ -111,7 +107,7 @@ const pricing = [
 <!--
     <div class="sticky top-2 flex items-center justify-center my-4 " style="z-index: 10;"> 
       <div class="bg-slate-200 text-slate-50 font-bold px-4 py-2 rounded-full text-center animate-bg-color">
-        <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7?checkout[discount_code]=LAUNCH">
+        <a href="https://appkickstarter.lemonsqueezy.com/checkout/buy/699eed0e-fc4a-4784-b3e9-b30e9a979dd7">
          150€ off for the first 100 (17 left)
         </a> 
       </div>
